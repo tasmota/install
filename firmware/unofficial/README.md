@@ -1,7 +1,7 @@
 # These binaries are not official releases and are built from the latest development branch! 
 ## :warning: Flash responsibly! No support will be provided for issues with these binaries! :warning:
 
-Stable release ✨ Tasmota ✨ firmware files found [here](https://github.com/tasmota/install/firmware/release)
+Stable release ✨ Tasmota ✨ firmware files found [here](https://github.com/tasmota/install/tree/main/firmware/release)
 
 ## Build variants:
  - tasmota-battery - extremely cut down build for battery powered Tuya sensors
