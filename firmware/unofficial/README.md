@@ -3,6 +3,8 @@
 
 Stable release ✨ Tasmota ✨ firmware files found [here](https://github.com/tasmota/install/tree/main/firmware/release)
 
+[![Build_special_firmware](https://github.com/Jason2866/Tasmota-specials/actions/workflows/Build_special_firmware.yml/badge.svg)](https://github.com/Jason2866/Tasmota-specials/actions/workflows/Build_special_firmware.yml)
+
 ## Build variants:
  - tasmota-battery - extremely cut down build for battery powered Tuya sensors
  - tasmota32c3 - Experimental support for ESP32-C3 chip and 2M no OTA variant (tasmota32c3_2M)
