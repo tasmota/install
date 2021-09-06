@@ -11,6 +11,7 @@ Stable release ✨ Tasmota ✨ firmware files found [here](https://github.com/ta
  - tasmota32s2 - Experimental support for ESP32-S2 chip
  - tasmota32-ethernet - (ESP32 only) for wired LAN, works only on devices with Ethernet hardware!
  - tasmota-fullrules - Rules with all the features (expressions, If statements, MQTT subscription)
+ - tasmota-allsensors - guess whats in ;-)
  - tasmota-mega - big binary, almost every sensor included, OTA possible only with minimal
  - tasmota-minicustom - even smaller minimal build (warning: it has **NO** Webserver, you have to use MQTT for control)
  - tasmota-gps - GPS driver enabled
