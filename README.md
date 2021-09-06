@@ -12,8 +12,8 @@ If you like **Tasmota**, give it a star, or fork it and contribute!
 
 See [CHANGELOG](https://github.com/arendst/Tasmota/blob/development/CHANGELOG.md) for changes since last release.
 
-Easy initial installation of Tasmota via **[Tasmota WebInstaller](https://tasmota.github.io/install/)**. The actual development/release builds and the unofficial firmwares are available. It is important to note that development binaries are based on the current codebase. These commits are tested as much as is possible and are typically quite stable. However, it is infeasible to test on the hundreds of different types of devices with all the available configuration options permitted.
-The unofficial build variants are **not** tested nor supported. Dont blame anyone when using ;-)
+Easy initial installation of Tasmota via **[Tasmota WebInstaller](https://tasmota.github.io/install/)**. The actual development / release builds and the unofficial firmwares are available. It is important to note that development binaries are based on the current codebase. These commits are tested as much as is possible and are typically quite stable. However, it is infeasible to test on the hundreds of different types of devices with all the available configuration options permitted.
+The unofficial special build variants are **not** tested nor supported. Dont blame anyone when using ;-)
 
 ## Disclaimer
 
