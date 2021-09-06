@@ -2,8 +2,6 @@
 
 Alternative firmware for ESP8266/ESP32 based devices with **easy configuration using webUI, OTA updates, automation using timers or rules, expandability and entirely local control over MQTT, HTTP, Serial or KNX**.
 
-[![License](https://img.shields.io/github/license/arendst/Tasmota.svg)](LICENSE.txt)
-
 If you like **Tasmota**, give it a star, or fork it and contribute!
 
 [![GitHub stars](https://img.shields.io/github/stars/arendst/Tasmota.svg?style=social&label=Star)](https://github.com/arendst/Tasmota/stargazers)
