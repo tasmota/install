@@ -13,7 +13,7 @@
     },
     {
       "chipFamily": "ESP8266",
-      "parts": [{ "path": "../firmware/official/tasmota-zigbee.bin", "offset": 0 }]
+      "parts": [{ "path": "../firmware/development/tasmota-zigbee.bin", "offset": 0 }]
     }
   ]
 }
