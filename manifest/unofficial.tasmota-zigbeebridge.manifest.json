@@ -1,6 +1,6 @@
 
 {
-  "name": "Unofficial Tasmota Zbbridge",
+  "name": "Tasmota Zbbridge",
   "builds": [
     {
       "chipFamily": "ESP32",
