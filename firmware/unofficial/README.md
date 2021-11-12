@@ -12,6 +12,7 @@ Stable release ✨ Tasmota ✨ firmware files found [here](https://github.com/ta
  - tasmota32s2 - Beta support for ESP32-S2 chip
  - tasmota32-ethernet - (ESP32 only) for wired LAN, works only on devices with Ethernet hardware!
  - tasmota32-zigbeebridge - ESP32 based [ZigbeeBridge](https://templates.blakadder.com/ewelink_ZB-GW03.html)
+ - tasmota-zigbee - Zigbee for TI based chips (Esp8266 and ESP32)
  - tasmota-fullrules - Rules with all the features (expressions, If statements, MQTT subscription)
  - tasmota-allsensors - guess whats in ;-)
  - tasmota-mega - big binary, almost every sensor included, OTA possible only with minimal
