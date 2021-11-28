@@ -1,0 +1,9 @@
+{
+  "name": "Tasmota All Sensors (english)",
+  "builds": [
+    {
+      "chipFamily": "ESP8266",
+      "parts": [{ "path": "../firmware/unofficial/tasmota-allsensors.bin", "offset": 0 }]
+    }
+  ]
+}
