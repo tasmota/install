@@ -1,5 +1,7 @@
 {
   "name": "Release Tasmota Zbbridge",
+  "home_assistant_domain": "tasmota",
+  "new_install_prompt_erase": true,
   "builds": [
     {
       "chipFamily": "ESP8266",

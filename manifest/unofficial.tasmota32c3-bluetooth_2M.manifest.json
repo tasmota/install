@@ -1,5 +1,7 @@
 {
   "name": "Tasmota32-C3 Bluetooth 2M (english)",
+  "home_assistant_domain": "tasmota",
+  "new_install_prompt_erase": true,
   "builds": [
     {
       "chipFamily": "ESP32-C3",
