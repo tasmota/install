@@ -29,7 +29,7 @@
     </style>
     <script
       type="module"
-      src="https://unpkg.com/esp-web-tools@3.6.0/dist/web/install-button.js?module"
+      src="https://unpkg.com/esp-web-tools@6.0.0/dist/web/install-button.js?module"
     ></script>
   </head>
   <body>
@@ -155,12 +155,12 @@
       </select>
       </br></br>
       <p>
-        <input type="checkbox" id="erase" name="erase" onchange="toggleErase()">
-        <label for="erase">Reset settings to default</label>
-      </p>
-      </br>
-      <p>
-        <esp-web-install-button id="inst"></esp-web-install-button>
+        <esp-web-install-button id="inst">
+          <i slot="unsupported">
+            Your browser does not support Web Serial.</br>Open this page in Google Chrome or</br>Microsoft Edge instead
+            <span class="not-supported-i hidden">(but not on your iOS device)</span>.
+          </i>
+        </esp-web-install-button>
       </p>
     </div>
     <div style='text-align:right;font-size:11px;'>
@@ -175,13 +175,6 @@
         installEl.manifest = selectEl.value;
       });
 
-      function toggleErase() {
-	    if (document.getElementById('erase').checked) {
-	      document.getElementById('inst').setAttribute('erase-first','');
-	    } else {
-	      document.getElementById('inst').removeAttribute('erase-first');
-	    }
-      }
     </script>
   </body>
 </html>
