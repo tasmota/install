@@ -19,7 +19,7 @@ Stable release ✨ Tasmota ✨ firmware files found [here](https://github.com/ta
  - tasmota-minicustom - even smaller minimal build (warning: it has **NO** Webserver, you have to use MQTT for control)
  - tasmota-gps - GPS driver enabled
  - tasmota-platinum - IT...IS...HUGE!!! nearly everzthing is enabled (only for devices with >=4Mb flash)
- - tasmota-titanium - as platinum with scripting and MFRC522 RFID reader enabled
+ - tasmota-titanium - as platinum with scripting enabled
  - tasmota-rangeextender - Experimental build where Tasmota acts as AP range extender
  - tasmota-scripting - all scripting features instead of rules + Smart Meter Interface enabled
  - tasmota-thermostat - Thermostat driver and temperature sensors (ESP32 has Bluetooth included)
