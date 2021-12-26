@@ -27,3 +27,4 @@ Stable release ✨ Tasmota ✨ firmware files found [here](https://github.com/ta
  - tasmota-teleinfo - Teleinfo French metering system, (MQTT, TLS included only for ESP32) 
  - tasmota-tls - MQTT TLS enabled
  - tasmota32-udisplay - ESP32 only, uses Universal Display Driver
+ - tasmota32-nspanel - Tasmota for Sonoff NSPanel
