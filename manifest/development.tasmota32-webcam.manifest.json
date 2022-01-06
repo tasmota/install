@@ -7,10 +7,7 @@
       "chipFamily": "ESP32",
       "improv": false,
       "parts": [
-        { "path": "../static/webcam/bootloader_dout_40m.bin", "offset": 4096 },
-        { "path": "../static/webcam/partitions.bin", "offset": 32768 },
-        { "path": "../static/webcam/boot_app0.bin", "offset": 57344 },
-        { "path": "../firmware/development/tasmota32-webcam.bin", "offset": 65536 }
+        { "path": "../firmware/development/tasmota32-webcam.factory.bin", "offset": 0 }
       ]
     }
   ]

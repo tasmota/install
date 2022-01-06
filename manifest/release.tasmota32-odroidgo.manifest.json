@@ -7,10 +7,7 @@
       "chipFamily": "ESP32",
       "improv": false,
       "parts": [
-        { "path": "../static/odroid/bootloader_dout_40m.bin", "offset": 4096 },
-        { "path": "../static/odroid/partitions_spiffs_10M.bin", "offset": 32768 },
-        { "path": "../static/odroid/boot_app0.bin", "offset": 57344 },
-        { "path": "../firmware/release/tasmota32-odroidgo.bin", "offset": 65536 }
+        { "path": "../firmware/release/tasmota32-odroidgo.factory.bin", "offset": 0 }
       ]
     }
   ]
