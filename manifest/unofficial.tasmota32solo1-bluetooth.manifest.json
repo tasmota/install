@@ -1,0 +1,14 @@
+{
+  "name": "Tasmota32 Solo1 Bluetooth (english)",
+  "home_assistant_domain": "tasmota",
+  "new_install_prompt_erase": true,
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "improv": false,
+      "parts": [
+        { "path": "../firmware/unofficial/tasmota32solo1-bluetooth.factory.bin", "offset": 0 }
+      ]
+    }
+  ]
+}
