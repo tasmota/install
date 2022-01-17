@@ -16,8 +16,8 @@ Stable release ✨ Tasmota ✨ firmware files found [here](https://github.com/ta
  - tasmota-fullrules - Rules with all the features (expressions, If statements, MQTT subscription)
  - tasmota-allsensors - guess whats in ;-)
  - tasmota-mega - big binary, almost every sensor included, OTA possible only with minimal
- - tasmota-minicustom - even smaller minimal build, **only for Updates (warning MQTT only! No Webserver)**
- - tasmota32-minicustom - TLS/MQTT_TLS enabled, for resizing Partitions. **only for Updates** [More Info](https://github.com/arendst/Tasmota/pull/14401) 
+ - tasmota-minicustom - even smaller minimal build, **Only for Updates (warning MQTT only! No Webserver)**
+ - tasmota32-minicustom - TLS/MQTT_TLS and HTTPS enabled, for resizing Partitions. **Only for Updates** [More Info](https://github.com/arendst/Tasmota/pull/14401) 
  - tasmota-gps - GPS driver enabled
  - tasmota-platinum - IT...IS...HUGE!!! nearly everzthing is enabled (only for devices with >=4Mb flash)
  - tasmota-titanium - as platinum with scripting enabled
