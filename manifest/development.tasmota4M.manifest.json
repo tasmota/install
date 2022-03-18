@@ -1,0 +1,18 @@
+{
+  "name": "Development Tasmota for 4MB Flash (english)",
+  "home_assistant_domain": "tasmota",
+  "new_install_prompt_erase": true,
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "improv": false,
+      "parts": [
+        { "path": "../firmware/development/tasmota32.factory.bin", "offset": 0 }
+      ]
+    },
+    {
+      "chipFamily": "ESP8266",
+      "parts": [{ "path": "../firmware/development/tasmota4M.bin", "offset": 0 }]
+    }
+  ]
+}
