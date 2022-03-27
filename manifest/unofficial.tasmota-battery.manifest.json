@@ -15,21 +15,21 @@
       "chipFamily": "ESP32-C3",
       "improv": false,
       "parts": [
-        { "path": "../firmware/unofficial//tasmota32c3-allsensors.factory.bin", "offset": 0 }
+        { "path": "../firmware/unofficial//tasmota32c3-battery.factory.bin", "offset": 0 }
       ]
     },
     {
       "chipFamily": "ESP32-S2",
       "improv": false,
       "parts": [
-        { "path": "../firmware/unofficial//tasmota32s2-allsensors.factory.bin", "offset": 0 }
+        { "path": "../firmware/unofficial//tasmota32s2-battery.factory.bin", "offset": 0 }
       ]
     },
     {
       "chipFamily": "ESP32-S3",
       "improv": false,
       "parts": [
-        { "path": "../firmware/unofficial//tasmota32s3-allsensors.factory.bin", "offset": 0 }
+        { "path": "../firmware/unofficial//tasmota32s3-battery.factory.bin", "offset": 0 }
       ]
     },
     {
