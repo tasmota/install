@@ -2,12 +2,34 @@
   "name": "Development Tasmota32 LVGL (english)",
   "home_assistant_domain": "tasmota",
   "new_install_prompt_erase": true,
+  "new_install_improv_wait_time": 0,
   "builds": [
     {
       "chipFamily": "ESP32",
       "improv": false,
       "parts": [
         { "path": "../firmware/development/tasmota32-lvgl.factory.bin", "offset": 0 }
+      ]
+    },
+    {
+      "chipFamily": "ESP32-C3",
+      "improv": false,
+      "parts": [
+        { "path": "../firmware/development/tasmota32c3-lvgl.factory.bin", "offset": 0 }
+      ]
+    },
+    {
+      "chipFamily": "ESP32-S2",
+      "improv": false,
+      "parts": [
+        { "path": "../firmware/unofficial/tasmota32s2-lvgl.factory.bin", "offset": 0 }
+      ]
+    },
+    {
+      "chipFamily": "ESP32-S3",
+      "improv": false,
+      "parts": [
+        { "path": "../firmware/unofficial/tasmota32s3-lvgl.factory.bin", "offset": 0 }
       ]
     }
   ]
