@@ -13,7 +13,7 @@ def convertJSON(infile,outfile):
         for build in data['builds']:
             for path in build['parts']:
                 print(path['path'])
-                path['path'] = path['path'].replace("..", "https://github.com/tasmota/install/blob/main")
+                path['path'] = path['path'].replace("..", "https://tasmota.github.io/install")
                 # maybe add "?raw=true
                 print(path['path'])
         print(data)
@@ -38,8 +38,8 @@ def main(args):
         return -1
     if path.exists(path_manifests_ext):
         m_e_files = listdir(path_manifests_ext)
-        for file in m_e_files:
-            remove(file)
+        #for file in m_e_files:
+        #    remove(file)
     else:
         mkdir(path_manifests_ext)
     
