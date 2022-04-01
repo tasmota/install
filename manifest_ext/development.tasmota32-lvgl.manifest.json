@@ -19,7 +19,7 @@
             "improv": false,
             "parts": [
                 {
-                    "path": "https://tasmota.github.io/install/firmware/development/tasmota32c3-lvgl.factory.bin",
+                    "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota32c3-lvgl.factory.bin",
                     "offset": 0
                 }
             ]
