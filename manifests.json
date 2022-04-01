@@ -52,9 +52,7 @@
         "tasmota-zbbridge",
         "tasmota-zigbee",
         "tasmota32-bluetooth",
-        "tasmota32-core2",
         "tasmota32-lvgl",
-        "tasmota32-odroidgo",
         "tasmota32-webcam"
     ],
     "release": [
