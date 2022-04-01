@@ -9,7 +9,7 @@
             "improv": false,
             "parts": [
                 {
-                    "path": "https://github.com/tasmota/install/blob/main/firmware/release/tasmota32-bluetooth.factory.bin",
+                    "path": "https://tasmota.github.io/install/firmware/release/tasmota32-bluetooth.factory.bin",
                     "offset": 0
                 }
             ]
@@ -19,7 +19,7 @@
             "improv": false,
             "parts": [
                 {
-                    "path": "https://github.com/tasmota/install/blob/main/firmware/release/tasmota32c3-bluetooth.factory.bin",
+                    "path": "https://tasmota.github.io/install/firmware/release/tasmota32c3-bluetooth.factory.bin",
                     "offset": 0
                 }
             ]
@@ -29,7 +29,7 @@
             "improv": false,
             "parts": [
                 {
-                    "path": "https://github.com/tasmota/install/blob/main/firmware/release/tasmota32s3-bluetooth.factory.bin",
+                    "path": "https://tasmota.github.io/install/firmware/release/tasmota32s3-bluetooth.factory.bin",
                     "offset": 0
                 }
             ]

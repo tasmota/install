@@ -9,7 +9,7 @@
             "improv": false,
             "parts": [
                 {
-                    "path": "https://github.com/tasmota/install/blob/main/firmware/unofficial/tasmota32solo1-bluetooth.factory.bin",
+                    "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota32solo1-bluetooth.factory.bin",
                     "offset": 0
                 }
             ]

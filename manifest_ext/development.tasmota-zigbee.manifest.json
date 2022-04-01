@@ -8,7 +8,7 @@
             "chipFamily": "ESP8266",
             "parts": [
                 {
-                    "path": "https://github.com/tasmota/install/blob/main/firmware/development/tasmota-zigbee.bin",
+                    "path": "https://tasmota.github.io/install/firmware/development/tasmota-zigbee.bin",
                     "offset": 0
                 }
             ]

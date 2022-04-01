@@ -9,7 +9,7 @@
             "improv": false,
             "parts": [
                 {
-                    "path": "https://github.com/tasmota/install/blob/main/firmware/development/languages/tasmota32-ES.factory.bin",
+                    "path": "https://tasmota.github.io/install/firmware/development/languages/tasmota32-ES.factory.bin",
                     "offset": 0
                 }
             ]
@@ -18,7 +18,7 @@
             "chipFamily": "ESP8266",
             "parts": [
                 {
-                    "path": "https://github.com/tasmota/install/blob/main/firmware/development/languages/tasmota-ES.bin",
+                    "path": "https://tasmota.github.io/install/firmware/development/languages/tasmota-ES.bin",
                     "offset": 0
                 }
             ]
