@@ -75,7 +75,20 @@ def main(args):
         del output[section][0]
         output[section] = merged
 
-    j = json.dumps(output,indent=4)
+    release = output.pop("release")
+    development  = output.pop("development")
+    unofficial = output.pop("unofficial")
+
+    final_json = {}
+    final_json["release"] = release
+    final_json["development"] = development
+    final_json["unofficial"] = unofficial
+    for key in output:
+        final_json[key] = output[key] # just in case we have another section in the future
+
+    print(final_json)
+
+    j = json.dumps(final_json,indent=4)
     f = open("manifests.json", "w")
     f.write(j)
     f.close()
