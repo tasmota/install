@@ -1,0 +1,57 @@
+{
+    "name": "Tasmota Fullrules (english)",
+    "home_assistant_domain": "tasmota",
+    "new_install_prompt_erase": true,
+    "new_install_improv_wait_time": 0,
+    "builds": [
+        {
+            "chipFamily": "ESP32",
+            "improv": false,
+            "parts": [
+                {
+                    "path": "https://github.com/tasmota/install/blob/main/firmware/unofficial//tasmota32-fullrules.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-C3",
+            "improv": false,
+            "parts": [
+                {
+                    "path": "https://github.com/tasmota/install/blob/main/firmware/unofficial//tasmota32c3-fullrules.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-S2",
+            "improv": false,
+            "parts": [
+                {
+                    "path": "https://github.com/tasmota/install/blob/main/firmware/unofficial//tasmota32s2-fullrules.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-S3",
+            "improv": false,
+            "parts": [
+                {
+                    "path": "https://github.com/tasmota/install/blob/main/firmware/unofficial//tasmota32s3-fullrules.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP8266",
+            "parts": [
+                {
+                    "path": "https://github.com/tasmota/install/blob/main/firmware/unofficial/tasmota-fullrules.bin",
+                    "offset": 0
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "name": "Tasmota32 Solo1 Thermostat (english)",
+    "home_assistant_domain": "tasmota",
+    "new_install_prompt_erase": true,
+    "new_install_improv_wait_time": 0,
+    "builds": [
+        {
+            "chipFamily": "ESP32",
+            "improv": false,
+            "parts": [
+                {
+                    "path": "https://github.com/tasmota/install/blob/main/firmware/unofficial/tasmota32solo1-thermostat.factory.bin",
+                    "offset": 0
+                }
+            ]
+        }
+    ]
+}

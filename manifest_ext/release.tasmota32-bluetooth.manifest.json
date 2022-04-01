@@ -1,0 +1,38 @@
+{
+    "name": "Release Tasmota32 Bluetooth (english)",
+    "home_assistant_domain": "tasmota",
+    "new_install_prompt_erase": true,
+    "new_install_improv_wait_time": 0,
+    "builds": [
+        {
+            "chipFamily": "ESP32",
+            "improv": false,
+            "parts": [
+                {
+                    "path": "https://github.com/tasmota/install/blob/main/firmware/release/tasmota32-bluetooth.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-C3",
+            "improv": false,
+            "parts": [
+                {
+                    "path": "https://github.com/tasmota/install/blob/main/firmware/release/tasmota32c3-bluetooth.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-S3",
+            "improv": false,
+            "parts": [
+                {
+                    "path": "https://github.com/tasmota/install/blob/main/firmware/release/tasmota32s3-bluetooth.factory.bin",
+                    "offset": 0
+                }
+            ]
+        }
+    ]
+}
