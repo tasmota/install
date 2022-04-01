@@ -20,7 +20,7 @@ jobs:
         python genManifest.py
     - name: Transfer the changed Manifest into the repository
       run: |
-        git config --local user.name "Platformio BUILD"
+        git config --local user.name "GITHUB BUILD"
         git config user.email github-actions@github.com
         git add -f ./*
         git commit -m ${GITHUB_SHA}
