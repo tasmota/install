@@ -15,7 +15,7 @@
       "chipFamily": "ESP32-C3",
       "improv": false,
       "parts": [
-        { "path": "../firmware/development/tasmota32c3-lvgl.factory.bin", "offset": 0 }
+        { "path": "../firmware/unofficial/tasmota32c3-lvgl.factory.bin", "offset": 0 }
       ]
     },
     {
