@@ -2,10 +2,11 @@
   "name": "Tasmota TLS (english)",
   "home_assistant_domain": "tasmota",
   "new_install_prompt_erase": true,
-  "new_install_improv_wait_time": 0,
+  "new_install_improv_wait_time": 10,
   "builds": [
     {
       "chipFamily": "ESP8266",
+      "improv": true,
       "parts": [{ "path": "../firmware/unofficial/tasmota-tls.bin", "offset": 0 }]
     }
   ]
