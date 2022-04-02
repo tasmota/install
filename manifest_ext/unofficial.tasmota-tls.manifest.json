@@ -1,6 +1,5 @@
 {
     "name": "Tasmota TLS (english)",
-    "home_assistant_domain": "tasmota",
     "new_install_prompt_erase": true,
     "new_install_improv_wait_time": 10,
     "builds": [
