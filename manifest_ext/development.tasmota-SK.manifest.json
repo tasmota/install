@@ -2,11 +2,11 @@
     "name": "Development Tasmota SK",
     "home_assistant_domain": "tasmota",
     "new_install_prompt_erase": true,
-    "new_install_improv_wait_time": 0,
+    "new_install_improv_wait_time": 10,
     "builds": [
         {
             "chipFamily": "ESP32",
-            "improv": false,
+            "improv": true,
             "parts": [
                 {
                     "path": "https://tasmota.github.io/install/firmware/development/languages/tasmota32-SK.factory.bin",
@@ -16,6 +16,7 @@
         },
         {
             "chipFamily": "ESP8266",
+            "improv": true,
             "parts": [
                 {
                     "path": "https://tasmota.github.io/install/firmware/development/languages/tasmota-SK.bin",

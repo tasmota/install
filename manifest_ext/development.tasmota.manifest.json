@@ -2,11 +2,11 @@
     "name": "Development Tasmota (english)",
     "home_assistant_domain": "tasmota",
     "new_install_prompt_erase": true,
-    "new_install_improv_wait_time": 0,
+    "new_install_improv_wait_time": 10,
     "builds": [
         {
             "chipFamily": "ESP32",
-            "improv": false,
+            "improv": true,
             "parts": [
                 {
                     "path": "https://tasmota.github.io/install/firmware/development/tasmota32.factory.bin",
@@ -16,7 +16,7 @@
         },
         {
             "chipFamily": "ESP32-C3",
-            "improv": false,
+            "improv": true,
             "parts": [
                 {
                     "path": "https://tasmota.github.io/install/firmware/development/tasmota32c3.factory.bin",
@@ -26,7 +26,7 @@
         },
         {
             "chipFamily": "ESP32-S2",
-            "improv": false,
+            "improv": true,
             "parts": [
                 {
                     "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota32s2.factory.bin",
@@ -36,7 +36,7 @@
         },
         {
             "chipFamily": "ESP32-S3",
-            "improv": false,
+            "improv": true,
             "parts": [
                 {
                     "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota32s3.factory.bin",
@@ -46,6 +46,7 @@
         },
         {
             "chipFamily": "ESP8266",
+            "improv": true,
             "parts": [
                 {
                     "path": "https://tasmota.github.io/install/firmware/development/tasmota.bin",
