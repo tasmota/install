@@ -1,6 +1,5 @@
 {
   "name": "Tasmota (english)",
-  "home_assistant_domain": "tasmota",
   "new_install_prompt_erase": true,
   "builds": [
     {
