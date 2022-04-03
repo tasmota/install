@@ -1,0 +1,364 @@
+{
+    "release": [
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota.manifest.json",
+            "name": "Release Tasmota (english)"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-AF.manifest.json",
+            "name": "Release Tasmota AF"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-BG.manifest.json",
+            "name": "Release Tasmota BG"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-BR.manifest.json",
+            "name": "Release Tasmota BR"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-CN.manifest.json",
+            "name": "Release Tasmota CN"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-CZ.manifest.json",
+            "name": "Release Tasmota CZ"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-DE.manifest.json",
+            "name": "Release Tasmota DE"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-display.manifest.json",
+            "name": "Release Tasmota Display"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-ES.manifest.json",
+            "name": "Release Tasmota ES"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-FR.manifest.json",
+            "name": "Release Tasmota FR"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-FY.manifest.json",
+            "name": "Release Tasmota FY"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-GR.manifest.json",
+            "name": "Release Tasmota GR"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-HE.manifest.json",
+            "name": "Release Tasmota HE"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-HU.manifest.json",
+            "name": "Release Tasmota HU"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-ir.manifest.json",
+            "name": "Release Tasmota IR"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-IT.manifest.json",
+            "name": "Release Tasmota IT"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-knx.manifest.json",
+            "name": "Release Tasmota KNX"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-KO.manifest.json",
+            "name": "Release Tasmota KO"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-lite.manifest.json",
+            "name": "Release Tasmota Lite"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-NL.manifest.json",
+            "name": "Release Tasmota NL"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-PL.manifest.json",
+            "name": "Release Tasmota PL"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-PT.manifest.json",
+            "name": "Release Tasmota PT"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-RO.manifest.json",
+            "name": "Release Tasmota RO"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-RU.manifest.json",
+            "name": "Release Tasmota RU"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-SE.manifest.json",
+            "name": "Release Tasmota SE"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-SK.manifest.json",
+            "name": "Release Tasmota SK"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-sensors.manifest.json",
+            "name": "Release Tasmota Sensors"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-TR.manifest.json",
+            "name": "Release Tasmota TR"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-TW.manifest.json",
+            "name": "Release Tasmota TW"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-UK.manifest.json",
+            "name": "Release Tasmota UK"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-VN.manifest.json",
+            "name": "Release Tasmota VN"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-zbbridge.manifest.json",
+            "name": "Release Tasmota Zbbridge"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-zigbee.manifest.json",
+            "name": "Release Tasmota Zigbee"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota32-bluetooth.manifest.json",
+            "name": "Release Tasmota32 Bluetooth (english)"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota32-lvgl.manifest.json",
+            "name": "Release Tasmota32 LVGL (english)"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota32-webcam.manifest.json",
+            "name": "Release Tasmota32 WebCam (english)"
+        }
+    ],
+    "development": [
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota.manifest.json",
+            "name": "Development Tasmota (english)"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-AF.manifest.json",
+            "name": "Development Tasmota AF"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-BG.manifest.json",
+            "name": "Development Tasmota BG"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-BR.manifest.json",
+            "name": "Development Tasmota BR"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-CN.manifest.json",
+            "name": "Development Tasmota CN"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-CZ.manifest.json",
+            "name": "Development Tasmota CZ"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-DE.manifest.json",
+            "name": "Development Tasmota DE"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-display.manifest.json",
+            "name": "Development Tasmota Display"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-ES.manifest.json",
+            "name": "Development Tasmota ES"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-FR.manifest.json",
+            "name": "Development Tasmota FR"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-FY.manifest.json",
+            "name": "Development Tasmota FY"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-GR.manifest.json",
+            "name": "Development Tasmota GR"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-HE.manifest.json",
+            "name": "Development Tasmota HE"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-HU.manifest.json",
+            "name": "Development Tasmota HU"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-ir.manifest.json",
+            "name": "Development Tasmota IR"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-IT.manifest.json",
+            "name": "Development Tasmota IT"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-KO.manifest.json",
+            "name": "Development Tasmota KO"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-lite.manifest.json",
+            "name": "Development Tasmota Lite"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-NL.manifest.json",
+            "name": "Development Tasmota NL"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-PL.manifest.json",
+            "name": "Development Tasmota PL"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-PT.manifest.json",
+            "name": "Development Tasmota PT"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-RO.manifest.json",
+            "name": "Development Tasmota RO"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-RU.manifest.json",
+            "name": "Development Tasmota RU"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-SE.manifest.json",
+            "name": "Development Tasmota SE"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-SK.manifest.json",
+            "name": "Development Tasmota SK"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-sensors.manifest.json",
+            "name": "Development Tasmota Sensors"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-TR.manifest.json",
+            "name": "Development Tasmota TR"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-TW.manifest.json",
+            "name": "Development Tasmota TW"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-UK.manifest.json",
+            "name": "Development Tasmota UK"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-VN.manifest.json",
+            "name": "Development Tasmota VN"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-zbbridge.manifest.json",
+            "name": "Development Tasmota Zbbridge"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-zigbee.manifest.json",
+            "name": "Development Tasmota Zigbee"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota32-bluetooth.manifest.json",
+            "name": "Development Tasmota32 Bluetooth (english)"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota32-lvgl.manifest.json",
+            "name": "Development Tasmota32 LVGL (english)"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota32-webcam.manifest.json",
+            "name": "Development Tasmota32 WebCam (english)"
+        }
+    ],
+    "unofficial": [
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota.manifest.json",
+            "name": "Tasmota (english)"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-allsensors.manifest.json",
+            "name": "Tasmota All Sensors (english)"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-battery.manifest.json",
+            "name": "Tasmota Battery (english)"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-fullrules.manifest.json",
+            "name": "Tasmota Fullrules (english)"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-gps.manifest.json",
+            "name": "Tasmota GPS (english)"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-mega.manifest.json",
+            "name": "Tasmota Mega (english)"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-platinum.manifest.json",
+            "name": "Tasmota Platinum (english)"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-rangeextender.manifest.json",
+            "name": "Tasmota Rangeextender (english)"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-scripting.manifest.json",
+            "name": "Tasmota Scripting (english)"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-tls.manifest.json",
+            "name": "Tasmota TLS (english)"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-teleinfo.manifest.json",
+            "name": "Tasmota Teleinfo (english)"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-thermostat.manifest.json",
+            "name": "Tasmota Thermostat (english)"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-titanium.manifest.json",
+            "name": "Tasmota Titanium (english)"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-zigbeebridge.manifest.json",
+            "name": "Tasmota Zbbridge"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-zigbee.manifest.json",
+            "name": "Tasmota Zigbee (english)"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota32-bluetooth.manifest.json",
+            "name": "Tasmota32 Bluetooth (english)"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota32-mi32-homebridge.manifest.json",
+            "name": "Tasmota32 MI Homebridge (english)"
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota32-nspanel.manifest.json",
+            "name": "Tasmota32 Sonoff-NSPanel (english)"
+        }
+    ]
+}
