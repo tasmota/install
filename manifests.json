@@ -91,6 +91,7 @@
         "tasmota-zigbee",
         "tasmota-zigbeebridge",
         "tasmota32-bluetooth",
+        "tasmota32-mi32-homebridge",
         "tasmota32-nspanel"
     ]
 }
