@@ -23,12 +23,15 @@ def convertJSON(infile,outfile):
         f.write(j)
         f.close()
 
-def getPathAndName(manifest):
+def getManifestEntry(manifest):
     entry = {}
     with open(manifest) as json_file:
         data = json.load(json_file)
         entry['path'] = "https://tasmota.github.io/install/" + manifest
         entry['name'] = data['name']
+        entry['chipFamilies'] = []
+        for build in data['builds']:
+            entry['chipFamilies'].append(build['chipFamily'])
         return entry
 
 
@@ -51,8 +54,7 @@ def main(args):
         mkdir(path_manifests_ext)
     
     
-    output = {} #deprecated
-    output_new = {}
+    output = {}
 
     for file in files:
         # create absolute path-version of each manifest file in /manifest_ext
@@ -63,38 +65,24 @@ def main(args):
             continue
         print(line[1])
         if line[0] not in output:
-            output[line[0]] = [[],[]] #deprecated
-            output_new[line[0]] = [[],[]]
+            output[line[0]] = [[],[]]
         if line[1] == "tasmota":
-            output[line[0]][0].insert(0,line[1]) #deprecated
-            output_new[line[0]][0].insert(0,getPathAndName(path.join(path_manifests_ext,file)))
+            output[line[0]][0].insert(0,getManifestEntry(path.join(path_manifests_ext,file)))
             continue
         if line[1] == "tasmota32":
-            output[line[0]][1].insert(0,line[1]) #deprecated
-            output_new[line[0]][1].insert(0,getPathAndName(path.join(path_manifests_ext,file)))
+            output[line[0]][1].insert(0,getManifestEntry(path.join(path_manifests_ext,file)))
             continue
         if line[1].split('-')[0] == "tasmota":
-            output[line[0]][0].append(line[1]) #deprecated
-            output_new[line[0]][0].append(getPathAndName(path.join(path_manifests_ext,file)))
+            output[line[0]][0].append(getManifestEntry(path.join(path_manifests_ext,file)))
             continue
         if line[1].split('-')[0] == "tasmota32":
-            output[line[0]][1].append(line[1]) #deprecated
-            output_new[line[0]][1].append(getPathAndName(path.join(path_manifests_ext,file)))
+            output[line[0]][1].append(getManifestEntry(path.join(path_manifests_ext,file)))
     print(output)
 
     for section in output:
-        merged = sorted(output[section][0]) + sorted(output[section][1])
-        # print(sorted(merged))
-        # del output[section][0]
-        # del output[section][0]
+        merged = sorted(output[section][0],key=lambda d: d['name']) + sorted(output[section][1],key=lambda d: d['name'])
         output[section] = merged
 
-
-    for section in output_new:
-        merged_new = sorted(output_new[section][0],key=lambda d: d['name']) + sorted(output_new[section][1],key=lambda d: d['name'])
-        output_new[section] = merged_new
-
-    # deprecated version
     release = output.pop("release")
     development  = output.pop("development")
     unofficial = output.pop("unofficial")
@@ -113,26 +101,12 @@ def main(args):
     f = open("manifests.json", "w")
     f.write(j)
     f.close()
-    # end deprecated version
 
-    #future version
-    release_new = output_new.pop("release")
-    development_new  = output_new.pop("development")
-    unofficial_new = output_new.pop("unofficial")
-
-    final_json = {}
-    final_json["release"] = release_new
-    final_json["development"] = development_new
-    final_json["unofficial"] = unofficial_new
-    for key in output_new:
-        final_json[key] = output_new[key] # just in case we have another section in the future
-
-    print(final_json)
-
-    j = json.dumps(final_json,indent=4)
+    # intermediate version with double output (DEPRECATED)
     f = open("manifests_new.json", "w")
     f.write(j)
     f.close()
+    # end deprecated version
 
 if __name__ == '__main__':
   sys.exit(main(sys.argv))
