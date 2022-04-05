@@ -47,11 +47,15 @@
                 og.label = opt_group;
                 sel.appendChild(og);
                 console.log(opt_group,data[opt_group]);
-                for (fw in data[opt_group]){
+                for (fw of data[opt_group]){
                     // console.log(data[opt_group][fw]);
                     var opt=document.createElement('option');
-                    opt.label = data[opt_group][fw]['name'];
-                    opt.value = data[opt_group][fw]['path'];
+                    opt.label = fw['name'];
+                    opt.value = fw['path'];
+                    opt.title = "Supported chipfamilies:\n"
+                    for (chipFamily of fw['chipFamilies']){
+                        opt.title += chipFamily + "\n";
+                    }
                     console.log( opt.value);
                     og.appendChild(opt);
                 }
