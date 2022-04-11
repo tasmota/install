@@ -64,12 +64,15 @@ def main(args):
             continue
         # print(line[1])
         if line[0] not in output:
-            output[line[0]] = [[],[],[],[]]
+            output[line[0]] = [[],[],[],[],[],[]]
         if line[1] == "tasmota":
             output[line[0]][0].insert(0,getManifestEntry(path.join(path_manifests_ext,file))) # vanilla first
             continue
         if line[1] == "tasmota32":
             output[line[0]][1].insert(0,getManifestEntry(path.join(path_manifests_ext,file)))
+            continue
+        if line[1] == "tasmota32solo1":
+            output[line[0]][2].insert(0,getManifestEntry(path.join(path_manifests_ext,file)))
             continue
         name_components = line[1].split('-')
         if name_components[0] == "tasmota":
@@ -83,10 +86,16 @@ def main(args):
                 output[line[0]][3].append(getManifestEntry(path.join(path_manifests_ext,file))) # language versions last
                 continue
             output[line[0]][2].append(getManifestEntry(path.join(path_manifests_ext,file)))
+            continue
+        if name_components[0] == "tasmota32solo1":
+            if len(name_components[1]) and name_components[1].isupper():
+                output[line[0]][5].append(getManifestEntry(path.join(path_manifests_ext,file))) # language versions last
+                continue
+            output[line[0]][4].append(getManifestEntry(path.join(path_manifests_ext,file)))
     # print(output)
 
     for section in output:
-        merged = sorted(output[section][0],key=lambda d: d['name']) + sorted(output[section][1],key=lambda d: d['name']) + sorted(output[section][2],key=lambda d: d['name']) + sorted(output[section][3],key=lambda d: d['name'])
+        merged = sorted(output[section][0],key=lambda d: d['name']) + sorted(output[section][1],key=lambda d: d['name']) + sorted(output[section][2],key=lambda d: d['name']) + sorted(output[section][3],key=lambda d: d['name']) + sorted(output[section][4],key=lambda d: d['name']) + sorted(output[section][5],key=lambda d: d['name'])
         output[section] = merged
 
     release = output.pop("release")
