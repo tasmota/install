@@ -285,6 +285,13 @@
             ]
         },
         {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota32solo1.manifest.json",
+            "name": "Release Tasmota32 Solo1 (english)",
+            "chipFamilies": [
+                "ESP32"
+            ]
+        },
+        {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota32-webcam.manifest.json",
             "name": "Release Tasmota32 WebCam (english)",
             "chipFamilies": [
@@ -570,6 +577,13 @@
             ]
         },
         {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota32solo1.manifest.json",
+            "name": "Development Tasmota32 Solo1 (english)",
+            "chipFamilies": [
+                "ESP32"
+            ]
+        },
+        {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota32-webcam.manifest.json",
             "name": "Development Tasmota32 WebCam (english)",
             "chipFamilies": [
@@ -757,6 +771,20 @@
         {
             "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota32-nspanel.manifest.json",
             "name": "Tasmota32 Sonoff-NSPanel (english)",
+            "chipFamilies": [
+                "ESP32"
+            ]
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota32solo1-bluetooth.manifest.json",
+            "name": "Tasmota32 Solo1 Bluetooth (english)",
+            "chipFamilies": [
+                "ESP32"
+            ]
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota32solo1-thermostat.manifest.json",
+            "name": "Tasmota32 Solo1 Thermostat (english)",
             "chipFamilies": [
                 "ESP32"
             ]
