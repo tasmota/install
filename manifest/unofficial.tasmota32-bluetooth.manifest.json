@@ -1,6 +1,7 @@
 {
   "name": "Tasmota32 Bluetooth (english)",
   "new_install_prompt_erase": true,
+  "funding_url": "https://paypal.me/tasmota",
   "builds": [
     {
       "chipFamily": "ESP32",
