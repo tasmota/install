@@ -68,11 +68,11 @@ def main(args):
         if line[1] == "tasmota":
             output[line[0]][0].insert(0,getManifestEntry(path.join(path_manifests_ext,file))) # vanilla first
             continue
-        if line[1] == "tasmota32":
+        elif line[1] == "tasmota32":
             output[line[0]][1].insert(0,getManifestEntry(path.join(path_manifests_ext,file)))
             continue
-        if line[1] == "tasmota32solo1":
-            output[line[0]][2].insert(0,getManifestEntry(path.join(path_manifests_ext,file)))
+        else: #solo1,4M,...
+            output[line[0]][2].append(getManifestEntry(path.join(path_manifests_ext,file)))
             continue
         name_components = line[1].split('-')
         if name_components[0] == "tasmota":
@@ -81,13 +81,13 @@ def main(args):
                 continue
             output[line[0]][0].append(getManifestEntry(path.join(path_manifests_ext,file)))
             continue
-        if name_components[0] == "tasmota32":
+        elif name_components[0] == "tasmota32":
             if len(name_components[1]) and name_components[1].isupper():
                 output[line[0]][3].append(getManifestEntry(path.join(path_manifests_ext,file))) # language versions last
                 continue
             output[line[0]][2].append(getManifestEntry(path.join(path_manifests_ext,file)))
             continue
-        if name_components[0] == "tasmota32solo1":
+        else: #solo1,4M,...
             if len(name_components[1]) and name_components[1].isupper():
                 output[line[0]][5].append(getManifestEntry(path.join(path_manifests_ext,file))) # language versions last
                 continue
