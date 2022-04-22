@@ -77,7 +77,7 @@
                 if(button.shadowRoot.firstChild.name == 'activate'){
                     //success: add the select picker and some info
                     const selectEl = document.querySelector("#pick-variant-selector");
-                    button.manifest = selectEl.value;
+                    button.manifest = "https://tasmota.github.io/install/manifest_ext/release.tasmota.manifest.json";
                     selectEl.addEventListener("change", () => {
                         button.manifest = selectEl.value;
                         console.log(button.manifest);
