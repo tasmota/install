@@ -18,7 +18,7 @@ jobs:
       with:
         python-version: '3.9'
         cache: 'pip'
-    - run: pip install requests
+    - run: pip install -r requirements.txt
     - name: Run genManifest.py
       run: |
         python genManifest.py
