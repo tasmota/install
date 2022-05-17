@@ -15,6 +15,10 @@ jobs:
     - uses: actions/checkout@v3
     - name: Set up Python
       uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+        cache: 'pip'
+    - run: pip install requests
     - name: Run genManifest.py
       run: |
         python genManifest.py
