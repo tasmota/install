@@ -27,6 +27,22 @@
       .r{border-radius:0.3em;padding:2px;margin:6px 2px;}
       .pick-variant{margin-bottom:16px;}
     </style>
+    <style>
+      .accordion {
+        outline: none;
+        transition: 0.4s;
+      }
+      .active, .accordion:hover {
+        background-color: #ccc;
+      }
+      .panel {
+        border-radius:0;
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+      }
+      </style>
     <script
       type="module"
       src="https://unpkg.com/esp-web-tools@8.0.1/dist/web/install-button.js?module"
@@ -38,7 +54,9 @@
         function show_features(path){
           console.log(path);
           var feature_report=document.querySelector("#feature_report");
+          var feature_panel=feature_report.nextElementSibling;
           feature_report.innerHTML = '';
+
           var features = {}
           for(section of Object.entries(backup_data)){
             // console.log(section);
@@ -50,30 +68,47 @@
             }
           }
           if(features['Xdrv'].length ==0){
-            feature_report.innerHTML = 'No feature data available for this firmware.';
+
             return;
           }
-          _title = document.createElement('h3');
-          _title.innerHTML = 'Feature Report';
-          feature_report.appendChild(_title);
-          _sub = document.createElement('p');
-          _sub.innerHTML = 'Hardware drivers with these numbers are included in this firmware.';
-          feature_report.appendChild(_sub);
+          var acc_button = document.createElement('button');
+          acc_button.innerHTML = 'Show additional Debug Info for Developers'
+          acc_button.setAttribute("class", "accordion");
+          feature_report.appendChild(acc_button);
+
+
+
+          var feature_panel = document.createElement('div');
+          feature_panel.setAttribute("class", "panel");
+          var feature_msg = document.createElement('p');
+          feature_msg.innerText = "The following drivers are included in the selected firmware:";
+          feature_panel.appendChild(feature_msg);
+          feature_report.appendChild(feature_panel);
+
+          // feature_report.setAttribute('hidden','false');
           for(section of Object.entries(features)){
-            _fs = document.createElement('fieldset');
-            _fs_legend = document.createElement('legend');
-            _fs_legend.innerHTML = section[0];
-            _fs.appendChild(_fs_legend);
-            _p = document.createElement('p');
-            var _str = '';
+            acc_button = document.createElement('button');
+            acc_button.innerHTML = section[0];
+            acc_button.setAttribute("class", "accordion");
+            feature_panel.appendChild(acc_button);
+
+            acc_panel = document.createElement('div');
+            acc_panel.setAttribute("class", "panel");
+            
             for(entry of features[section[0]]){
-              _str += entry + ', ';
+              if(driver_info[section[0]][entry] == null){
+                continue;
+              }
+               _p = document.createElement('p');
+               _p.innerHTML =  driver_info[section[0]][entry] + ' (driver code: ' +entry + ' )';
+              acc_panel.appendChild(_p);
+              console.log(driver_info[section[0]][entry]);
             }
-            _p.innerHTML = _str.slice(0, -2);
-            _fs.appendChild(_p);
-            feature_report.appendChild(_fs);
-            feature_report.appendChild(document.createElement('p'));
+
+            feature_panel.appendChild(acc_panel);
+            feature_panel.appendChild(document.createElement('p'));
           }
+          addEvtListFeatureReport();
           console.log(features);
         }
 
@@ -122,6 +157,23 @@
           chipSel.addEventListener("change", () => {
               handleCB_SOC(chipSel.value);
             });
+        }
+
+        function addEvtListFeatureReport(){
+          var acc = document.getElementsByClassName("accordion");
+          var i;
+
+          for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+              this.classList.toggle("active");
+              var panel = this.nextElementSibling;
+              if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+              } else {
+                panel.style.maxHeight = panel.scrollHeight*10 + "px";
+              } 
+            });
+          }
         }
 
         window.addEventListener("load", function(event) {
@@ -200,7 +252,7 @@
           </i>
         </esp-web-install-button>
       </p>
-      <div id="feature_report">
+      <div id='feature_report'>
       </div>
     </div>
     <div style='text-align:right;font-size:11px;'>
@@ -209,5 +261,228 @@
     </div>
 
     </div>
+    <script>
+    const driver_info =  {
+    "Xdrv": {
+        "1": "webserver",
+        "2": "mqtt",
+        "3": "energy",
+        "4": "light",
+        "5": "irremote",
+        "6": "snfbridge",
+        "7": "domoticz",
+        "8": "serial",
+        "9": "timers",
+        "10": "scripter",
+        "11": "knx",
+        "12": "home",
+        "13": "display",
+        "14": "mp3",
+        "15": "pca9685",
+        "16": "tuyamcu",
+        "17": "rcswitch",
+        "18": "armtronix",
+        "19": "ps16dz",
+        "20": "hue",
+        "21": "wemo",
+        "22": "ifan",
+        "23": "zigbee",
+        "24": "buzzer",
+        "25": "A4988",
+        "26": "ariluxrf",
+        "27": "shutter",
+        "28": "pcf8574",
+        "29": "deepsleep",
+        "30": "exs",
+        "31": "tasmota-client",
+        "32": "hotplug",
+        "33": "nrf24l01",
+        "34": "wemos",
+        "35": "pwm",
+        "36": "keeloq",
+        "37": "d1",
+        "38": "ping",
+        "39": "thermostat",
+        "40": "telegram",
+        "41": "tcp",
+        "42": "i2s",
+        "43": "mlx90640",
+        "44": "miel",
+        "45": "shelly",
+        "46": "ccloader",
+        "47": "ftc532",
+        "48": "timeprop",
+        "49": "pid",
+        "50": "filesystem",
+        "51": "bs814a2",
+        "52": "berry",
+        "53": "projector",
+        "54": "lvgl",
+        "55": "touch",
+        "56": "rtc",
+        "57": "tasmesh",
+        "58": "range-extender",
+        "59": "influxdb",
+        "60": "shift595",
+        "61": "ds3502",
+        "62": "improv",
+        "79": "ble",
+        "81": "webcam",
+        "82": "ethernet",
+        "83": "watch",
+        "85": "ble",
+        "86": "sonoff",
+        "98": "file",
+        "99": "debug"
+    },
+    "Xlgt": {
+        "1": "ws2812",
+        "2": "my92x1",
+        "3": "sm16716",
+        "4": "sm2135",
+        "5": "l1",
+        "6": "electriq",
+        "7": "lsc"
+    },
+    "Xdsp": {
+        "1": "lcd",
+        "2": "ssd1306",
+        "3": "matrix",
+        "4": "ili9341",
+        "5": "epaper",
+        "6": "epaper",
+        "7": "sh1106",
+        "9": "SSD1351",
+        "10": "RA8876",
+        "11": "sevenseg",
+        "12": "ST7789",
+        "14": "SSD1331",
+        "15": "tm1637",
+        "16": "epaper",
+        "17": "universal",
+        "18": "berry",
+        "19": "max7219"
+    },
+    "Xnrg": {
+        "1": "hlw8012",
+        "2": "cse7766",
+        "3": "pzem004t",
+        "4": "mcp39f501",
+        "5": "pzem",
+        "6": "pzem",
+        "7": "ade7953",
+        "8": "sdm120",
+        "9": "dds2382",
+        "10": "sdm630",
+        "11": "ddsu666",
+        "12": "solaxX1",
+        "13": "fif",
+        "14": "bl09xx",
+        "15": "teleinfo",
+        "16": "iem3000",
+        "17": "ornowe517",
+        "18": "sdm72",
+        "19": "cse7761",
+        "21": "sdm230",
+        "22": "bl6523",
+        "23": "ade7880",
+        "30": "dummy"
+    },
+    "Xsns": {
+        "1": "counter",
+        "2": "analog",
+        "4": "snfsc",
+        "5": "ds18x20",
+        "6": "dht",
+        "7": "sht1x",
+        "8": "htu21",
+        "9": "bmp",
+        "10": "bh1750",
+        "11": "veml6070",
+        "12": "ads1115",
+        "13": "ina219",
+        "14": "sht3x",
+        "15": "mhz19",
+        "16": "tsl2561",
+        "17": "senseair",
+        "18": "pms5003",
+        "19": "mgs",
+        "20": "novasds",
+        "21": "sgp30",
+        "22": "sr04",
+        "24": "si1145",
+        "26": "lm75ad",
+        "27": "apds9960",
+        "28": "tm1638",
+        "29": "mcp230xx",
+        "30": "mpr121",
+        "31": "ccs811",
+        "32": "mpu6050",
+        "34": "hx711",
+        "35": "tx20",
+        "36": "mgc3130",
+        "37": "rfsensor",
+        "38": "az7798",
+        "39": "max31855",
+        "40": "pn532",
+        "41": "max44009",
+        "42": "scd30",
+        "43": "hre",
+        "44": "sps30",
+        "45": "vl53l0x",
+        "46": "MLX90614",
+        "47": "max31865",
+        "48": "chirp",
+        "50": "paj7620",
+        "51": "rdm6300",
+        "52": "ibeacon",
+        "53": "sml",
+        "54": "ina226",
+        "55": "hih",
+        "56": "hpma",
+        "57": "tsl2591",
+        "58": "dht12",
+        "59": "ds1624",
+        "60": "GPS",
+        "61": "MI32-NRF24",
+        "62": "MI32",
+        "63": "aht1x",
+        "64": "hrxl",
+        "65": "hdc1080",
+        "66": "iAQ",
+        "67": "as3935",
+        "68": "windmeter",
+        "69": "opentherm",
+        "70": "veml6075",
+        "71": "veml7700",
+        "72": "mcp9808",
+        "73": "hp303b",
+        "74": "lmt01",
+        "75": "prometheus",
+        "76": "dyp",
+        "77": "vl53l1x",
+        "78": "ezoph",
+        "79": "as608",
+        "80": "mfrc522",
+        "81": "seesaw",
+        "82": "wiegand",
+        "83": "neopool",
+        "84": "tof10120",
+        "85": "mpu6886",
+        "86": "tfminiplus",
+        "87": "mcp2515",
+        "88": "am2320",
+        "89": "t67xx",
+        "90": "hrg15",
+        "91": "vindriktning",
+        "92": "scd40",
+        "93": "hm330x",
+        "94": "hdc2010",
+        "95": "cm110x",
+        "96": "flowratemeter",
+        "127": "sensors"
+    }
+};
+    </script>
   </body>
 </html>
