@@ -29,7 +29,7 @@
             "improv": true,
             "parts": [
                 {
-                    "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota32s2.factory.bin",
+                    "path": "https://tasmota.github.io/install/firmware/development/tasmota32s2.factory.bin",
                     "offset": 0
                 }
             ]
@@ -39,7 +39,7 @@
             "improv": true,
             "parts": [
                 {
-                    "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota32s3.factory.bin",
+                    "path": "https://tasmota.github.io/install/firmware/development/tasmota32s3.factory.bin",
                     "offset": 0
                 }
             ]
