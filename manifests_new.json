@@ -6068,6 +6068,19 @@
             }
         },
         {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota32-zbbrdgpro.manifest.json",
+            "name": "Tasmota32 Sonoff-ZigbeeBridgePro",
+            "chipFamilies": [
+                "ESP32"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
             "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota32c3_2M.manifest.json",
             "name": "Tasmota32-C3 2M (english)",
             "chipFamilies": [
