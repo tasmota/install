@@ -8,7 +8,7 @@
       "chipFamily": "ESP32",
       "improv": true,
       "parts": [
-        { "path": "../firmware/unofficial//tasmota32-nspanel.factory.bin", "offset": 0 }
+        { "path": "../firmware/development/tasmota32-nspanel.factory.bin", "offset": 0 }
       ]
     }
   ]
