@@ -2,7 +2,7 @@
     "release": [
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota.manifest.json",
-            "name": "Release Tasmota (english)",
+            "name": "Tasmota (english)",
             "chipFamilies": [
                 "ESP32",
                 "ESP32-C3",
@@ -71,7 +71,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-display.manifest.json",
-            "name": "Release Tasmota Display",
+            "name": "Tasmota Display",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -110,7 +110,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-ir.manifest.json",
-            "name": "Release Tasmota IR",
+            "name": "Tasmota IR",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -136,7 +136,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-knx.manifest.json",
-            "name": "Release Tasmota KNX",
+            "name": "Tasmota KNX",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -202,7 +202,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-lite.manifest.json",
-            "name": "Release Tasmota Lite",
+            "name": "Tasmota Lite",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -238,7 +238,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-sensors.manifest.json",
-            "name": "Release Tasmota Sensors",
+            "name": "Tasmota Sensors",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -340,7 +340,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-zbbridge.manifest.json",
-            "name": "Release Tasmota Zbbridge",
+            "name": "Tasmota Zbbridge",
             "chipFamilies": [
                 "ESP8266"
             ],
@@ -369,7 +369,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-zigbee.manifest.json",
-            "name": "Release Tasmota Zigbee",
+            "name": "Tasmota Zigbee",
             "chipFamilies": [
                 "ESP8266"
             ],
@@ -440,7 +440,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-AF.manifest.json",
-            "name": "Release Tasmota AF",
+            "name": "Tasmota AF",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -508,7 +508,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-BG.manifest.json",
-            "name": "Release Tasmota BG",
+            "name": "Tasmota BG",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -576,7 +576,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-BR.manifest.json",
-            "name": "Release Tasmota BR",
+            "name": "Tasmota BR",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -644,7 +644,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-CN.manifest.json",
-            "name": "Release Tasmota CN",
+            "name": "Tasmota CN",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -712,7 +712,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-CZ.manifest.json",
-            "name": "Release Tasmota CZ",
+            "name": "Tasmota CZ",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -780,7 +780,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-DE.manifest.json",
-            "name": "Release Tasmota DE",
+            "name": "Tasmota DE",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -848,7 +848,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-ES.manifest.json",
-            "name": "Release Tasmota ES",
+            "name": "Tasmota ES",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -916,7 +916,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-FR.manifest.json",
-            "name": "Release Tasmota FR",
+            "name": "Tasmota FR",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -984,7 +984,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-FY.manifest.json",
-            "name": "Release Tasmota FY",
+            "name": "Tasmota FY",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -1052,7 +1052,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-GR.manifest.json",
-            "name": "Release Tasmota GR",
+            "name": "Tasmota GR",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -1120,7 +1120,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-HE.manifest.json",
-            "name": "Release Tasmota HE",
+            "name": "Tasmota HE",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -1188,7 +1188,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-HU.manifest.json",
-            "name": "Release Tasmota HU",
+            "name": "Tasmota HU",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -1256,7 +1256,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-IT.manifest.json",
-            "name": "Release Tasmota IT",
+            "name": "Tasmota IT",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -1324,7 +1324,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-KO.manifest.json",
-            "name": "Release Tasmota KO",
+            "name": "Tasmota KO",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -1392,7 +1392,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-NL.manifest.json",
-            "name": "Release Tasmota NL",
+            "name": "Tasmota NL",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -1460,7 +1460,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-PL.manifest.json",
-            "name": "Release Tasmota PL",
+            "name": "Tasmota PL",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -1528,7 +1528,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-PT.manifest.json",
-            "name": "Release Tasmota PT",
+            "name": "Tasmota PT",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -1596,7 +1596,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-RO.manifest.json",
-            "name": "Release Tasmota RO",
+            "name": "Tasmota RO",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -1664,7 +1664,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-RU.manifest.json",
-            "name": "Release Tasmota RU",
+            "name": "Tasmota RU",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -1732,7 +1732,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-SE.manifest.json",
-            "name": "Release Tasmota SE",
+            "name": "Tasmota SE",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -1800,7 +1800,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-SK.manifest.json",
-            "name": "Release Tasmota SK",
+            "name": "Tasmota SK",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -1868,7 +1868,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-TR.manifest.json",
-            "name": "Release Tasmota TR",
+            "name": "Tasmota TR",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -1936,7 +1936,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-TW.manifest.json",
-            "name": "Release Tasmota TW",
+            "name": "Tasmota TW",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -2004,7 +2004,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-UK.manifest.json",
-            "name": "Release Tasmota UK",
+            "name": "Tasmota UK",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -2072,7 +2072,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-VN.manifest.json",
-            "name": "Release Tasmota VN",
+            "name": "Tasmota VN",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -2140,7 +2140,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota32-bluetooth.manifest.json",
-            "name": "Release Tasmota32 Bluetooth (english)",
+            "name": "Tasmota32 Bluetooth (english)",
             "chipFamilies": [
                 "ESP32"
             ],
@@ -2207,7 +2207,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota32-lvgl.manifest.json",
-            "name": "Release Tasmota32 LVGL (english)",
+            "name": "Tasmota32 LVGL (english)",
             "chipFamilies": [
                 "ESP32",
                 "ESP32-C3",
@@ -2263,7 +2263,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota32solo1.manifest.json",
-            "name": "Release Tasmota32 Solo1 (english)",
+            "name": "Tasmota32 Solo1 (english)",
             "chipFamilies": [
                 "ESP32"
             ],
@@ -2374,7 +2374,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota32-webcam.manifest.json",
-            "name": "Release Tasmota32 WebCam (english)",
+            "name": "Tasmota32 WebCam (english)",
             "chipFamilies": [
                 "ESP32"
             ],
@@ -2416,7 +2416,7 @@
     "development": [
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota.manifest.json",
-            "name": "Development Tasmota (english)",
+            "name": "Tasmota (english)",
             "chipFamilies": [
                 "ESP32",
                 "ESP32-C3",
@@ -2487,7 +2487,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-display.manifest.json",
-            "name": "Development Tasmota Display",
+            "name": "Tasmota Display",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -2526,7 +2526,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-ir.manifest.json",
-            "name": "Development Tasmota IR",
+            "name": "Tasmota IR",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -2552,7 +2552,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-lite.manifest.json",
-            "name": "Development Tasmota Lite",
+            "name": "Tasmota Lite",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -2588,7 +2588,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-sensors.manifest.json",
-            "name": "Development Tasmota Sensors",
+            "name": "Tasmota Sensors",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -2690,7 +2690,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-zbbridge.manifest.json",
-            "name": "Development Tasmota Zbbridge",
+            "name": "Tasmota Zbbridge",
             "chipFamilies": [
                 "ESP8266"
             ],
@@ -2719,7 +2719,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-zigbee.manifest.json",
-            "name": "Development Tasmota Zigbee",
+            "name": "Tasmota Zigbee",
             "chipFamilies": [
                 "ESP8266"
             ],
@@ -2790,7 +2790,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-AF.manifest.json",
-            "name": "Development Tasmota AF",
+            "name": "Tasmota AF",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -2858,7 +2858,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-BG.manifest.json",
-            "name": "Development Tasmota BG",
+            "name": "Tasmota BG",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -2926,7 +2926,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-BR.manifest.json",
-            "name": "Development Tasmota BR",
+            "name": "Tasmota BR",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -2994,7 +2994,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-CN.manifest.json",
-            "name": "Development Tasmota CN",
+            "name": "Tasmota CN",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -3062,7 +3062,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-CZ.manifest.json",
-            "name": "Development Tasmota CZ",
+            "name": "Tasmota CZ",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -3130,7 +3130,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-DE.manifest.json",
-            "name": "Development Tasmota DE",
+            "name": "Tasmota DE",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -3198,7 +3198,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-ES.manifest.json",
-            "name": "Development Tasmota ES",
+            "name": "Tasmota ES",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -3266,7 +3266,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-FR.manifest.json",
-            "name": "Development Tasmota FR",
+            "name": "Tasmota FR",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -3334,7 +3334,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-FY.manifest.json",
-            "name": "Development Tasmota FY",
+            "name": "Tasmota FY",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -3402,7 +3402,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-GR.manifest.json",
-            "name": "Development Tasmota GR",
+            "name": "Tasmota GR",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -3470,7 +3470,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-HE.manifest.json",
-            "name": "Development Tasmota HE",
+            "name": "Tasmota HE",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -3538,7 +3538,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-HU.manifest.json",
-            "name": "Development Tasmota HU",
+            "name": "Tasmota HU",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -3606,7 +3606,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-IT.manifest.json",
-            "name": "Development Tasmota IT",
+            "name": "Tasmota IT",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -3674,7 +3674,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-KO.manifest.json",
-            "name": "Development Tasmota KO",
+            "name": "Tasmota KO",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -3742,7 +3742,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-NL.manifest.json",
-            "name": "Development Tasmota NL",
+            "name": "Tasmota NL",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -3810,7 +3810,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-PL.manifest.json",
-            "name": "Development Tasmota PL",
+            "name": "Tasmota PL",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -3878,7 +3878,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-PT.manifest.json",
-            "name": "Development Tasmota PT",
+            "name": "Tasmota PT",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -3946,7 +3946,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-RO.manifest.json",
-            "name": "Development Tasmota RO",
+            "name": "Tasmota RO",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -4014,7 +4014,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-RU.manifest.json",
-            "name": "Development Tasmota RU",
+            "name": "Tasmota RU",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -4082,7 +4082,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-SE.manifest.json",
-            "name": "Development Tasmota SE",
+            "name": "Tasmota SE",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -4150,7 +4150,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-SK.manifest.json",
-            "name": "Development Tasmota SK",
+            "name": "Tasmota SK",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -4218,7 +4218,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-TR.manifest.json",
-            "name": "Development Tasmota TR",
+            "name": "Tasmota TR",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -4286,7 +4286,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-TW.manifest.json",
-            "name": "Development Tasmota TW",
+            "name": "Tasmota TW",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -4354,7 +4354,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-UK.manifest.json",
-            "name": "Development Tasmota UK",
+            "name": "Tasmota UK",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -4422,7 +4422,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-VN.manifest.json",
-            "name": "Development Tasmota VN",
+            "name": "Tasmota VN",
             "chipFamilies": [
                 "ESP32",
                 "ESP8266"
@@ -4490,7 +4490,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota4M.manifest.json",
-            "name": "Development Tasmota for 4MB Flash (english)",
+            "name": "Tasmota for 4MB Flash (english)",
             "chipFamilies": [
                 "ESP32",
                 "ESP32-C3",
@@ -4563,7 +4563,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota32-bluetooth.manifest.json",
-            "name": "Development Tasmota32 Bluetooth (english)",
+            "name": "Tasmota32 Bluetooth (english)",
             "chipFamilies": [
                 "ESP32",
                 "ESP32-C3",
@@ -4632,7 +4632,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota32-lvgl.manifest.json",
-            "name": "Development Tasmota32 LVGL (english)",
+            "name": "Tasmota32 LVGL (english)",
             "chipFamilies": [
                 "ESP32",
                 "ESP32-C3",
@@ -4688,7 +4688,7 @@
         },
         {
             "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota32solo1.manifest.json",
-            "name": "Development Tasmota32 Solo1 (english)",
+            "name": "Tasmota32 Solo1 (english)",
             "chipFamilies": [
                 "ESP32"
             ],
@@ -4794,46 +4794,6 @@
                     85,
                     92,
                     95
-                ]
-            }
-        },
-        {
-            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota32-webcam.manifest.json",
-            "name": "Development Tasmota32 WebCam (english)",
-            "chipFamilies": [
-                "ESP32"
-            ],
-            "features": {
-                "Xdrv": [
-                    1,
-                    2,
-                    4,
-                    7,
-                    8,
-                    9,
-                    10,
-                    12,
-                    24,
-                    27,
-                    29,
-                    38,
-                    50,
-                    52,
-                    62,
-                    81
-                ],
-                "Xlgt": [
-                    2,
-                    3,
-                    4,
-                    6,
-                    8
-                ],
-                "Xnrg": [],
-                "Xsns": [
-                    2,
-                    6,
-                    12
                 ]
             }
         },
@@ -5007,6 +4967,46 @@
                     2,
                     3,
                     5,
+                    6,
+                    12
+                ]
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota32-webcam.manifest.json",
+            "name": "Tasmota32 WebCam (english)",
+            "chipFamilies": [
+                "ESP32"
+            ],
+            "features": {
+                "Xdrv": [
+                    1,
+                    2,
+                    4,
+                    7,
+                    8,
+                    9,
+                    10,
+                    12,
+                    24,
+                    27,
+                    29,
+                    38,
+                    50,
+                    52,
+                    62,
+                    81
+                ],
+                "Xlgt": [
+                    2,
+                    3,
+                    4,
+                    6,
+                    8
+                ],
+                "Xnrg": [],
+                "Xsns": [
+                    2,
                     6,
                     12
                 ]
