@@ -2411,6 +2411,21 @@
                     12
                 ]
             }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota32-cdc.manifest.json",
+            "name": "Tasmota32-CDC",
+            "chipFamilies": [
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
         }
     ],
     "development": [
@@ -5010,6 +5025,21 @@
                     6,
                     12
                 ]
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota32-cdc.manifest.json",
+            "name": "Tasmota32-CDC",
+            "chipFamilies": [
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
             }
         }
     ],
