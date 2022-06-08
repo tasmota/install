@@ -15,14 +15,14 @@
       "chipFamily": "ESP32-S2",
       "improv": true,
       "parts": [
-        { "path": "../firmware/release//tasmota32s3cdc.factory.bin", "offset": 0 }
+        { "path": "../firmware/release/tasmota32s2cdc.factory.bin", "offset": 0 }
       ]
     },
     {
       "chipFamily": "ESP32-S3",
       "improv": true,
       "parts": [
-        { "path": "../firmware/release/tasmota32s2cdc.factory.bin", "offset": 0 }
+        { "path": "../firmware/release/tasmota32s3cdc.factory.bin", "offset": 0 }
       ]
     }
   ]
