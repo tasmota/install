@@ -2373,6 +2373,69 @@
             }
         },
         {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota32-zbbrdgpro.manifest.json",
+            "name": "Tasmota32 Sonoff-ZigbeeBridgePro",
+            "chipFamilies": [
+                "ESP32"
+            ],
+            "features": {
+                "Xdrv": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    8,
+                    9,
+                    10,
+                    12,
+                    16,
+                    20,
+                    21,
+                    23,
+                    24,
+                    27,
+                    29,
+                    35,
+                    38,
+                    41,
+                    50,
+                    52,
+                    62,
+                    82
+                ],
+                "Xlgt": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    6,
+                    8
+                ],
+                "Xnrg": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    14,
+                    19,
+                    30,
+                    32
+                ],
+                "Xsns": [
+                    1,
+                    2,
+                    3,
+                    5,
+                    6,
+                    12
+                ]
+            }
+        },
+        {
             "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota32-webcam.manifest.json",
             "name": "Tasmota32 WebCam (english)",
             "chipFamilies": [
