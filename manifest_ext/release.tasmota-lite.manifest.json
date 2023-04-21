@@ -1,0 +1,47 @@
+{
+    "name": "Tasmota Lite",
+    "new_install_prompt_erase": true,
+    "funding_url": "https://paypal.me/tasmota",
+    "new_install_improv_wait_time": 10,
+    "builds": [
+        {
+            "chipFamily": "ESP32",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/release/tasmota32.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP8266",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/release/tasmota-lite.bin",
+                    "offset": 0
+                }
+            ]
+        }
+    ],
+    "features": {
+        "Xdrv": [
+            1,
+            2,
+            4,
+            9,
+            10,
+            12,
+            16,
+            20,
+            21,
+            62
+        ],
+        "Xlgt": [
+            10
+        ],
+        "Xnrg": [],
+        "Xsns": []
+    }
+}

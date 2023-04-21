@@ -1,0 +1,101 @@
+{
+    "name": "Tasmota32 Bluetooth (english)",
+    "new_install_prompt_erase": true,
+    "funding_url": "https://paypal.me/tasmota",
+    "new_install_improv_wait_time": 10,
+    "builds": [
+        {
+            "chipFamily": "ESP32",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/development/tasmota32-bluetooth.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-C3",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial//tasmota32c3-bluetooth.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-S3",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial//tasmota32s3-bluetooth.factory.bin",
+                    "offset": 0
+                }
+            ]
+        }
+    ],
+    "features": {
+        "Xdrv": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            12,
+            16,
+            20,
+            21,
+            24,
+            26,
+            27,
+            29,
+            35,
+            38,
+            50,
+            52,
+            59,
+            62,
+            79,
+            82,
+            85
+        ],
+        "Xlgt": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            8,
+            9,
+            10
+        ],
+        "Xnrg": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            14,
+            19,
+            30,
+            32
+        ],
+        "Xsns": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            12,
+            52,
+            62
+        ]
+    }
+}
