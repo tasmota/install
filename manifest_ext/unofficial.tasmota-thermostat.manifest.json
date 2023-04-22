@@ -1,0 +1,116 @@
+{
+    "name": "Tasmota Thermostat (english)",
+    "new_install_prompt_erase": true,
+    "funding_url": "https://paypal.me/tasmota",
+    "new_install_improv_wait_time": 10,
+    "builds": [
+        {
+            "chipFamily": "ESP32",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial//tasmota32-thermostat.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-C3",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial//tasmota32c3-thermostat.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-S2",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial//tasmota32s2-thermostat.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-S3",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial//tasmota32s3-thermostat.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP8266",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota-thermostat.bin",
+                    "offset": 0
+                }
+            ]
+        }
+    ],
+    "features": {
+        "Xdrv": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            12,
+            16,
+            20,
+            21,
+            24,
+            27,
+            29,
+            39,
+            60,
+            62
+        ],
+        "Xlgt": [
+            8,
+            9,
+            10
+        ],
+        "Xnrg": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            14,
+            30,
+            32
+        ],
+        "Xsns": [
+            1,
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            14,
+            15,
+            17,
+            18,
+            20,
+            55,
+            58,
+            59,
+            63
+        ]
+    }
+}
