@@ -1,0 +1,178 @@
+{
+    "name": "Tasmota All Sensors (english)",
+    "new_install_prompt_erase": true,
+    "funding_url": "https://paypal.me/tasmota",
+    "new_install_improv_wait_time": 10,
+    "builds": [
+        {
+            "chipFamily": "ESP32",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial//tasmota32-allsensors.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-C3",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial//tasmota32c3-allsensors.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-S2",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial//tasmota32s2-allsensors.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-S3",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial//tasmota32s3-allsensors.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP8266",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota-allsensors.bin",
+                    "offset": 0
+                }
+            ]
+        }
+    ],
+    "features": {
+        "Xdrv": [
+            1,
+            2,
+            3,
+            4,
+            7,
+            8,
+            9,
+            10,
+            12,
+            14,
+            15,
+            20,
+            24,
+            28,
+            29,
+            34,
+            43,
+            47,
+            50,
+            60,
+            62,
+            63,
+            66
+        ],
+        "Xlgt": [
+            1,
+            2,
+            3,
+            4,
+            8,
+            9,
+            10
+        ],
+        "Xnrg": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            14,
+            18,
+            30
+        ],
+        "Xsns": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            24,
+            26,
+            27,
+            29,
+            30,
+            31,
+            32,
+            38,
+            40,
+            41,
+            42,
+            44,
+            45,
+            46,
+            50,
+            51,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            63,
+            64,
+            65,
+            66,
+            67,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            78,
+            79,
+            81,
+            82,
+            85,
+            86,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93
+        ]
+    }
+}
