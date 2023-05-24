@@ -12,67 +12,6 @@ import gzip
 import re
 
 
-
-def handle_map_gz(data):
-    decompressed = gzip.decompress(data).decode()
-
-    features = {"Xdrv":[],"Xlgt":[],"Xnrg":[],"Xsns":[]}
-    for line in decompressed.splitlines():
-        m = re.search('Xdrv\d\d', line)
-        if(m):
-            number = int(m.group()[4:])
-            if(number not in features["Xdrv"]):
-                features["Xdrv"].append(number)
-                features["Xdrv"].sort()
-        m = re.search('Xlgt\d\d', line)
-        if(m):
-            number = int(m.group()[4:])
-            if(number not in features["Xlgt"]):
-                features["Xlgt"].append(number)
-                features["Xlgt"].sort()
-        m = re.search('Xnrg\d\d', line)
-        if(m):
-            number = int(m.group()[4:])
-            if(number not in features["Xnrg"]):
-                features["Xnrg"].append(number)
-                features["Xnrg"].sort()
-        m = re.search('Xsns\d\d', line)
-        if(m):
-            number = int(m.group()[4:])
-            if(number not in features["Xsns"]):
-                features["Xsns"].append(number)
-                features["Xsns"].sort()
-
-    # print("Features:",features)
-    return features
-
-
-def add_features_from_map(infile):
-    print("Processing ",infile)
-    file_name = infile.split('/')[1]
-    file_name = file_name.split('.')[1]
-    # We need a repo, which holds all the map.gz files too
-    # This is perhaps not the final solution
-    url = ' https://github.com/arendst/Tasmota-firmware/raw/main/firmware/map/'+file_name+'.map.gz'
-    r = requests.get(url)
-    if(r):
-        # print("Found map for ",infile)
-        features = handle_map_gz(r.content)
-        return features
-    else:
-        # Fallback to Jasons sepcial builds
-        # print("No map for: ",url, " , will try:")
-        url = ' https://github.com/Jason2866/Tasmota-specials/raw/firmware/firmware/map/'+file_name+'.map.gz'
-        r = requests.get(url)
-        # print(url)
-        if(r):
-            # print("On 2nd try found map for ",infile)
-            features = handle_map_gz(r.content)
-            return features
-    print("Could not find map.gz for",infile)
-    return {"Xdrv":[],"Xlgt":[],"Xnrg":[],"Xsns":[]}
-
-
 def convertJSON(infile,outfile):
     with open(infile) as json_file:
         data = json.load(json_file)
@@ -96,7 +35,6 @@ def getManifestEntry(manifest):
         entry['chipFamilies'] = []
         for build in data['builds']:
             entry['chipFamilies'].append(build['chipFamily'])
-        entry['features'] = add_features_from_map(manifest)
         return entry
 
 
