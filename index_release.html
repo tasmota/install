@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+    <title>Install Tasmota</title>
+    <style>
+      div,fieldset,input,select{padding:5px;font-size:1em;}
+      fieldset{background:#4f4f4f;}
+      p{margin:0.5em 0;}
+      input{width:100%;box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;background:#dddddd;color:#000000;}
+      input[type=checkbox],input[type=radio]{width:1em;margin-right:6px;vertical-align:-1px;}
+      input[type=range]{width:99%;}
+      select{width:100%;background:#dddddd;color:#000000;}
+      textarea{resize:vertical;width:98%;height:318px;padding:5px;overflow:auto;background:#1f1f1f;color:#65c115;}
+      body{text-align:center;font-family:verdana,sans-serif;background:#252525;}
+      td{padding:0px;}
+      button{border:0;border-radius:0.3rem;background:#1fa3ec;color:#faffff;line-height:2.4rem;font-size:1.2rem;width:100%;-webkit-transition-duration:0.4s;transition-duration:0.4s;cursor:pointer;}
+      button:hover{background:#0e70a4;}
+      .bred{background:#d43535;}
+      .bred:hover{background:#931f1f;}
+      .bgrn{background:#47c266;}
+      .bgrn:hover{background:#5aaf6f;}
+      a{color:#1fa3ec;text-decoration:none;}
+      .p{float:left;text-align:left;}
+      .q{float:right;text-align:right;}
+      .r{border-radius:0.3em;padding:2px;margin:6px 2px;}
+      .pick-variant{margin-bottom:16px;}
+      .date_pick{display:inline-block;width: 33%;}
+    </style>
+    <script
+      type="module"
+      src="https://unpkg.com/tasmota-esp-web-tools@8.1.2/dist/web/install-button.js?module"
+    ></script>
+    <script>
+
+        var releases = null;
+        var date_filter = null;
+        var build_filter = ["d","r"];
+
+
+        function DateIsNotSelected(date){
+            let year = document.querySelector("#pick-year-selector").value;
+            let month = document.querySelector("#pick-month-selector").value;
+            let day = document.querySelector("#pick-day-selector").value;
+            let data = date.split("-");
+            if(year != "all" && year != data[0])
+            {
+                return true;
+            }
+            if(month != "all" && month != data[1])
+            {
+                return true;
+            }
+            if(day != "all" && day != data[2])
+            {
+                return true;
+            }
+            return false;
+        }
+
+        function BuildTypeNotSelected(type){
+          if(build_filter.includes(type)){
+            return false;
+          }
+          return true;
+        }
+
+        function makeReleaseSelector(data){
+            let sel=document.querySelector("#pick-release-selector");
+            while(sel.childElementCount!=0){
+              sel.removeChild(sel.childNodes[0]);
+            }
+            let lines = data.split("\n").reverse();
+            console.log(data);
+            var duplicates = [];
+            for (opt_group of lines){
+                if (opt_group.length < 10) continue;
+                if(duplicates.includes(opt_group)){
+                  continue;
+                }
+                duplicates.push(opt_group);
+                var og=document.createElement('option');
+                const tag_data = opt_group.split(".");
+                if(DateIsNotSelected(tag_data[0])){
+                  continue;
+                }
+                if(BuildTypeNotSelected(tag_data[1])){
+                  continue;
+                }
+                og.label = tag_data[0] + "  (commit:" + tag_data[2].substring(0,8) + "...)";
+                og.value = opt_group;
+
+                var build = "Pre-release:\n"
+                if(tag_data=="r"){
+                  build = "Release:\n"
+                }
+                og.title = build;
+                og.title += "Build date: " + tag_data[0] + "\n";
+                og.title += "Commit: " + tag_data[2] + "\n";
+
+                sel.appendChild(og);
+                // console.log(opt_group,opt_group.length,data[opt_group]);
+            }
+            sel.addEventListener("change", () => {
+               initVariantSelector(sel.value);
+            });
+        }
+
+        function makeDateFilter(data){
+            let lines = data.split("\n");
+            date_filter = {};
+            for(line of lines){
+                let date = (line.split(".")[0]).split("-");
+                let year = date[0];
+                let month = date[1];
+                let day = date[2];
+
+                if(year in date_filter == false){
+                    date_filter[year] = {};
+                }
+                if(month in date_filter[year] == false){
+                    date_filter[year][month] = [];
+                }
+                if(date_filter[year][month].includes(day) == false){
+                    date_filter[year][month].push(day);
+                }
+            }
+        }
+
+        function makeYearSelector(){
+            let first=document.createElement('option');
+            first.label = "all";
+            first.value = "all";
+            let sel=document.querySelector("#pick-year-selector");
+            while(sel.childElementCount!=0){
+                sel.removeChild(sel.childNodes[0]);
+            }
+            sel.appendChild(first);
+            for(const [year,v] of Object.entries(date_filter)){
+                if(year == ""){
+                        continue;
+                    }
+                var o=document.createElement('option');
+                o.label = year;
+                o.value = year;
+                sel.appendChild(o);
+            }
+            sel.addEventListener("change", () => {
+                makeMonthSelector(sel.value);
+                let month = document.querySelector("#pick-month-selector");
+                makeDaySelector(sel.value,month.value);
+                makeReleaseSelector(releases);
+            });
+        }
+
+        function makeMonthSelector(year){
+            let first=document.createElement('option');
+            first.label = "all";
+            first.value = "all";
+            let sel=document.querySelector("#pick-month-selector");
+            while(sel.childElementCount!=0){
+                sel.removeChild(sel.childNodes[0]);
+            }
+            sel.appendChild(first);
+            if(year == null || year == "all" ){
+                return;
+            }
+            for(const [month,v] of Object.entries(date_filter[year])){
+                var o=document.createElement('option');
+                o.label = month;
+                o.value = month;
+                sel.appendChild(o);
+            }
+            sel.addEventListener("change", () => {
+                let year = document.querySelector("#pick-year-selector");
+                makeDaySelector(year.value,sel.value);
+                makeReleaseSelector(releases);
+            });
+        }
+
+        function makeDaySelector(year,month){
+            let first=document.createElement('option');
+            first.label = "all";
+            first.value = "all";
+            let sel=document.querySelector("#pick-day-selector");
+            while(sel.childElementCount!=0){
+                sel.removeChild(sel.childNodes[0]);
+            }
+            sel.appendChild(first);
+            if(year == null || month == null || year == "all" || month == "all"){
+                return;
+            }
+            for(day of date_filter[year][month]){
+                var o=document.createElement('option');
+                o.label = day;
+                o.value = day;
+                sel.appendChild(o);
+            }
+            sel.addEventListener("change", () => {
+                makeReleaseSelector(releases);
+            });
+        }
+
+        function makeDateSelector(data){
+          if(releases == null){
+            releases = data;
+          }
+          if(date_filter == null){
+            makeDateFilter(data);
+          }
+          makeYearSelector();
+          makeMonthSelector();
+          makeDaySelector();
+          let radio = document.getElementsByClassName("build_type_select");
+          console.log(radio);
+          for(el of radio){
+            console.log(el);
+            el.addEventListener("click", () => {
+              let btn = document.querySelector('input[name="build_type"]:checked')
+              build_filter = [btn.value];
+              if(btn.value == "a"){
+                build_filter = ["r","d"];
+              }
+              makeReleaseSelector(releases);
+            });
+          }
+
+          makeReleaseSelector(data);
+        }
+
+        function filterByYear(year){
+            makeDateSelector(releases);
+        }
+
+        function useFallback(){
+            let els = document.getElementsByClassName("needs_cors");
+            for(el of els){
+              console.log(el);
+              el.setAttribute("style","visibility: collapse;");
+            }
+            let sel=document.querySelector("#pick-release-selector");
+            console.log(sel)
+            var el = document.createElement('p');
+            el.innerHTML = "To access our GitHub releases page and directly flash firmware binaries<br>from there including older versions<br>you have to turn off CORS in your browser.<br>(i.e. with browser extension: CORS unblock)";
+            sel.replaceWith(el);
+            fetch('https://raw.githubusercontent.com/tasmota/install/firmware/manifests.json')
+            .then(response => response.json())
+            .then(data => makeVariantSelector(data));
+        }
+
+        function getLatestTag(){
+             fetch('https://raw.githubusercontent.com/tasmota/install/firmware/tag_latest.txt')
+            .then(x => x.text())
+            .then(t =>testCORS(t));
+        }
+
+        async function testCORS(t){
+          try{
+            const resp = await fetch('https://github.com/tasmota/install/releases/download/'+ t + '/manifests_release.json', {mode:"cors"
+            });
+            console.log(resp);
+          }
+          catch(error){
+            console.log("CORS is blocking");
+            useFallback();
+            return;
+          }
+          console.log("CORS is not blocking");
+          initVariantSelector(t);
+          fetch('https://raw.githubusercontent.com/tasmota/install/firmware/tag.txt')
+          .then(x => x.text())
+          .then(t => {makeReleaseSelector(t,"all"); makeDateSelector(t);})
+        }
+
+        function initVariantSelector(tag){
+            fetch('https://github.com/tasmota/install/releases/download/'+ tag + '/manifests_release.json')
+            .then(response => response.json())
+            .then(data => makeVariantSelector(data));
+        }
+
+        function makeVariantSelector(data){
+            if(data.length == 0){
+              console.log(data);
+              return false;
+            }
+            const sel=document.querySelector("#pick-variant-selector");
+            while (sel.firstChild) {
+              sel.removeChild(sel.firstChild);
+            }
+
+            console.log(data);
+            for (opt_group in data){
+                var og=document.createElement('optgroup');
+                og.label = opt_group;
+                sel.appendChild(og);
+                console.log(opt_group,data[opt_group]);
+                for (fw of data[opt_group]){
+                    // console.log(data[opt_group][fw]);
+                    var opt=document.createElement('option');
+                    opt.label = fw['name'];
+                    opt.value = fw['path'];
+                    opt.title = "Supported chipfamilies:\n"
+                    for (chipFamily of fw['chipFamilies']){
+                        opt.title += chipFamily + "\n";
+                    }
+                    console.log( opt.value);
+                    og.appendChild(opt);
+                }
+            }
+            return true;
+        }
+
+        window.addEventListener("load", function(event) {
+            getLatestTag();
+            try{
+                const button = document.querySelector("esp-web-install-button");
+                button.overrides = {
+                  checkSameFirmware(manifest, improvInfo) {
+                    const manifestFirmware = manifest.name.toLowerCase();
+                    const deviceFirmware = improvInfo.firmware.toLowerCase();
+                    return manifestFirmware.includes(deviceFirmware);
+                  }
+                };
+                console.log(button.shadowRoot.firstChild.name);
+                if(button.shadowRoot.firstChild.name == 'activate'){
+                    //success: add the select picker and some info
+                    const selectEl = document.querySelector("#pick-variant-selector");
+                    button.manifest = "https://tasmota.github.io/install/manifest_ext/release.tasmota.manifest.json";
+                    selectEl.addEventListener("change", () => {
+                        button.manifest = selectEl.value;
+                        console.log(button.manifest);
+                    });
+                }
+            }
+            catch(e){
+                console.log(e);
+            }
+        },{ once: true });
+        </script>
+  </head>
+  <body>
+    <div style='display:inline-block;color:#eaeaea;min-width:340px;'>
+
+    <h1>Install Tasmota</h1>
+
+    <div class='pick-variant'>
+    <ol style='text-align:left'>
+        <li>Connect the ESP device to your computer</br>using USB or serial-to-USB adapter</li></br>
+        <li>Select the firmware variant suitable for</br>your device</li></br>
+        <li>Hit "Install" and select the correct port</br>or find help if <a href="https://tasmota.github.io/docs/Getting-Started/" target='_blank' style='color:#aaa;'>no device found</a></li>
+        </ol>
+        </br>
+      </br>
+      <select id="pick-variant-selector"></select>
+      </br></br>
+      <select id="pick-release-selector"></select>
+      </br></br>
+      <p class = "needs_cors">Filter by date:</p>
+      <span><select class = "date_pick needs_cors" id="pick-year-selector"></select><select class = "date_pick needs_cors" id="pick-month-selector"></select><select class = "date_pick needs_cors" id="pick-day-selector"></select></span>
+      <p>
+      <p class = "needs_cors"><br>Filter by type:<br>
+      <input type="radio" name="build_type" value="r" id="check1" class="build_type_select">
+      <label for="check1">Release</label>
+      <input type="radio" name="build_type" value="d" id="check2" class="build_type_select">
+      <label for="check2">Development</label>
+      <input type="radio" name="build_type" value="a" id="check3" class="build_type_select" checked>
+      <label for="check3">All</label></p>
+        </br>
+        <esp-web-install-button id="inst" style='text-align:center'>
+          <i slot="unsupported">
+            Your browser does not support Web Serial.</br>Open this page in Google Chrome or</br>Microsoft Edge instead
+            <span class="not-supported-i hidden">(but not on your iOS device)</span>.
+          </i>
+        </esp-web-install-button>
+     </p>
+    </div>
+    <div style='text-align:right;font-size:11px;'>
+      <hr/>
+      <a href="https://esphome.github.io/esp-web-tools/" target='_blank' style='color:#aaa;'>Tasmota Installer powered by ESP Web Tools</a>
+    </div>
+
+    </div>
+  </body>
+</html>
