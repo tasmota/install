@@ -1,0 +1,14 @@
+{
+  "name": "Tasmota32-C2 4M (english)",
+  "new_install_prompt_erase": true,
+  "funding_url": "https://paypal.me/tasmota",
+  "builds": [
+    {
+      "chipFamily": "ESP32-C2",
+      "improv": true,
+      "parts": [
+        { "path": "../firmware/unofficial/tasmota32c2-arduino30.factory.bin", "offset": 0}
+      ]
+    }
+  ]
+}
