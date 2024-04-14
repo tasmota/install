@@ -1,0 +1,14 @@
+{
+  "name": "Tasmota32-C3 CDC LVGL",
+  "new_install_prompt_erase": true,
+  "funding_url": "https://paypal.me/tasmota",
+  "builds": [
+    {
+      "chipFamily": "ESP32-C3",
+      "improv": true,
+      "parts": [
+        { "path": "../firmware/unofficial/tasmota32c3cdc-lvgl.factory.bin", "offset": 0}
+      ]
+    }
+  ]
+}
