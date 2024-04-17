@@ -1,0 +1,35 @@
+{
+  "name": "Tasmota32 MI BLE (english)",
+  "new_install_prompt_erase": true,
+  "funding_url": "https://paypal.me/tasmota",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "improv": true,
+      "parts": [
+        { "path": "../firmware/unofficial/tasmota32-mi32.factory.bin", "offset": 0}
+      ]
+    },
+    {
+      "chipFamily": "ESP32-C3",
+      "improv": true,
+      "parts": [
+        { "path": "../firmware/unofficial/tasmota32c3cdc-mi32.factory.bin", "offset": 0}
+      ]
+    },
+    {
+      "chipFamily": "ESP32-C6",
+      "improv": true,
+      "parts": [
+        { "path": "../firmware/unofficial/tasmota32c6cdc-mi32.factory.bin", "offset": 0}
+      ]
+    },
+    {
+      "chipFamily": "ESP32-S3",
+      "improv": true,
+      "parts": [
+        { "path": "../firmware/unofficial//tasmota32s3cdc-mi32.factory.bin", "offset": 0}
+      ]
+    }
+  ]
+}
