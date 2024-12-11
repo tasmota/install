@@ -13,36 +13,6 @@
                     "offset": 0
                 }
             ]
-        },
-        {
-            "chipFamily": "ESP32-C3",
-            "improv": true,
-            "parts": [
-                {
-                    "path": "https://tasmota.github.io/install/firmware/release/tasmota32c3-lvgl.factory.bin",
-                    "offset": 0
-                }
-            ]
-        },
-        {
-            "chipFamily": "ESP32-S2",
-            "improv": true,
-            "parts": [
-                {
-                    "path": "https://tasmota.github.io/install/firmware/release/tasmota32s2-lvgl.factory.bin",
-                    "offset": 0
-                }
-            ]
-        },
-        {
-            "chipFamily": "ESP32-S3",
-            "improv": true,
-            "parts": [
-                {
-                    "path": "https://tasmota.github.io/install/firmware/release/tasmota32s3-lvgl.factory.bin",
-                    "offset": 0
-                }
-            ]
         }
     ]
 }
