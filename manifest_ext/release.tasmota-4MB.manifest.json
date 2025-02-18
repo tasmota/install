@@ -15,11 +15,31 @@
             ]
         },
         {
+            "chipFamily": "ESP32-C2",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/release/tasmota32c2.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
             "chipFamily": "ESP32-C3",
             "improv": true,
             "parts": [
                 {
                     "path": "https://tasmota.github.io/install/firmware/release/tasmota32c3.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-C6",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/release/tasmota32c6.factory.bin",
                     "offset": 0
                 }
             ]
