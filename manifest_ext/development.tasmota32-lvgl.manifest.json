@@ -25,6 +25,16 @@
             ]
         },
         {
+            "chipFamily": "ESP32-C6",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota32c6-lvgl.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
             "chipFamily": "ESP32-S2",
             "improv": true,
             "parts": [
