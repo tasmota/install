@@ -1,0 +1,38 @@
+{
+    "name": "Tasmota32 Bluetooth (english)",
+    "new_install_prompt_erase": true,
+    "funding_url": "https://paypal.me/tasmota",
+    "new_install_improv_wait_time": 10,
+    "builds": [
+        {
+            "chipFamily": "ESP32",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/development/tasmota32-bluetooth.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-C3",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial//tasmota32c3-bluetooth.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-S3",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial//tasmota32s3-bluetooth.factory.bin",
+                    "offset": 0
+                }
+            ]
+        }
+    ]
+}
