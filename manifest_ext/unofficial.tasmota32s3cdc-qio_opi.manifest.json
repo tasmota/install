@@ -1,0 +1,17 @@
+{
+    "name": "Tasmota32-S3 (QIO Flash/OPI PSRAM)",
+    "new_install_prompt_erase": true,
+    "funding_url": "https://paypal.me/tasmota",
+    "builds": [
+        {
+            "chipFamily": "ESP32-S3",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota32s3cdc-qio_opi.factory.bin",
+                    "offset": 0
+                }
+            ]
+        }
+    ]
+}
