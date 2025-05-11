@@ -2,6 +2,7 @@
 
 from platform import release
 import sys
+import os
 from os import listdir
 from os import mkdir
 from os import remove
