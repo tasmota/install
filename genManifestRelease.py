@@ -13,14 +13,21 @@ def convertJSON(infile, outfile, tag):
     with open(infile) as json_file:
         data = json.load(json_file)
         for build in data['builds']:
-            for path in build['parts']:
-                components = path['path'].split("/")
-                path['path'] = "https://github.com/tasmota/install/releases/download/" + tag + "/" + components[-1]
-        # print(data)
-        j = json.dumps(data,indent=4)
-        f = open(outfile,"w")
-        f.write(j)
-        f.close()
+            for part in build['parts']:
+                components = part['path'].split("/")
+                part['path'] = "https://github.com/tasmota/install/releases/download/" + tag + "/" + components[-1]
+                # Add firmware size
+                replace_path = "https://github.com/tasmota/install/releases/download/" + tag + "/" + components[-1]
+                firmware_path = part['path'].replace(replace_path, ".").replace(".factory", "")
+                if os.path.exists(firmware_path):
+                    part['size'] = os.path.getsize(firmware_path)
+                else:
+                    part['size'] = None  # If the file doesn't exist, set size to None
+
+        # Write updated data to JSON
+        j = json.dumps(data, indent=4)
+        with open(outfile, "w") as f:
+            f.write(j)
 
 def getManifestEntry(manifest, tag):
     entry = {}
