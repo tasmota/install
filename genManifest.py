@@ -12,19 +12,23 @@ import gzip
 import re
 
 
-def convertJSON(infile,outfile):
+def convertJSON(infile, outfile):
     with open(infile) as json_file:
         data = json.load(json_file)
         for build in data['builds']:
-            for path in build['parts']:
-                # print(path['path'])
-                path['path'] = path['path'].replace("..", "https://tasmota.github.io/install")
+            for part in build['parts']:
+                part['path'] = part['path'].replace("..", "https://tasmota.github.io/install")
+                # Add firmware size
+                firmware_path = part['path'].replace("https://tasmota.github.io/install", ".")
+                if os.path.exists(firmware_path):
+                    part['size'] = os.path.getsize(firmware_path)
+                else:
+                    part['size'] = None  # If the file doesn't exist, set size to None
 
-        # print(data)
-        j = json.dumps(data,indent=4)
-        f = open(outfile,"w")
-        f.write(j)
-        f.close()
+        # Write updated data to JSON
+        j = json.dumps(data, indent=4)
+        with open(outfile, "w") as f:
+            f.write(j)
 
 def getManifestEntry(manifest):
     entry = {}
