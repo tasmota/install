@@ -73,23 +73,28 @@ def add_features_from_map(infile):
     return {"Xdrv":[],"Xlgt":[],"Xnrg":[],"Xsns":[]}
 
 
-def convertJSON(infile,outfile):
+def convertJSON(infile, outfile):
     with open(infile) as json_file:
         data = json.load(json_file)
         for build in data['builds']:
-            for path in build['parts']:
-                # print(path['path'])
-                path['path'] = path['path'].replace("..", "https://tasmota.github.io/install")
+            for part in build['parts']:
+                part['path'] = part['path'].replace("..", "https://tasmota.github.io/install")
+                # Add firmware size
+                firmware_path = part['path'].replace("https://tasmota.github.io/install", ".").replace(".factory", "")
+                if os.path.exists(firmware_path):
+                    part['size'] = os.path.getsize(firmware_path)
+                else:
+                    part['size'] = None  # If the file doesn't exist, set size to None
 
             features = add_features_from_map(infile)
             # print(features)
             if 'features' not in data:
                 data['features'] = features
-        # print(data)
-        j = json.dumps(data,indent=4)
-        f = open(outfile,"w")
-        f.write(j)
-        f.close()
+
+        # Write updated data to JSON
+        j = json.dumps(data, indent=4)
+        with open(outfile, "w") as f:
+            f.write(j)
 
 def getManifestEntry(manifest):
     entry = {}
