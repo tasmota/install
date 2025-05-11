@@ -1,5 +1,5 @@
 {
-    "name": "Tasmota32 MI Homebridge (english)",
+    "name": "Tasmota32 MI BLE (english)",
     "new_install_prompt_erase": true,
     "funding_url": "https://paypal.me/tasmota",
     "builds": [
@@ -8,7 +8,7 @@
             "improv": true,
             "parts": [
                 {
-                    "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota32-mi32-homebridge.factory.bin",
+                    "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota32-mi32.factory.bin",
                     "offset": 0
                 }
             ]
@@ -18,7 +18,7 @@
             "improv": true,
             "parts": [
                 {
-                    "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota32c3-mi32-homebridge.factory.bin",
+                    "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota32c3-mi32.factory.bin",
                     "offset": 0
                 }
             ]
@@ -28,7 +28,7 @@
             "improv": true,
             "parts": [
                 {
-                    "path": "https://tasmota.github.io/install/firmware/unofficial//tasmota32s3-mi32-homebridge.factory.bin",
+                    "path": "https://tasmota.github.io/install/firmware/unofficial//tasmota32s3-mi32.factory.bin",
                     "offset": 0
                 }
             ]
