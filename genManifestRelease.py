@@ -10,23 +10,16 @@ from os import remove
 from os import path
 import json
 
-def clean_json(data):
+def filter_builds(data):
     """
-    Removes non existing MCU firmware variant from manifest, indicated by 'size' entry is None.
+    Removes non-existing MCU firmware variant from manifest, indicated by 'size' entry is None.
     """
-    if isinstance(data, dict):
-        # Check if 'size' key is present and is None
-        if data.get("size") is None:
-            # Remove specified keys and their values
-            for key in ["size", "chipFamily", "improv", "parts"]:
-                data.pop(key, None)
-        # Recursively clean nested dictionaries
-        for key in data:
-            clean_json(data[key])
-    elif isinstance(data, list):
-        # Recursively clean nested lists
-        for item in data:
-            clean_json(item)
+    filtered_builds = []
+    for build in data['builds']:
+        if all(part['size'] is not None for part in build['parts']):
+            filtered_builds.append(build)
+    data['builds'] = filtered_builds
+    return data
 
 def convertJSON(infile, outfile, tag):
     with open(infile) as json_file:
@@ -43,6 +36,7 @@ def convertJSON(infile, outfile, tag):
                 else:
                     part['size'] = None  # If the file doesn't exist, set size to None
 
+        filter_builds(data)
         j = json.dumps(data, indent=4)
         # Write updated data to JSON
         with open(outfile, "w") as f:
@@ -143,7 +137,7 @@ def main(args):
     for key in output:
         final_json[key] = output[key] # just in case we have another section in the future
 
-    print(final_json)
+    #print(final_json)
     j = json.dumps(final_json,indent=4)
     f = open("manifests_release.json", "w")
     f.write(j)
