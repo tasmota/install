@@ -64,6 +64,7 @@ def add_features_from_map(infile):
     print("Processing ",infile)
     file_name = infile.split('/')[1]
     file_name = file_name.split('.')[1]
+    file_name = file_name.replace(".factory", "")
     map_path = ' ./firmware/development/'+file_name+'.map.gz'
     if os.path.exists(map_path):
         features = handle_map_gz(map_path)
