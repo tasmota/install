@@ -13,6 +13,16 @@ import gzip
 import re
 
 
+def filter_builds(data):
+    """
+    Removes non-existing MCU firmware variant from manifest, indicated by 'size' entry is None.
+    """
+    filtered_builds = []
+    for build in data['builds']:
+        if all(part['size'] is not None for part in build['parts']):
+            filtered_builds.append(build)
+    data['builds'] = filtered_builds
+    return data
 
 def handle_map_gz(map_path):
     with open(map_path, "r") as map_file:
@@ -86,6 +96,7 @@ def convertJSON(infile, outfile):
             if 'features' not in data:
                 data['features'] = features
 
+        filter_builds(data)
         # Write updated data to JSON
         j = json.dumps(data, indent=4)
         with open(outfile, "w") as f:
