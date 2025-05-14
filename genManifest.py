@@ -18,8 +18,10 @@ def clean_json(data):
     Removes non existing MCU firmware variant from manifest, indicated by 'size' entry is None.
     """
     if isinstance(data, dict):
+        print("size entry:", data.get("size"))
         # Check if 'size' key is present and is None
         if data.get("size") is None:
+            print("size entry is None")
             # Remove specified keys and their values
             for key in ["size", "chipFamily", "improv", "parts"]:
                 data.pop(key, None)
