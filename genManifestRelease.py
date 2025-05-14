@@ -16,10 +16,11 @@ def convertJSON(infile, outfile, tag):
         for build in data['builds']:
             for part in build['parts']:
                 components = part['path'].split("/")
+                firmware_path = part['path']
                 part['path'] = "https://github.com/tasmota/install/releases/download/" + tag + "/" + components[-1]
                 # Add firmware size
-                replace_path = "https://github.com/tasmota/install/releases/download/" + tag + "/" + components[-1]
-                firmware_path = part['path'].replace(replace_path, ".").replace(".factory", "")
+                firmware_path = firmware_path.replace(".factory", "")
+                print("firmware_path for size:", firmware_path)
                 if os.path.exists(firmware_path):
                     part['size'] = os.path.getsize(firmware_path)
                 else:
