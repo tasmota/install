@@ -14,8 +14,10 @@ import re
 
 
 
-def handle_map_gz(data):
-    decompressed = gzip.decompress(data).decode()
+def handle_map_gz(map_path):
+    with open(map_path, "r") as map_file:
+        content = map_file.read()
+    decompressed = gzip.decompress(content).decode()
 
     features = {"Xdrv":[],"Xlgt":[],"Xnrg":[],"Xsns":[]}
     for line in decompressed.splitlines():
@@ -54,17 +56,13 @@ def add_features_from_map(infile):
     file_name = file_name.split('.')[1]
     map_path = ' ./firmware/development/'+file_name'.map.gz'
     if os.path.exists(map_path):
-        with open(map_path, "r") as map_file:
-            content = map_file.read()
-        features = handle_map_gz(content)
+        features = handle_map_gz(map_path)
         return features
     else:
         # Fallback to Jasons special builds
         map_path = './firmware/unofficial/'+file_name+'.map.gz'
         if os.path.exists(map_path):
-            with open(map_path, "r") as map_file:
-                content = map_file.read()
-            features = handle_map_gz(content)
+            features = handle_map_gz(map_path)
             return features
     print("Could not find map.gz for",infile)
     return {"Xdrv":[],"Xlgt":[],"Xnrg":[],"Xsns":[]}
