@@ -13,6 +13,24 @@ import gzip
 import re
 
 
+def clean_json(data):
+    """
+    Removes non existing MCU firmware variant from manifest, indicated by 'size' entry is None.
+    """
+    if isinstance(data, dict):
+        # Check if 'size' key is present and is None
+        if data.get("size") is None:
+            # Remove specified keys and their values
+            for key in ["size", "chipFamily", "improv", "parts"]:
+                data.pop(key, None)
+        # Recursively clean nested dictionaries
+        for key in data:
+            clean_json(data[key])
+    elif isinstance(data, list):
+        # Recursively clean nested lists
+        for item in data:
+            clean_json(item)
+
 def convertJSON(infile, outfile):
     with open(infile) as json_file:
         data = json.load(json_file)
@@ -26,8 +44,10 @@ def convertJSON(infile, outfile):
                 else:
                     part['size'] = None  # If the file doesn't exist, set size to None
 
-        # Write updated data to JSON
         j = json.dumps(data, indent=4)
+        # remove not existing MCU firmware variants
+        clean_json(j)
+        # Write updated data to JSON
         with open(outfile, "w") as f:
             f.write(j)
 
