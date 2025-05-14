@@ -39,7 +39,6 @@ def convertJSON(infile, outfile):
 
         filter_builds(data)
         j = json.dumps(data, indent=4)
-        print("entry removed json:", j)
         # Write updated data to JSON
         with open(outfile, "w") as f:
             f.write(j)
