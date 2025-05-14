@@ -15,21 +15,30 @@ import re
 
 def clean_json(data):
     """
-    Removes non existing MCU firmware variant from manifest, indicated by 'size' entry is None.
+    Removes non-existing MCU firmware variant from manifest, indicated by 'size' entry is None.
     """
     if isinstance(data, dict):
-        # Check if 'size' key is present and is None
-        if data.get("size") is None:
-            # Remove specified keys and their values
-            for key in ["size", "chipFamily", "improv", "parts"]:
-                data.pop(key, None)
-        # Recursively clean nested dictionaries
-        for key in data:
-            clean_json(data[key])
+        # Gather keys to clean recursively
+        keys_to_remove = []
+        for key, value in data.items():
+            if isinstance(value, (dict, list)):
+                clean_json(value)
+            if key == "size" and value is None:
+                keys_to_remove.extend(["size", "chipFamily", "improv", "parts"])
+        for key in keys_to_remove:
+            data.pop(key, None)
+
     elif isinstance(data, list):
-        # Recursively clean nested lists
+        # Remove items from list where 'size' is None in any child dict
+        to_remove = []
         for item in data:
-            clean_json(item)
+            if isinstance(item, dict) and item.get("size") is None:
+                to_remove.append(item)
+            else:
+                clean_json(item)
+        for item in to_remove:
+            data.remove(item)
+
 
 def convertJSON(infile, outfile):
     with open(infile) as json_file:
