@@ -25,7 +25,7 @@ def filter_builds(data):
     return data
 
 def handle_map_gz(map_path):
-    with open(map_path, "r") as map_file:
+    with open(map_path, "rb") as map_file:
         content = map_file.read()
     decompressed = gzip.decompress(content).decode()
 
