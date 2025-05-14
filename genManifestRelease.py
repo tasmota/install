@@ -19,7 +19,7 @@ def convertJSON(infile, outfile, tag):
                 firmware_path = part['path']
                 part['path'] = "https://github.com/tasmota/install/releases/download/" + tag + "/" + components[-1]
                 # Add firmware size
-                firmware_path = firmware_path.replace(".factory", "").replace("../", "./").replace("//, "/")
+                firmware_path = firmware_path.replace(".factory", "").replace("../", "./").replace("//", "/")
                 print("firmware_path for size:", firmware_path)
                 if os.path.exists(firmware_path):
                     part['size'] = os.path.getsize(firmware_path)
