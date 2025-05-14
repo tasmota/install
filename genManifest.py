@@ -13,32 +13,16 @@ import gzip
 import re
 
 
-def clean_json(data):
+def filter_builds(data):
     """
     Removes non-existing MCU firmware variant from manifest, indicated by 'size' entry is None.
     """
-    if isinstance(data, dict):
-        # Gather keys to clean recursively
-        keys_to_remove = []
-        for key, value in data.items():
-            if isinstance(value, (dict, list)):
-                clean_json(value)
-            if key == "size" and value is None:
-                keys_to_remove.extend(["size", "chipFamily", "improv", "parts"])
-        for key in keys_to_remove:
-            data.pop(key, None)
-
-    elif isinstance(data, list):
-        # Remove items from list where 'size' is None in any child dict
-        to_remove = []
-        for item in data:
-            if isinstance(item, dict) and item.get("size") is None:
-                to_remove.append(item)
-            else:
-                clean_json(item)
-        for item in to_remove:
-            data.remove(item)
-
+    filtered_builds = []
+    for build in data['builds']:
+        if all(part['size'] is not None for part in build['parts']):
+            filtered_builds.append(build)
+    data['builds'] = filtered_builds
+    return data
 
 def convertJSON(infile, outfile):
     with open(infile) as json_file:
@@ -53,9 +37,9 @@ def convertJSON(infile, outfile):
                 else:
                     part['size'] = None  # If the file doesn't exist, set size to None
 
-        #clean_json(data)
+        filter_builds(data)
         j = json.dumps(data, indent=4)
-        #print("entry removed json:", j)
+        print("entry removed json:", j)
         # Write updated data to JSON
         with open(outfile, "w") as f:
             f.write(j)
