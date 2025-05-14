@@ -36,18 +36,14 @@ def convertJSON(infile, outfile, tag):
                 components = part['path'].split("/")
                 firmware_path = part['path']
                 part['path'] = "https://github.com/tasmota/install/releases/download/" + tag + "/" + components[-1]
-                # Add firmware size
+                # Add firmware size with ugly path fix for firmware path
                 firmware_path = firmware_path.replace(".factory", "").replace("../", "./").replace("//", "/")
-                #print("firmware_path for size:", firmware_path)
                 if os.path.exists(firmware_path):
                     part['size'] = os.path.getsize(firmware_path)
-                    #print("firmware size:", os.path.getsize(firmware_path))
                 else:
                     part['size'] = None  # If the file doesn't exist, set size to None
 
         j = json.dumps(data, indent=4)
-        # remove not existing MCU firmware variants
-        clean_json(j)
         # Write updated data to JSON
         with open(outfile, "w") as f:
             f.write(j)
