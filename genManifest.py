@@ -53,9 +53,9 @@ def convertJSON(infile, outfile):
                 else:
                     part['size'] = None  # If the file doesn't exist, set size to None
 
-        clean_json(data)
+        #clean_json(data)
         j = json.dumps(data, indent=4)
-        print("entry removed json:", j)
+        #print("entry removed json:", j)
         # Write updated data to JSON
         with open(outfile, "w") as f:
             f.write(j)
