@@ -52,23 +52,19 @@ def add_features_from_map(infile):
     print("Processing ",infile)
     file_name = infile.split('/')[1]
     file_name = file_name.split('.')[1]
-    # We need a repo, which holds all the map.gz files too
-    # This is perhaps not the final solution
-    url = ' https://github.com/arendst/Tasmota-firmware/raw/main/firmware/map/'+file_name+'.map.gz'
-    r = requests.get(url)
-    if(r):
-        # print("Found map for ",infile)
-        features = handle_map_gz(r.content)
+    map_path = ' ./firmware/development/'+file_name'.map.gz'
+    if os.path.exists(map_path):
+        with open(map_path, "r") as map_file:
+            content = map_file.read()
+        features = handle_map_gz(content)
         return features
     else:
         # Fallback to Jasons special builds
-        # print("No map for: ",url, " , will try:")
-        url = ' https://github.com/Jason2866/Tasmota-specials/raw/firmware/firmware/map/'+file_name+'.map.gz'
-        r = requests.get(url)
-        # print(url)
-        if(r):
-            # print("On 2nd try found map for ",infile)
-            features = handle_map_gz(r.content)
+        map_path = './firmware/unofficial/'+file_name+'.map.gz'
+        if os.path.exists(map_path):
+            with open(map_path, "r") as map_file:
+                content = map_file.read()
+            features = handle_map_gz(content)
             return features
     print("Could not find map.gz for",infile)
     return {"Xdrv":[],"Xlgt":[],"Xnrg":[],"Xsns":[]}
