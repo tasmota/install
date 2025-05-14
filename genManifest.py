@@ -45,8 +45,6 @@ def convertJSON(infile, outfile):
                     part['size'] = None  # If the file doesn't exist, set size to None
 
         j = json.dumps(data, indent=4)
-        # remove not existing MCU firmware variants
-        clean_json(j)
         # Write updated data to JSON
         with open(outfile, "w") as f:
             f.write(j)
@@ -60,6 +58,8 @@ def getManifestEntry(manifest):
         entry['chipFamilies'] = []
         for build in data['builds']:
             entry['chipFamilies'].append(build['chipFamily'])
+        # remove not existing MCU firmware variants
+        clean_json(entry)
         return entry
 
 
