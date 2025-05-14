@@ -1,0 +1,28 @@
+{
+    "name": "Tasmota IT",
+    "new_install_prompt_erase": true,
+    "funding_url": "https://paypal.me/tasmota",
+    "new_install_improv_wait_time": 10,
+    "builds": [
+        {
+            "chipFamily": "ESP32",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/release/languages/tasmota32-IT.factory.bin",
+                    "offset": 0
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP8266",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/release/languages/tasmota-IT.bin",
+                    "offset": 0
+                }
+            ]
+        }
+    ]
+}
