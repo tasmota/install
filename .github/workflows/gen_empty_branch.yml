@@ -1,0 +1,22 @@
+name: Generate Empty branch
+
+on:
+  push:
+    paths:
+      - 'empty.txt'
+
+jobs:
+  empty_branch:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Generate empty branch
+      run: |
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config user.name "github-actions[bot]"
+        git switch --orphan empty_branch                               # create empty branch
+        git commit --allow-empty -m "Initial commit on orphan branch"  # Empty commit
+        git push -u origin empty_branch                                # push empty branch in repo
+        #git branch -m firmware                                         # rename local empty_branch to firmware
+        #git push origin -u firmware                                    # push branch firmware to repo
+        #git push origin --delete empty_branch                          # delete empty_branch

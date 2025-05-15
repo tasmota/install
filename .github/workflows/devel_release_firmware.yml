@@ -1,0 +1,308 @@
+name: devel_release_firmware
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'trigger_devel.txt'
+# Ensures that only one deploy task per branch/environment will run at a time.
+concurrency:
+  group: environment-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+
+  empty_branch:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: firmware
+    - name: Create new empty firmware branch
+      run: |
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config user.name "github-actions[bot]"
+        git switch --orphan new_branch                                 # create empty branch
+        git commit --allow-empty -m "Initial commit"
+        git push -u origin new_branch                                  # push empty branch in repo
+        git switch firmware
+        git reset --hard new_branch                                    # reset firmware branch
+        git push origin firmware -f
+        git push origin --delete new_branch                            # delete empty_branch
+
+
+  download:
+    runs-on: ubuntu-latest
+    needs: empty_branch
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: firmware
+    - name: Merge branch main into branch firmware
+      run: |
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config user.name "github-actions[bot]"
+        git remote add -f mrg_main "https://github.com/tasmota/install.git" --track main
+        git switch -c work
+        rm -rf ./github
+        git merge mrg_main/main --allow-unrelated-histories
+    - name: Push merged content in branch firmware
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{secrets.GITHUB_TOKEN}}
+        branch: 'firmware'
+    - uses: actions/checkout@v4
+      with:
+        ref: firmware
+    - name: Download development firmware artifacts
+      uses: dawidd6/action-download-artifact@v3
+      with:
+        github_token: ${{secrets.GITHUB_TOKEN}}
+        workflow: Tasmota_build_devel.yml
+        repo: arendst/tasmota
+        name: ^((?!berry).)*$
+        name_is_regexp: true
+        path: ./temp
+    - name: Move firmware files in sub-folders
+      run: |
+        mkdir -p ./mv_firmware/firmware
+        find ./temp -type f -exec cp -t ./mv_firmware/firmware {} +
+        rm -rf ./temp
+        mkdir -p ./firmware/development
+        mkdir -p ./firmware/development/languages
+        [ ! -f ./mv_firmware/firmware/tasmota.* ] || mv ./mv_firmware/firmware/tasmota.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota-4M.* ] || mv ./mv_firmware/firmware/tasmota-4M.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota-sensors.* ] || mv ./mv_firmware/firmware/tasmota-sensors.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota-minimal.bin.gz ] || mv ./mv_firmware/firmware/tasmota-minimal.bin.gz ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota-lite.* ] || mv ./mv_firmware/firmware/tasmota-lite.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota-ir*.* ] || mv ./mv_firmware/firmware/tasmota-ir*.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota-display.* ] || mv ./mv_firmware/firmware/tasmota-display.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota-knx.* ] || mv ./mv_firmware/firmware/tasmota-knx.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota-zbbridge.* ] || mv ./mv_firmware/firmware/tasmota-zbbridge.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota-zigbee.* ] || mv ./mv_firmware/firmware/tasmota-zigbee.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota32.* ] || mv ./mv_firmware/firmware/tasmota32.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota32solo1*.* ] || mv ./mv_firmware/firmware/tasmota32solo1*.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota32-ir*.* ] || mv ./mv_firmware/firmware/tasmota32-ir*.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota32-display.* ] || mv ./mv_firmware/firmware/tasmota32-display.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota32-lvgl.* ] || mv ./mv_firmware/firmware/tasmota32-lvgl.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota32-web*.* ] || mv ./mv_firmware/firmware/tasmota32-web*.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota32-odroidgo.* ] || mv ./mv_firmware/firmware/tasmota32-odroidgo.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota32-zbbrdgpro.* ] || mv ./mv_firmware/firmware/tasmota32-zbbrdgpro.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota32-nspanel.* ] || mv ./mv_firmware/firmware/tasmota32-nspanel.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota32-matter.* ] || mv ./mv_firmware/firmware/tasmota32-matter.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota32-core2.* ] || mv ./mv_firmware/firmware/tasmota32-core2.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota32-bluetooth.* ] || mv ./mv_firmware/firmware/tasmota32-bluetooth.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota32c3*.* ] || mv ./mv_firmware/firmware/tasmota32c3*.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota32s2*.* ] || mv ./mv_firmware/firmware/tasmota32s2*.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota32s3*.* ] || mv ./mv_firmware/firmware/tasmota32s3*.* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota32-safeboot* ] || mv ./mv_firmware/firmware/tasmota32-safeboot* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota32-* ] || mv ./mv_firmware/firmware/tasmota32-* ./firmware/development/languages/
+        [ ! -f ./mv_firmware/firmware/tasmota32* ] || mv ./mv_firmware/firmware/tasmota32* ./firmware/development
+        [ ! -f ./mv_firmware/firmware/tasmota-minimal.bin ] || rm -rf ./mv_firmware/firmware/tasmota-minimal.bin
+        [ ! -f ./mv_firmware/firmware/* ] || mv ./mv_firmware/firmware/* ./firmware/development/languages/
+        rm -rf ./mv_firmware
+    - name: Download firmware artifact "special_firmwares"
+      uses: dawidd6/action-download-artifact@v3
+      with:
+        github_token: ${{secrets.GITHUB_TOKEN}}
+        workflow: Build_special_firmware.yml
+        repo: Jason2866/Tasmota-build
+        name: tasmota*
+        name_is_regexp: true
+        path: ./temp  
+    - name: Move special firmware files back in place
+      run: |
+        mkdir -p ./special_firmware
+        find ./temp -type f -exec cp -t ./special_firmware {} +
+        rm -rf ./temp
+        ls -R ./special_firmware
+        mkdir -p ./firmware/unofficial/
+        mv ./special_firmware/tasmota* ./firmware/unofficial/
+        rm -rf ./special_firmware
+    - name: Build devel release Manifest files
+      run: |
+        mkdir manifest_release
+        #python genManifest.py
+        python genManifestRelease.py
+        #python genManifestWithFeatureas.py
+    - name: Build Tag and commit message
+      run: |
+        COMMIT_SHA=$(curl -s "https://api.github.com/repos/arendst/tasmota/commits/development" | jq -r '.sha')
+        COMMIT="Firmware built from commit https://github.com/arendst/Tasmota/commit/${COMMIT_SHA}"
+        tag_name_tmp="$(date -I).d.$COMMIT_SHA"
+        rm release-info.txt 2> /dev/null || echo > /dev/null
+        rm tag_latest.txt 2> /dev/null || echo > /dev/null
+        echo "$COMMIT" >> release-info.txt
+        echo "$tag_name_tmp" >> tag_latest.txt
+        echo "$tag_name_tmp" >> tag.txt
+        echo "tag_name=$tag_name_tmp" >> $GITHUB_ENV
+    - name: Release devel and special firmwares
+      uses: jason2866/action-gh-release@v1.3
+      with:
+        tag_name: ${{ env.tag_name }}
+        body_path: release-info.txt
+        prerelease: true
+        files: |
+          tag_latest.txt
+          tag.txt
+          manifests_release.json
+          manifest_release/development*
+          manifest_release/unofficial*
+          firmware/development/*
+          firmware/unofficial/*
+      env:
+        GITHUB_TOKEN: ${{ secrets.MASTER_ACCESS_TOKEN }}
+    - name: Remove not wanted files to be stored in repo
+      run: |
+        rm -rf release-info.txt
+        rm -rf manifests_release.json
+        rm -rf manifest_release
+    - name: Push updated devel + special firmware content in branch firmware
+      run: |
+        COMMIT_SHA=$(curl -s "https://api.github.com/repos/arendst/tasmota/commits/development" | jq -r '.sha')
+        COMMIT="Firmware built from commit https://github.com/arendst/Tasmota/commit/${COMMIT_SHA}"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config user.name "github-actions[bot]"
+        git add -A
+        git commit --allow-empty -m "$COMMIT"
+        git push origin firmware -f
+    - name: Download latest release firmwares from release section in github
+      run: |
+        gh release download -p "tasmota*" -D gh_latest -R github.com/arendst/tasmota
+    - name: Move release firmware files in sub-folders
+      run: |
+        mkdir -p ./firmware/release/
+        mkdir -p ./firmware/release/languages
+        [ ! -f ./gh_latest/tasmota.* ] || mv ./gh_latest/tasmota.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota-4M.* ] || mv ./gh_latest/tasmota-4M.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota-sensors.* ] || mv ./gh_latest/tasmota-sensors.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota-minimal.bin.gz ] || mv ./gh_latest/tasmota-minimal.bin.gz ./firmware/release/
+        [ ! -f ./gh_latest/tasmota-lite.* ] || mv ./gh_latest/tasmota-lite.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota-ir*.* ] || mv ./gh_latest/tasmota-ir*.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota-display.* ] || mv ./gh_latest/tasmota-display.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota-knx.* ] || mv ./gh_latest/tasmota-knx.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota-zbbridge.* ] || mv ./gh_latest/tasmota-zbbridge.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota-zigbee.* ] || mv ./gh_latest/tasmota-zigbee.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota32.* ] || mv ./gh_latest/tasmota32.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota32solo1*.* ] || mv ./gh_latest/tasmota32solo1*.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota32-ir*.* ] || mv ./gh_latest/tasmota32-ir*.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota32-display.* ] || mv ./gh_latest/tasmota32-display.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota32-lvgl.* ] || mv ./gh_latest/tasmota32-lvgl.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota32-web*.* ] || mv ./gh_latest/tasmota32-web*.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota32-zbbrdgpro.* ] || mv ./gh_latest/tasmota32-zbbrdgpro.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota32-matter.* ] || mv ./gh_latest/tasmota32-matter.* ./firmware/release
+        [ ! -f ./gh_latest/tasmota32-nspanel.* ] || mv ./gh_latest/tasmota32-nspanel.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota32-odroidgo.* ] || mv ./gh_latest/tasmota32-odroidgo.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota32-core2.* ] || mv ./gh_latest/tasmota32-core2.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota32-bluetooth.* ] || mv ./gh_latest/tasmota32-bluetooth.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota32c3*.* ] || mv ./gh_latest/tasmota32c3*.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota32s2*.* ] || mv ./gh_latest/tasmota32s2*.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota32s3*.* ] || mv ./gh_latest/tasmota32s3*.* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota32-safeboot* ] || mv ./gh_latest/tasmota32-safeboot* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota32-* ] || mv ./gh_latest/tasmota32-* ./firmware/release/languages/
+        [ ! -f ./gh_latest/tasmota32* ] || mv ./gh_latest/tasmota32* ./firmware/release/
+        [ ! -f ./gh_latest/tasmota-minimal.bin ] || rm -rf ./gh_latest/tasmota-minimal.bin
+        [ ! -f ./gh_latest/* ] || mv ./gh_latest/* ./firmware/release/languages/
+        rm -rf ./gh_latest
+    - name: Check for a new Tasmota release
+      run: |
+        tag_r_latest=$(<tag_r_latest.txt)
+        echo $tag_r_latest
+        Commit=$(curl -s "https://api.github.com/repos/arendst/tasmota/commits/master" | jq -r '.sha')
+        echo $Commit
+        sha_r_latest=${tag_r_latest:13}
+        echo $sha_r_latest
+        if [ "$Commit" = "$sha_r_latest" ]; then
+            echo "no_new_release=true" >> $GITHUB_ENV
+            echo "No new Tasmota release found!"
+        else
+            echo "no_new_release=false" >> $GITHUB_ENV
+            echo "Found a new Tasmota release!"
+        fi
+    - name: When a Tasmota release is done -> release firmware
+      if: env.no_new_release == 'false'
+      run: |
+        mkdir manifest_release
+        #python genManifest.py
+        python genManifestRelease.py
+        COMMIT_SHA=$(curl -s "https://api.github.com/repos/arendst/tasmota/commits/master" | jq -r '.sha')
+        COMMIT="Firmware built from commit https://github.com/arendst/Tasmota/commit/${COMMIT_SHA}"
+        tag_r_name_tmp="$(date -I).r.$COMMIT_SHA"
+        rm release-info.txt 2> /dev/null || echo > /dev/null
+        rm tag_r_latest.txt 2> /dev/null || echo > /dev/null
+        echo "$COMMIT" >> release-info.txt
+        echo "$tag_r_name_tmp" >> tag_r_latest.txt
+        echo "$tag_r_name_tmp" >> tag_r.txt
+        echo "tag_r_name=$tag_r_name_tmp" >> $GITHUB_ENV
+    - name: Release firmwares
+      if: env.no_new_release == 'false'
+      uses: jason2866/action-gh-release@v1.3
+      with:
+        tag_name: ${{ env.tag_r_name }}
+        body_path: release-info.txt
+        prerelease: false
+        files: |
+          tag_r_latest.txt
+          tag_r.txt
+          manifests_release.json
+          manifest_release/release*
+          firmware/release/*
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Remove not wanted files to be stored in repo
+      if: env.no_new_release == 'false'
+      run: |
+        rm -rf release-info.txt
+        rm -rf manifests_release.json
+        rm -rf manifest_release
+    - name: Build Manifest files with features
+      run: |
+        python genManifestWithFeatureas.py
+    - name: Push release firmwares and manifest in branch firmware
+      run: |
+        COMMIT_SHA=$(curl -s "https://api.github.com/repos/arendst/tasmota/commits/master" | jq -r '.sha')
+        COMMIT="Firmware built from commit https://github.com/arendst/Tasmota/commit/${COMMIT_SHA}"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config user.name "github-actions[bot]"
+        git add -A
+        git commit --allow-empty -m "$COMMIT"
+        git push origin firmware -f
+    - name: Push changed tag files in branch main
+      uses: Jason2866/copy_file_to_another_repo_action@multi_files
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        source_file: "tag.txt,tag_latest.txt,tag_r.txt,tag_r_latest.txt"
+        destination_repo: 'tasmota/install'
+        destination_branch: 'main'
+        commit_message: "tag updated"
+        user_email: '41898282+github-actions[bot]@users.noreply.github.com'
+        user_name: 'github-actions[bot]'
+
+  deploy:
+    needs: download
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: firmware
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
