@@ -1,5 +1,5 @@
 {
-  "name": "Tasmota TL",
+  "name": "Tasmota LT",
   "new_install_prompt_erase": true,
   "funding_url": "https://paypal.me/tasmota",
   "new_install_improv_wait_time": 10,
@@ -8,13 +8,13 @@
       "chipFamily": "ESP32",
       "improv": true,
       "parts": [
-        { "path": "../firmware/development/languages/tasmota32-TL.factory.bin", "offset": 0 }
+        { "path": "../firmware/development/languages/tasmota32-LT.factory.bin", "offset": 0 }
       ]
     },
     {
       "chipFamily": "ESP8266",
       "improv": true,
-      "parts": [{ "path": "../firmware/development/languages/tasmota-TL.bin", "offset": 0 }]
+      "parts": [{ "path": "../firmware/development/languages/tasmota-LT.bin", "offset": 0 }]
     }
   ]
 }
