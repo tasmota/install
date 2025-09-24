@@ -1,0 +1,2875 @@
+{
+    "release": [
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota.manifest.json",
+            "name": "Tasmota (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-display.manifest.json",
+            "name": "Tasmota Display",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-ir.manifest.json",
+            "name": "Tasmota IR",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-knx.manifest.json",
+            "name": "Tasmota KNX",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-lite.manifest.json",
+            "name": "Tasmota Lite",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-sensors.manifest.json",
+            "name": "Tasmota Sensors",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-zbbridge.manifest.json",
+            "name": "Tasmota Zbbridge",
+            "chipFamilies": [
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-zigbee.manifest.json",
+            "name": "Tasmota Zigbee",
+            "chipFamilies": [
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-4MB.manifest.json",
+            "name": "Tasmota for 4MB Flash (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-AD.manifest.json",
+            "name": "Tasmota AD",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-AF.manifest.json",
+            "name": "Tasmota AF",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-BG.manifest.json",
+            "name": "Tasmota BG",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-BR.manifest.json",
+            "name": "Tasmota BR",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-CN.manifest.json",
+            "name": "Tasmota CN",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-CZ.manifest.json",
+            "name": "Tasmota CZ",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-DE.manifest.json",
+            "name": "Tasmota DE",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-ES.manifest.json",
+            "name": "Tasmota ES",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-FR.manifest.json",
+            "name": "Tasmota FR",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-FY.manifest.json",
+            "name": "Tasmota FY",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-GR.manifest.json",
+            "name": "Tasmota GR",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-HE.manifest.json",
+            "name": "Tasmota HE",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-HU.manifest.json",
+            "name": "Tasmota HU",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-IT.manifest.json",
+            "name": "Tasmota IT",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-KO.manifest.json",
+            "name": "Tasmota KO",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-NL.manifest.json",
+            "name": "Tasmota NL",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-PL.manifest.json",
+            "name": "Tasmota PL",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-PT.manifest.json",
+            "name": "Tasmota PT",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-RO.manifest.json",
+            "name": "Tasmota RO",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-RU.manifest.json",
+            "name": "Tasmota RU",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-SE.manifest.json",
+            "name": "Tasmota SE",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-SK.manifest.json",
+            "name": "Tasmota SK",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-TR.manifest.json",
+            "name": "Tasmota TR",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-TW.manifest.json",
+            "name": "Tasmota TW",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-UK.manifest.json",
+            "name": "Tasmota UK",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota-VN.manifest.json",
+            "name": "Tasmota VN",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota32-bluetooth.manifest.json",
+            "name": "Tasmota32 Bluetooth (english)",
+            "chipFamilies": [
+                "ESP32"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota32-lvgl.manifest.json",
+            "name": "Tasmota32 LVGL (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota32solo1.manifest.json",
+            "name": "Tasmota32 Solo1 (english)",
+            "chipFamilies": [
+                "ESP32"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota32-zbbrdgpro.manifest.json",
+            "name": "Tasmota32 Sonoff-ZigbeeBridgePro",
+            "chipFamilies": [
+                "ESP32"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota32-webcam.manifest.json",
+            "name": "Tasmota32 WebCam (english)",
+            "chipFamilies": [
+                "ESP32"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/release.tasmota32-cdc.manifest.json",
+            "name": "Tasmota32-CDC",
+            "chipFamilies": [
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        }
+    ],
+    "development": [
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota.manifest.json",
+            "name": "Tasmota (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-display.manifest.json",
+            "name": "Tasmota Display",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-ir.manifest.json",
+            "name": "Tasmota IR",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-lite.manifest.json",
+            "name": "Tasmota Lite",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-sensors.manifest.json",
+            "name": "Tasmota Sensors",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-zbbridge.manifest.json",
+            "name": "Tasmota Zbbridge",
+            "chipFamilies": [
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-zigbee.manifest.json",
+            "name": "Tasmota Zigbee",
+            "chipFamilies": [
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-AD.manifest.json",
+            "name": "Tasmota AD",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-AF.manifest.json",
+            "name": "Tasmota AF",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-BG.manifest.json",
+            "name": "Tasmota BG",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-BR.manifest.json",
+            "name": "Tasmota BR",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-CN.manifest.json",
+            "name": "Tasmota CN",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-CZ.manifest.json",
+            "name": "Tasmota CZ",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-DE.manifest.json",
+            "name": "Tasmota DE",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-ES.manifest.json",
+            "name": "Tasmota ES",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-FR.manifest.json",
+            "name": "Tasmota FR",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-FY.manifest.json",
+            "name": "Tasmota FY",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-GR.manifest.json",
+            "name": "Tasmota GR",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-HE.manifest.json",
+            "name": "Tasmota HE",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-HU.manifest.json",
+            "name": "Tasmota HU",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-IT.manifest.json",
+            "name": "Tasmota IT",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-KO.manifest.json",
+            "name": "Tasmota KO",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-NL.manifest.json",
+            "name": "Tasmota NL",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-PL.manifest.json",
+            "name": "Tasmota PL",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-PT.manifest.json",
+            "name": "Tasmota PT",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-RO.manifest.json",
+            "name": "Tasmota RO",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-RU.manifest.json",
+            "name": "Tasmota RU",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-SE.manifest.json",
+            "name": "Tasmota SE",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-SK.manifest.json",
+            "name": "Tasmota SK",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-TR.manifest.json",
+            "name": "Tasmota TR",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-TW.manifest.json",
+            "name": "Tasmota TW",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-UK.manifest.json",
+            "name": "Tasmota UK",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-VN.manifest.json",
+            "name": "Tasmota VN",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota-4M.manifest.json",
+            "name": "Tasmota for 4MB Flash (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota32-bluetooth.manifest.json",
+            "name": "Tasmota32 Bluetooth (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP32-C3",
+                "ESP32-S3"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota32-lvgl.manifest.json",
+            "name": "Tasmota32 LVGL (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota32solo1.manifest.json",
+            "name": "Tasmota32 Solo1 (english)",
+            "chipFamilies": [
+                "ESP32"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota32-nspanel.manifest.json",
+            "name": "Tasmota32 Sonoff-NSPanel (english)",
+            "chipFamilies": [
+                "ESP32"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota32-zbbrdgpro.manifest.json",
+            "name": "Tasmota32 Sonoff-ZigbeeBridgePro",
+            "chipFamilies": [
+                "ESP32"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota32-webcam.manifest.json",
+            "name": "Tasmota32 WebCam (english)",
+            "chipFamilies": [
+                "ESP32"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/development.tasmota32-cdc.manifest.json",
+            "name": "Tasmota32-CDC",
+            "chipFamilies": [
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        }
+    ],
+    "unofficial": [
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-allsensors.manifest.json",
+            "name": "Tasmota All Sensors (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    7,
+                    8,
+                    9,
+                    10,
+                    12,
+                    14,
+                    15,
+                    20,
+                    24,
+                    28,
+                    29,
+                    34,
+                    43,
+                    47,
+                    50,
+                    60,
+                    62,
+                    63,
+                    66
+                ],
+                "Xlgt": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    8,
+                    9,
+                    10
+                ],
+                "Xnrg": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    14,
+                    18,
+                    30
+                ],
+                "Xsns": [
+                    1,
+                    2,
+                    3,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    24,
+                    26,
+                    27,
+                    29,
+                    30,
+                    31,
+                    32,
+                    38,
+                    40,
+                    41,
+                    42,
+                    44,
+                    45,
+                    46,
+                    50,
+                    51,
+                    54,
+                    55,
+                    56,
+                    57,
+                    58,
+                    59,
+                    63,
+                    64,
+                    65,
+                    66,
+                    67,
+                    70,
+                    71,
+                    72,
+                    73,
+                    74,
+                    75,
+                    76,
+                    78,
+                    79,
+                    81,
+                    82,
+                    85,
+                    86,
+                    88,
+                    89,
+                    90,
+                    91,
+                    92,
+                    93
+                ]
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-battery.manifest.json",
+            "name": "Tasmota Battery (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [
+                    1,
+                    2,
+                    4,
+                    7,
+                    10,
+                    12,
+                    16,
+                    29,
+                    62
+                ],
+                "Xlgt": [
+                    8,
+                    9,
+                    10
+                ],
+                "Xnrg": [],
+                "Xsns": [
+                    2
+                ]
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-fullrules.manifest.json",
+            "name": "Tasmota Fullrules (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    12,
+                    16,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    24,
+                    26,
+                    27,
+                    29,
+                    30,
+                    35,
+                    37,
+                    60,
+                    62
+                ],
+                "Xlgt": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    8,
+                    9,
+                    10
+                ],
+                "Xnrg": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    30,
+                    32
+                ],
+                "Xsns": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ]
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-gps.manifest.json",
+            "name": "Tasmota GPS (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [
+                    1,
+                    2,
+                    4,
+                    8,
+                    9,
+                    10,
+                    12,
+                    62
+                ],
+                "Xlgt": [
+                    8,
+                    9,
+                    10
+                ],
+                "Xnrg": [],
+                "Xsns": [
+                    60
+                ]
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-mega.manifest.json",
+            "name": "Tasmota Mega (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    7,
+                    8,
+                    9,
+                    10,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    19,
+                    20,
+                    24,
+                    25,
+                    27,
+                    28,
+                    29,
+                    31,
+                    32,
+                    34,
+                    35,
+                    36,
+                    50,
+                    60,
+                    62,
+                    66
+                ],
+                "Xlgt": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    8,
+                    9,
+                    10
+                ],
+                "Xnrg": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    16,
+                    17,
+                    18,
+                    30,
+                    32
+                ],
+                "Xsns": [
+                    1,
+                    2,
+                    3,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    24,
+                    26,
+                    27,
+                    29,
+                    30,
+                    31,
+                    32,
+                    34,
+                    35,
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43,
+                    44,
+                    45,
+                    46,
+                    50,
+                    51,
+                    54,
+                    56,
+                    57,
+                    58,
+                    59,
+                    62,
+                    63,
+                    64,
+                    65,
+                    66,
+                    91
+                ]
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-platinum.manifest.json",
+            "name": "Tasmota Platinum (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    22,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39,
+                    50,
+                    60,
+                    62,
+                    66
+                ],
+                "Xlgt": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    8,
+                    9,
+                    10
+                ],
+                "Xnrg": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    16,
+                    17,
+                    18,
+                    30,
+                    32
+                ],
+                "Xsns": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    24,
+                    26,
+                    27,
+                    29,
+                    30,
+                    31,
+                    32,
+                    34,
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43,
+                    44,
+                    45,
+                    46,
+                    50,
+                    51,
+                    52,
+                    54,
+                    55,
+                    56,
+                    57,
+                    59,
+                    62,
+                    64,
+                    65,
+                    66,
+                    91
+                ]
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-rangeextender.manifest.json",
+            "name": "Tasmota Rangeextender (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    12,
+                    16,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    24,
+                    26,
+                    27,
+                    29,
+                    30,
+                    35,
+                    37,
+                    45,
+                    58,
+                    62,
+                    68
+                ],
+                "Xlgt": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    8,
+                    9,
+                    10
+                ],
+                "Xnrg": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    14,
+                    30,
+                    31,
+                    32
+                ],
+                "Xsns": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ]
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-scripting.manifest.json",
+            "name": "Tasmota Scripting (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [
+                    1,
+                    2,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    12,
+                    16,
+                    24,
+                    27,
+                    29,
+                    35,
+                    37,
+                    50,
+                    62
+                ],
+                "Xlgt": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    6,
+                    8,
+                    9,
+                    10
+                ],
+                "Xnrg": [],
+                "Xsns": [
+                    1,
+                    2,
+                    5,
+                    9,
+                    53
+                ]
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-tls.manifest.json",
+            "name": "Tasmota TLS (english)",
+            "chipFamilies": [
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    12,
+                    16,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    24,
+                    26,
+                    27,
+                    29,
+                    30,
+                    35,
+                    37,
+                    45,
+                    62,
+                    68
+                ],
+                "Xlgt": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    8,
+                    9,
+                    10
+                ],
+                "Xnrg": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    14,
+                    30,
+                    31,
+                    32
+                ],
+                "Xsns": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ]
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-teleinfo.manifest.json",
+            "name": "Tasmota Teleinfo (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    7,
+                    8,
+                    9,
+                    10,
+                    12,
+                    13,
+                    16,
+                    20,
+                    21,
+                    24,
+                    27,
+                    29,
+                    62
+                ],
+                "Xlgt": [
+                    1,
+                    8,
+                    9,
+                    10
+                ],
+                "Xnrg": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    15,
+                    30,
+                    32
+                ],
+                "Xsns": [
+                    1,
+                    3,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    20,
+                    29,
+                    54,
+                    55,
+                    57,
+                    58,
+                    59,
+                    63
+                ]
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-thermostat.manifest.json",
+            "name": "Tasmota Thermostat (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    7,
+                    8,
+                    9,
+                    10,
+                    12,
+                    16,
+                    20,
+                    21,
+                    24,
+                    27,
+                    29,
+                    39,
+                    60,
+                    62
+                ],
+                "Xlgt": [
+                    8,
+                    9,
+                    10
+                ],
+                "Xnrg": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    14,
+                    30,
+                    32
+                ],
+                "Xsns": [
+                    1,
+                    3,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    14,
+                    15,
+                    17,
+                    18,
+                    20,
+                    55,
+                    58,
+                    59,
+                    63
+                ]
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-titanium.manifest.json",
+            "name": "Tasmota Titanium (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39,
+                    50,
+                    60,
+                    62,
+                    66
+                ],
+                "Xlgt": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    8,
+                    9,
+                    10
+                ],
+                "Xnrg": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    16,
+                    17,
+                    18,
+                    30,
+                    32
+                ],
+                "Xsns": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    24,
+                    26,
+                    27,
+                    29,
+                    30,
+                    31,
+                    32,
+                    34,
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43,
+                    44,
+                    45,
+                    46,
+                    50,
+                    51,
+                    52,
+                    53,
+                    54,
+                    55,
+                    56,
+                    57,
+                    59,
+                    62,
+                    64,
+                    65,
+                    66,
+                    91
+                ]
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-zigbeebridge.manifest.json",
+            "name": "Tasmota Zbbridge (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota-zigbee.manifest.json",
+            "name": "Tasmota Zigbee (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3",
+                "ESP8266"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota32-bluetooth.manifest.json",
+            "name": "Tasmota32 Bluetooth (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP32-C3",
+                "ESP32-S3"
+            ],
+            "features": {
+                "Xdrv": [],
+                "Xlgt": [],
+                "Xnrg": [],
+                "Xsns": []
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota32-matter.manifest.json",
+            "name": "Tasmota32 MATTER (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP32-C3",
+                "ESP32-S2",
+                "ESP32-S3"
+            ],
+            "features": {
+                "Xdrv": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    14,
+                    16,
+                    17,
+                    20,
+                    21,
+                    24,
+                    26,
+                    27,
+                    29,
+                    34,
+                    35,
+                    38,
+                    50,
+                    52,
+                    59,
+                    60,
+                    62,
+                    63,
+                    66,
+                    67,
+                    68,
+                    82,
+                    86,
+                    87,
+                    88
+                ],
+                "Xlgt": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    6,
+                    8,
+                    9,
+                    10
+                ],
+                "Xnrg": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    14,
+                    17,
+                    18,
+                    19,
+                    21,
+                    23,
+                    29,
+                    30,
+                    32
+                ],
+                "Xsns": [
+                    1,
+                    2,
+                    3,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    26,
+                    31,
+                    34,
+                    37,
+                    39,
+                    40,
+                    42,
+                    43,
+                    45,
+                    51,
+                    52,
+                    55,
+                    56,
+                    58,
+                    59,
+                    64,
+                    66,
+                    67,
+                    74,
+                    85,
+                    92,
+                    95,
+                    98
+                ]
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota32-mi32-homebridge.manifest.json",
+            "name": "Tasmota32 MI Homebridge (english)",
+            "chipFamilies": [
+                "ESP32",
+                "ESP32-C3",
+                "ESP32-S3"
+            ],
+            "features": {
+                "Xdrv": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    7,
+                    8,
+                    9,
+                    10,
+                    12,
+                    16,
+                    20,
+                    21,
+                    24,
+                    26,
+                    27,
+                    29,
+                    35,
+                    38,
+                    50,
+                    52,
+                    59,
+                    62,
+                    68
+                ],
+                "Xlgt": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    6,
+                    8,
+                    9,
+                    10
+                ],
+                "Xnrg": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    14,
+                    19,
+                    30,
+                    32
+                ],
+                "Xsns": [
+                    1,
+                    2,
+                    3,
+                    5,
+                    6,
+                    12,
+                    62
+                ]
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota32c3_2M.manifest.json",
+            "name": "Tasmota32-C3 2M (english)",
+            "chipFamilies": [
+                "ESP32-C3"
+            ],
+            "features": {
+                "Xdrv": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    14,
+                    16,
+                    17,
+                    20,
+                    21,
+                    24,
+                    26,
+                    27,
+                    29,
+                    34,
+                    35,
+                    38,
+                    50,
+                    52,
+                    59,
+                    60,
+                    62,
+                    63,
+                    66,
+                    67,
+                    68,
+                    86,
+                    87,
+                    88
+                ],
+                "Xlgt": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    6,
+                    8,
+                    9,
+                    10
+                ],
+                "Xnrg": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    14,
+                    17,
+                    18,
+                    19,
+                    21,
+                    23,
+                    29,
+                    30,
+                    32
+                ],
+                "Xsns": [
+                    1,
+                    2,
+                    3,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    26,
+                    31,
+                    34,
+                    37,
+                    39,
+                    40,
+                    42,
+                    43,
+                    45,
+                    51,
+                    52,
+                    55,
+                    56,
+                    58,
+                    59,
+                    64,
+                    66,
+                    67,
+                    74,
+                    85,
+                    92,
+                    95,
+                    98
+                ]
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota32solo1-bluetooth.manifest.json",
+            "name": "Tasmota32 Solo1 Bluetooth (english)",
+            "chipFamilies": [
+                "ESP32"
+            ],
+            "features": {
+                "Xdrv": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    14,
+                    16,
+                    17,
+                    20,
+                    21,
+                    24,
+                    26,
+                    27,
+                    29,
+                    34,
+                    35,
+                    38,
+                    50,
+                    52,
+                    59,
+                    60,
+                    62,
+                    63,
+                    66,
+                    67,
+                    68,
+                    79,
+                    82,
+                    85,
+                    86,
+                    87,
+                    88
+                ],
+                "Xlgt": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    6,
+                    8,
+                    9,
+                    10
+                ],
+                "Xnrg": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    14,
+                    17,
+                    18,
+                    19,
+                    21,
+                    23,
+                    29,
+                    30,
+                    32
+                ],
+                "Xsns": [
+                    1,
+                    2,
+                    3,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    26,
+                    31,
+                    34,
+                    37,
+                    39,
+                    40,
+                    42,
+                    43,
+                    45,
+                    51,
+                    52,
+                    55,
+                    56,
+                    58,
+                    59,
+                    62,
+                    64,
+                    66,
+                    67,
+                    74,
+                    85,
+                    92,
+                    95,
+                    98
+                ]
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota32solo1-thermostat.manifest.json",
+            "name": "Tasmota32 Solo1 Thermostat (english)",
+            "chipFamilies": [
+                "ESP32"
+            ],
+            "features": {
+                "Xdrv": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    14,
+                    16,
+                    17,
+                    20,
+                    21,
+                    24,
+                    27,
+                    29,
+                    34,
+                    38,
+                    39,
+                    50,
+                    52,
+                    59,
+                    60,
+                    62,
+                    63,
+                    66,
+                    67,
+                    79,
+                    82,
+                    85,
+                    86,
+                    87,
+                    88
+                ],
+                "Xlgt": [
+                    1,
+                    8,
+                    9,
+                    10
+                ],
+                "Xnrg": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    14,
+                    17,
+                    18,
+                    19,
+                    21,
+                    23,
+                    29,
+                    30,
+                    32
+                ],
+                "Xsns": [
+                    1,
+                    2,
+                    3,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    26,
+                    31,
+                    34,
+                    37,
+                    39,
+                    40,
+                    42,
+                    43,
+                    45,
+                    51,
+                    52,
+                    55,
+                    56,
+                    58,
+                    59,
+                    62,
+                    63,
+                    64,
+                    66,
+                    67,
+                    74,
+                    85,
+                    92,
+                    95,
+                    98
+                ]
+            }
+        },
+        {
+            "path": "https://tasmota.github.io/install/manifest_ext/unofficial.tasmota32s3cdc-qio_opi.manifest.json",
+            "name": "Tasmota32-S3 (QIO Flash/OPI PSRAM)",
+            "chipFamilies": [
+                "ESP32-S3"
+            ],
+            "features": {
+                "Xdrv": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    8,
+                    9,
+                    10,
+                    12,
+                    13,
+                    16,
+                    20,
+                    24,
+                    26,
+                    27,
+                    29,
+                    38,
+                    50,
+                    52,
+                    54,
+                    55,
+                    56,
+                    62,
+                    67,
+                    68,
+                    81,
+                    88
+                ],
+                "Xlgt": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    6,
+                    8,
+                    9,
+                    10
+                ],
+                "Xnrg": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    14,
+                    19,
+                    30,
+                    32
+                ],
+                "Xsns": [
+                    1,
+                    2,
+                    3,
+                    5,
+                    6,
+                    8,
+                    9,
+                    12,
+                    85
+                ]
+            }
+        }
+    ]
+}
