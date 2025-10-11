@@ -26,10 +26,24 @@
       ]
     },
     {
+      "chipFamily": "ESP32-C5",
+      "improv": true,
+      "parts": [
+        { "path": "../firmware/release/tasmota32c5.factory.bin", "offset": 0 }
+      ]
+    },
+    {
       "chipFamily": "ESP32-C6",
       "improv": true,
       "parts": [
         { "path": "../firmware/release/tasmota32c6.factory.bin", "offset": 0 }
+      ]
+    },
+    {
+      "chipFamily": "ESP32-P4",
+      "improv": true,
+      "parts": [
+        { "path": "../firmware/release/tasmota32p4.factory.bin", "offset": 0 }
       ]
     },
     {
