@@ -40,7 +40,7 @@
     </style>
     <script
       type="module"
-      src="https://unpkg.com/tasmota-esp-web-tools@8.1.15/dist/web/install-button.js?module"
+      src="https://unpkg.com/tasmota-esp-web-tools@8.3.0/dist/web/install-button.js?module"
     ></script>
     <!-- <script type="module">import * as Module from "./js/tasmota_gh_helper.js"</script> -->
     <script>
@@ -274,7 +274,7 @@
         }
 
         function getLatestTag(){
-             fetch('https://raw.githubusercontent.com/tasmota/install/firmware/tag_latest.txt')
+            fetch('https://raw.githubusercontent.com/tasmota/install/firmware/tag_latest.txt')
             .then(x => x.text())
             .then(t =>testCORS(t));
         }
@@ -419,6 +419,24 @@
             window.dropArea = document.getElementById("drop-area");
             prepareDropZone();
             getLatestTag();
+            
+            // Baud rate selection
+            const baudRateSelect = document.getElementById('baudRate');
+            const installButton = document.querySelector('esp-web-install-button');
+
+            if (baudRateSelect && installButton) {
+              baudRateSelect.addEventListener('change', function() {
+                const selectedRate = this.value;
+                
+                // Update install button
+                if (selectedRate === '') {
+                  installButton.removeAttribute('baud-rate');
+                } else {
+                  installButton.setAttribute('baud-rate', selectedRate);
+                }
+              });
+            }
+            
             try{
                 const button = document.querySelector("esp-web-install-button");
                 button.overrides = {
@@ -476,7 +494,16 @@
         <label for="check3">All</label></p>
       </div>
       </br>
-      <esp-web-install-button id="inst" style='text-align:center'>
+      <p>Flash Speed:</p>
+      <select id="baudRate">
+        <option value="">115200 Baud (Default)</option>
+        <option value="230400">230400 Baud</option>
+        <option value="460800">460800 Baud</option>
+        <option value="921600">921600 Baud</option>
+        <option value="1500000">1500000 Baud</option>
+        <option value="2000000" selected>2000000 Baud (Recommended)</option>
+      </select>
+      <esp-web-install-button id="inst" style='text-align:center' baud-rate="2000000">
         <i slot="unsupported">
           Your browser does not support Web Serial.</br>Open this page in Google Chrome or</br>Microsoft Edge instead
           <span class="not-supported-i hidden">(but not on your iOS device)</span>.
