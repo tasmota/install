@@ -16,7 +16,7 @@ jobs:
   empty_branch:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
       with:
         ref: firmware
     - name: Create new empty firmware branch
@@ -38,7 +38,7 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
       with:
         ref: firmware
     - name: Merge branch main into branch firmware
@@ -54,7 +54,7 @@ jobs:
       with:
         github_token: ${{secrets.GITHUB_TOKEN}}
         branch: 'firmware'
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
       with:
         ref: firmware
     - name: Download development firmware artifacts
@@ -140,7 +140,7 @@ jobs:
         echo "$tag_name_tmp" >> tag.txt
         echo "tag_name=$tag_name_tmp" >> $GITHUB_ENV
     - name: Release devel and special firmwares
-      uses: jason2866/action-gh-release@v1.3
+      uses: softprops/action-gh-release@v2
       with:
         tag_name: ${{ env.tag_name }}
         body_path: release-info.txt
@@ -239,7 +239,7 @@ jobs:
         echo "tag_r_name=$tag_r_name_tmp" >> $GITHUB_ENV
     - name: Release firmwares
       if: env.no_new_release == 'false'
-      uses: jason2866/action-gh-release@v1.3
+      uses: softprops/action-gh-release@v2
       with:
         tag_name: ${{ env.tag_r_name }}
         body_path: release-info.txt
@@ -294,11 +294,11 @@ jobs:
       id-token: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: firmware
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
