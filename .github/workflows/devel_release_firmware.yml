@@ -140,7 +140,7 @@ jobs:
         echo "$tag_name_tmp" >> tag.txt
         echo "tag_name=$tag_name_tmp" >> $GITHUB_ENV
     - name: Release devel and special firmwares
-      uses: softprops/action-gh-release@v2
+      uses: softprops/action-gh-release@v2.5.0
       with:
         tag_name: ${{ env.tag_name }}
         body_path: release-info.txt
@@ -239,7 +239,7 @@ jobs:
         echo "tag_r_name=$tag_r_name_tmp" >> $GITHUB_ENV
     - name: Release firmwares
       if: env.no_new_release == 'false'
-      uses: softprops/action-gh-release@v2
+      uses: softprops/action-gh-release@v2.5.0
       with:
         tag_name: ${{ env.tag_r_name }}
         body_path: release-info.txt
