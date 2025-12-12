@@ -148,7 +148,6 @@ jobs:
         on_retry_command: |
           echo "Release upload failed, waiting before retry..."
           echo "Next attempt will skip already uploaded files..."
-          sleep 60
         command: |
           # Create release if it doesn't exist
           if ! gh release view "${{ env.tag_name }}" > /dev/null 2>&1; then
@@ -288,7 +287,6 @@ jobs:
         on_retry_command: |
           echo "Release upload failed, waiting before retry..."
           echo "Next attempt will skip already uploaded files..."
-          sleep 60
         command: |
           # Create release if it doesn't exist
           if ! gh release view "${{ env.tag_r_name }}" > /dev/null 2>&1; then
