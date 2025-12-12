@@ -16,7 +16,7 @@ jobs:
   empty_branch:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v4
       with:
         ref: firmware
     - name: Create new empty firmware branch
@@ -38,10 +38,9 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v4
       with:
         ref: firmware
-        fetch-depth: 0
     - name: Merge branch main into branch firmware
       run: |
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -55,10 +54,9 @@ jobs:
       with:
         github_token: ${{secrets.GITHUB_TOKEN}}
         branch: 'firmware'
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v4
       with:
         ref: firmware
-        fetch-depth: 0
     - name: Download development firmware artifacts
       uses: dawidd6/action-download-artifact@v3
       with:
@@ -383,7 +381,7 @@ jobs:
       id-token: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           ref: firmware
       - name: Setup Pages
