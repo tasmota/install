@@ -139,7 +139,6 @@ jobs:
         echo "$tag_name_tmp" >> tag_latest.txt
         echo "$tag_name_tmp" >> tag.txt
         echo "tag_name=$tag_name_tmp" >> $GITHUB_ENV
-        sleep 3
     - name: Release devel and special firmwares with retry
       uses: nick-fields/retry@v3
       with:
