@@ -130,7 +130,6 @@ jobs:
         #python genManifestWithFeatureas.py
     - name: Build Tag and commit message
       run: |
-        sleep 5
         COMMIT_SHA=$(curl -s "https://api.github.com/repos/arendst/tasmota/commits/development" | jq -r '.sha')
         COMMIT="Firmware built from commit https://github.com/arendst/Tasmota/commit/${COMMIT_SHA}"
         tag_name_tmp="$(date -I).d.$COMMIT_SHA"
@@ -149,33 +148,53 @@ jobs:
         retry_wait_seconds: 180
         on_retry_command: |
           echo "Release upload failed, waiting before retry..."
-          echo "Keeping already uploaded files and only uploading missing ones..."
+          echo "Next attempt will skip already uploaded files..."
           sleep 60
         command: |
           # Create release if it doesn't exist
-          gh release view "${{ env.tag_name }}" > /dev/null 2>&1 || \
+          if ! gh release view "${{ env.tag_name }}" > /dev/null 2>&1; then
             gh release create "${{ env.tag_name }}" \
               --title "${{ env.tag_name }}" \
               --notes-file release-info.txt \
               --prerelease
+          fi
           
-          # Upload files (gh release upload skips already uploaded files)
-          gh release upload "${{ env.tag_name }}" --clobber \
-            tag_latest.txt \
-            tag.txt \
-            manifests_release.json
+          # Function to upload file only if it doesn't exist in release
+          upload_if_missing() {
+            local file="$1"
+            local filename=$(basename "$file")
+            if ! gh release view "${{ env.tag_name }}" --json assets -q ".assets[].name" | grep -qx "$filename"; then
+              echo "Uploading $filename..."
+              gh release upload "${{ env.tag_name }}" "$file"
+            else
+              echo "Skipping $filename (already exists)"
+            fi
+          }
+          
+          # Upload manifest and tag files
+          upload_if_missing "tag_latest.txt"
+          upload_if_missing "tag.txt"
+          upload_if_missing "manifests_release.json"
           
           # Upload manifest files
-          find manifest_release -type f \( -name "development*" -o -name "unofficial*" \) -exec gh release upload "${{ env.tag_name }}" --clobber {} +
+          find manifest_release -type f \( -name "development*" -o -name "unofficial*" \) | while read file; do
+            upload_if_missing "$file"
+          done
           
-          # Upload development firmware files (only files, not directories)
-          find firmware/development -maxdepth 1 -type f -exec gh release upload "${{ env.tag_name }}" --clobber {} +
+          # Upload development firmware files
+          find firmware/development -maxdepth 1 -type f | while read file; do
+            upload_if_missing "$file"
+          done
           
           # Upload development language files
-          find firmware/development/languages -type f -exec gh release upload "${{ env.tag_name }}" --clobber {} +
+          find firmware/development/languages -type f | while read file; do
+            upload_if_missing "$file"
+          done
           
           # Upload unofficial firmware files
-          find firmware/unofficial -type f -exec gh release upload "${{ env.tag_name }}" --clobber {} +
+          find firmware/unofficial -type f | while read file; do
+            upload_if_missing "$file"
+          done
       env:
         GH_TOKEN: ${{ secrets.MASTER_ACCESS_TOKEN }}
     - name: Remove not wanted files to be stored in repo
@@ -194,7 +213,6 @@ jobs:
         git push origin firmware -f
     - name: Download latest release firmwares from release section in github
       run: |
-        sleep 5
         gh release download -p "tasmota*" -D gh_latest -R github.com/arendst/tasmota
     - name: Move release firmware files in sub-folders
       run: |
@@ -233,7 +251,6 @@ jobs:
         rm -rf ./gh_latest
     - name: Check for a new Tasmota release
       run: |
-        sleep 5
         tag_r_latest=$(<tag_r_latest.txt)
         echo $tag_r_latest
         Commit=$(curl -s "https://api.github.com/repos/arendst/tasmota/commits/master" | jq -r '.sha')
@@ -247,7 +264,6 @@ jobs:
             echo "no_new_release=false" >> $GITHUB_ENV
             echo "Found a new Tasmota release!"
         fi
-        sleep 3
     - name: When a Tasmota release is done -> release firmware
       if: env.no_new_release == 'false'
       run: |
@@ -272,30 +288,48 @@ jobs:
         retry_wait_seconds: 180
         on_retry_command: |
           echo "Release upload failed, waiting before retry..."
-          echo "Keeping already uploaded files and only uploading missing ones..."
+          echo "Next attempt will skip already uploaded files..."
           sleep 60
         command: |
           # Create release if it doesn't exist
-          gh release view "${{ env.tag_r_name }}" > /dev/null 2>&1 || \
+          if ! gh release view "${{ env.tag_r_name }}" > /dev/null 2>&1; then
             gh release create "${{ env.tag_r_name }}" \
               --title "${{ env.tag_r_name }}" \
               --notes-file release-info.txt \
               --latest
+          fi
           
-          # Upload files (gh release upload skips already uploaded files)
-          gh release upload "${{ env.tag_r_name }}" --clobber \
-            tag_r_latest.txt \
-            tag_r.txt \
-            manifests_release.json
+          # Function to upload file only if it doesn't exist in release
+          upload_if_missing() {
+            local file="$1"
+            local filename=$(basename "$file")
+            if ! gh release view "${{ env.tag_r_name }}" --json assets -q ".assets[].name" | grep -qx "$filename"; then
+              echo "Uploading $filename..."
+              gh release upload "${{ env.tag_r_name }}" "$file"
+            else
+              echo "Skipping $filename (already exists)"
+            fi
+          }
+          
+          # Upload manifest and tag files
+          upload_if_missing "tag_r_latest.txt"
+          upload_if_missing "tag_r.txt"
+          upload_if_missing "manifests_release.json"
           
           # Upload manifest files
-          find manifest_release -type f -name "release*" -exec gh release upload "${{ env.tag_r_name }}" --clobber {} +
+          find manifest_release -type f -name "release*" | while read file; do
+            upload_if_missing "$file"
+          done
           
-          # Upload release firmware files (only files, not directories)
-          find firmware/release -maxdepth 1 -type f -exec gh release upload "${{ env.tag_r_name }}" --clobber {} +
+          # Upload release firmware files
+          find firmware/release -maxdepth 1 -type f | while read file; do
+            upload_if_missing "$file"
+          done
           
           # Upload release language files
-          find firmware/release/languages -type f -exec gh release upload "${{ env.tag_r_name }}" --clobber {} +
+          find firmware/release/languages -type f | while read file; do
+            upload_if_missing "$file"
+          done
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Remove not wanted files to be stored in repo
