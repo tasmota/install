@@ -148,20 +148,33 @@ jobs:
         max_attempts: 3
         retry_wait_seconds: 180
         on_retry_command: |
-          echo "Release upload failed, waiting before retry..."
+          echo "Release upload failed, cleaning up before retry..."
+          gh release delete "${{ env.tag_name }}" --yes --cleanup-tag || true
           sleep 60
         command: |
+          # Create release first
           gh release create "${{ env.tag_name }}" \
             --title "${{ env.tag_name }}" \
             --notes-file release-info.txt \
-            --prerelease \
+            --prerelease
+          
+          # Upload manifest and tag files
+          gh release upload "${{ env.tag_name }}" \
             tag_latest.txt \
             tag.txt \
-            manifests_release.json \
-            manifest_release/development* \
-            manifest_release/unofficial* \
-            firmware/development/* \
-            firmware/unofficial/*
+            manifests_release.json
+          
+          # Upload manifest files
+          find manifest_release -type f \( -name "development*" -o -name "unofficial*" \) -exec gh release upload "${{ env.tag_name }}" {} +
+          
+          # Upload development firmware files (only files, not directories)
+          find firmware/development -maxdepth 1 -type f -exec gh release upload "${{ env.tag_name }}" {} +
+          
+          # Upload development language files
+          find firmware/development/languages -type f -exec gh release upload "${{ env.tag_name }}" {} +
+          
+          # Upload unofficial firmware files
+          find firmware/unofficial -type f -exec gh release upload "${{ env.tag_name }}" {} +
       env:
         GH_TOKEN: ${{ secrets.MASTER_ACCESS_TOKEN }}
     - name: Remove not wanted files to be stored in repo
@@ -261,15 +274,26 @@ jobs:
           gh release delete "${{ env.tag_r_name }}" --yes --cleanup-tag || true
           sleep 60
         command: |
+          # Create release first
           gh release create "${{ env.tag_r_name }}" \
             --title "${{ env.tag_r_name }}" \
             --notes-file release-info.txt \
-            --latest \
+            --latest
+          
+          # Upload manifest and tag files
+          gh release upload "${{ env.tag_r_name }}" \
             tag_r_latest.txt \
             tag_r.txt \
-            manifests_release.json \
-            manifest_release/release* \
-            firmware/release/*
+            manifests_release.json
+          
+          # Upload manifest files
+          find manifest_release -type f -name "release*" -exec gh release upload "${{ env.tag_r_name }}" {} +
+          
+          # Upload release firmware files (only files, not directories)
+          find firmware/release -maxdepth 1 -type f -exec gh release upload "${{ env.tag_r_name }}" {} +
+          
+          # Upload release language files
+          find firmware/release/languages -type f -exec gh release upload "${{ env.tag_r_name }}" {} +
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Remove not wanted files to be stored in repo
