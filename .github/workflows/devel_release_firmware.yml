@@ -130,7 +130,7 @@ jobs:
         #python genManifestWithFeatureas.py
     - name: Build Tag and commit message
       run: |
-        COMMIT_SHA=$(curl -s "https://api.github.com/repos/arendst/tasmota/commits/development" | jq -r '.sha')
+        COMMIT_SHA=$(gh api repos/arendst/tasmota/commits/development --jq '.sha')
         COMMIT="Firmware built from commit https://github.com/arendst/Tasmota/commit/${COMMIT_SHA}"
         tag_name_tmp="$(date -I).d.$COMMIT_SHA"
         rm release-info.txt 2> /dev/null || echo > /dev/null
@@ -139,6 +139,8 @@ jobs:
         echo "$tag_name_tmp" >> tag_latest.txt
         echo "$tag_name_tmp" >> tag.txt
         echo "tag_name=$tag_name_tmp" >> $GITHUB_ENV
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Release devel and special firmwares with retry
       uses: nick-fields/retry@v3
       with:
@@ -202,13 +204,15 @@ jobs:
         rm -rf manifest_release
     - name: Push updated devel + special firmware content in branch firmware
       run: |
-        COMMIT_SHA=$(curl -s "https://api.github.com/repos/arendst/tasmota/commits/development" | jq -r '.sha')
+        COMMIT_SHA=$(gh api repos/arendst/tasmota/commits/development --jq '.sha')
         COMMIT="Firmware built from commit https://github.com/arendst/Tasmota/commit/${COMMIT_SHA}"
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config user.name "github-actions[bot]"
         git add -A
         git commit --allow-empty -m "$COMMIT"
         git push origin firmware -f
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Download latest release firmwares from release section in github
       run: |
         gh release download -p "tasmota*" -D gh_latest -R github.com/arendst/tasmota
@@ -251,7 +255,7 @@ jobs:
       run: |
         tag_r_latest=$(<tag_r_latest.txt)
         echo $tag_r_latest
-        Commit=$(curl -s "https://api.github.com/repos/arendst/tasmota/commits/master" | jq -r '.sha')
+        Commit=$(gh api repos/arendst/tasmota/commits/master --jq '.sha')
         echo $Commit
         sha_r_latest=${tag_r_latest:13}
         echo $sha_r_latest
@@ -262,13 +266,15 @@ jobs:
             echo "no_new_release=false" >> $GITHUB_ENV
             echo "Found a new Tasmota release!"
         fi
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: When a Tasmota release is done -> release firmware
       if: env.no_new_release == 'false'
       run: |
         mkdir manifest_release
         #python genManifest.py
         python genManifestRelease.py
-        COMMIT_SHA=$(curl -s "https://api.github.com/repos/arendst/tasmota/commits/master" | jq -r '.sha')
+        COMMIT_SHA=$(gh api repos/arendst/tasmota/commits/master --jq '.sha')
         COMMIT="Firmware built from commit https://github.com/arendst/Tasmota/commit/${COMMIT_SHA}"
         tag_r_name_tmp="$(date -I).r.$COMMIT_SHA"
         rm release-info.txt 2> /dev/null || echo > /dev/null
@@ -277,6 +283,8 @@ jobs:
         echo "$tag_r_name_tmp" >> tag_r_latest.txt
         echo "$tag_r_name_tmp" >> tag_r.txt
         echo "tag_r_name=$tag_r_name_tmp" >> $GITHUB_ENV
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Release firmwares with retry
       if: env.no_new_release == 'false'
       uses: nick-fields/retry@v3
@@ -340,13 +348,15 @@ jobs:
         python genManifestWithFeatureas.py
     - name: Push release firmwares and manifest in branch firmware
       run: |
-        COMMIT_SHA=$(curl -s "https://api.github.com/repos/arendst/tasmota/commits/master" | jq -r '.sha')
+        COMMIT_SHA=$(gh api repos/arendst/tasmota/commits/master --jq '.sha')
         COMMIT="Firmware built from commit https://github.com/arendst/Tasmota/commit/${COMMIT_SHA}"
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config user.name "github-actions[bot]"
         git add -A
         git commit --allow-empty -m "$COMMIT"
         git push origin firmware -f
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Push changed tag files in branch main
       uses: Jason2866/copy_file_to_another_repo_action@multi_files
       env:
