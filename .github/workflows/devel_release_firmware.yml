@@ -130,6 +130,7 @@ jobs:
         #python genManifestWithFeatureas.py
     - name: Build Tag and commit message
       run: |
+        sleep 5
         COMMIT_SHA=$(curl -s "https://api.github.com/repos/arendst/tasmota/commits/development" | jq -r '.sha')
         COMMIT="Firmware built from commit https://github.com/arendst/Tasmota/commit/${COMMIT_SHA}"
         tag_name_tmp="$(date -I).d.$COMMIT_SHA"
@@ -139,22 +140,30 @@ jobs:
         echo "$tag_name_tmp" >> tag_latest.txt
         echo "$tag_name_tmp" >> tag.txt
         echo "tag_name=$tag_name_tmp" >> $GITHUB_ENV
-    - name: Release devel and special firmwares
-      uses: softprops/action-gh-release@v2.5.0
+        sleep 3
+    - name: Release devel and special firmwares with retry
+      uses: nick-fields/retry@v3
       with:
-        tag_name: ${{ env.tag_name }}
-        body_path: release-info.txt
-        prerelease: true
-        files: |
-          tag_latest.txt
-          tag.txt
-          manifests_release.json
-          manifest_release/development*
-          manifest_release/unofficial*
-          firmware/development/*
-          firmware/unofficial/*
+        timeout_minutes: 15
+        max_attempts: 3
+        retry_wait_seconds: 180
+        on_retry_command: |
+          echo "Release upload failed, waiting before retry..."
+          sleep 60
+        command: |
+          gh release create "${{ env.tag_name }}" \
+            --title "${{ env.tag_name }}" \
+            --notes-file release-info.txt \
+            --prerelease \
+            tag_latest.txt \
+            tag.txt \
+            manifests_release.json \
+            manifest_release/development* \
+            manifest_release/unofficial* \
+            firmware/development/* \
+            firmware/unofficial/*
       env:
-        GITHUB_TOKEN: ${{ secrets.MASTER_ACCESS_TOKEN }}
+        GH_TOKEN: ${{ secrets.MASTER_ACCESS_TOKEN }}
     - name: Remove not wanted files to be stored in repo
       run: |
         rm -rf release-info.txt
@@ -171,6 +180,7 @@ jobs:
         git push origin firmware -f
     - name: Download latest release firmwares from release section in github
       run: |
+        sleep 5
         gh release download -p "tasmota*" -D gh_latest -R github.com/arendst/tasmota
     - name: Move release firmware files in sub-folders
       run: |
@@ -209,6 +219,7 @@ jobs:
         rm -rf ./gh_latest
     - name: Check for a new Tasmota release
       run: |
+        sleep 5
         tag_r_latest=$(<tag_r_latest.txt)
         echo $tag_r_latest
         Commit=$(curl -s "https://api.github.com/repos/arendst/tasmota/commits/master" | jq -r '.sha')
@@ -222,6 +233,7 @@ jobs:
             echo "no_new_release=false" >> $GITHUB_ENV
             echo "Found a new Tasmota release!"
         fi
+        sleep 3
     - name: When a Tasmota release is done -> release firmware
       if: env.no_new_release == 'false'
       run: |
@@ -237,21 +249,29 @@ jobs:
         echo "$tag_r_name_tmp" >> tag_r_latest.txt
         echo "$tag_r_name_tmp" >> tag_r.txt
         echo "tag_r_name=$tag_r_name_tmp" >> $GITHUB_ENV
-    - name: Release firmwares
+    - name: Release firmwares with retry
       if: env.no_new_release == 'false'
-      uses: softprops/action-gh-release@v2.5.0
+      uses: nick-fields/retry@v3
       with:
-        tag_name: ${{ env.tag_r_name }}
-        body_path: release-info.txt
-        prerelease: false
-        files: |
-          tag_r_latest.txt
-          tag_r.txt
-          manifests_release.json
-          manifest_release/release*
-          firmware/release/*
+        timeout_minutes: 15
+        max_attempts: 3
+        retry_wait_seconds: 180
+        on_retry_command: |
+          echo "Release upload failed, cleaning up before retry..."
+          gh release delete "${{ env.tag_r_name }}" --yes --cleanup-tag || true
+          sleep 60
+        command: |
+          gh release create "${{ env.tag_r_name }}" \
+            --title "${{ env.tag_r_name }}" \
+            --notes-file release-info.txt \
+            --latest \
+            tag_r_latest.txt \
+            tag_r.txt \
+            manifests_release.json \
+            manifest_release/release* \
+            firmware/release/*
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Remove not wanted files to be stored in repo
       if: env.no_new_release == 'false'
       run: |
