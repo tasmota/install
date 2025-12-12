@@ -137,7 +137,10 @@ jobs:
         rm tag_latest.txt 2> /dev/null || echo > /dev/null
         echo "$COMMIT" >> release-info.txt
         echo "$tag_name_tmp" >> tag_latest.txt
-        echo "$tag_name_tmp" >> tag.txt
+        # Append only when not already existing
+        if [ ! -f tag.txt ] || ! grep -qxF "$tag_name_tmp" tag.txt; then
+          echo "$tag_name_tmp" >> tag.txt
+        fi
         echo "tag_name=$tag_name_tmp" >> $GITHUB_ENV
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -281,7 +284,10 @@ jobs:
         rm tag_r_latest.txt 2> /dev/null || echo > /dev/null
         echo "$COMMIT" >> release-info.txt
         echo "$tag_r_name_tmp" >> tag_r_latest.txt
-        echo "$tag_r_name_tmp" >> tag_r.txt
+        # Append only when not already existing
+        if [ ! -f tag_r.txt ] || ! grep -qxF "$tag_r_name_tmp" tag_r.txt; then
+          echo "$tag_r_name_tmp" >> tag_r.txt
+        fi
         echo "tag_r_name=$tag_r_name_tmp" >> $GITHUB_ENV
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
