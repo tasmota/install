@@ -1,0 +1,15 @@
+{
+  "name": "Tasmota32-C3 2M (english)",
+  "new_install_prompt_erase": true,
+  "funding_url": "https://paypal.me/tasmota",
+  "new_install_improv_wait_time": 10,
+  "builds": [
+    {
+      "chipFamily": "ESP32-C3",
+      "improv": true,
+      "parts": [
+        { "path": "../firmware/unofficial//tasmota32c3_2M.factory.bin", "offset": 0 }
+      ]
+    }
+  ]
+}
