@@ -107,15 +107,20 @@
             while(sel.childElementCount!=0){
               sel.removeChild(sel.childNodes[0]);
             }
-            let lines = data.split("\n").reverse();
+            let lines = data.split("\n").filter(line => line.length >= 10);
             console.log(data);
-            var duplicates = [];
-            for (opt_group of lines){
-                if (opt_group.length < 10) continue;
-                if(duplicates.includes(opt_group)){
-                  continue;
-                }
-                duplicates.push(opt_group);
+            
+            // Remove duplicates and sort by date (descending)
+            var uniqueLines = [...new Set(lines)];
+            uniqueLines.sort((a, b) => {
+              // Extract date from format: YYYY-MM-DD.{d|r}.commit
+              const dateA = a.split(".")[0];
+              const dateB = b.split(".")[0];
+              // Sort descending (newest first)
+              return dateB.localeCompare(dateA);
+            });
+            
+            for (opt_group of uniqueLines){
                 var og=document.createElement('option');
                 const tag_data = opt_group.split(".");
                 if(DateIsNotSelected(tag_data[0])){
@@ -128,7 +133,7 @@
                 og.value = opt_group;
 
                 var build = "Pre-release:\n"
-                if(tag_data=="r"){
+                if(tag_data[1]=="r"){
                   build = "Release:\n"
                 }
                 og.title = build;
