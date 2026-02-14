@@ -40,10 +40,22 @@
     </style>
     <script
       type="module"
-      src="https://unpkg.com/tasmota-esp-web-tools@11.1.2/dist/web/install-button.js?module"
+      src="https://unpkg.com/tasmota-esp-web-tools@11.1.8/dist/web/install-button.js?module"
     ></script>
     <!-- <script type="module">import * as Module from "./js/tasmota_gh_helper.js"</script> -->
     <script>
+        // Wait for ESP Web Tools to load and expose the CORS proxy function
+        async function corsProxyFetch(url, options) {
+          // Clean the URL first
+          url = url.trim();
+          
+          // Wait for ESP Web Tools to be available
+          while (!window.espWebToolsCorsProxyFetch) {
+            await new Promise(resolve => setTimeout(resolve, 50));
+          }
+          
+          return window.espWebToolsCorsProxyFetch(url, options);
+        }
 
         var releases = null;
         var date_filter = null;
@@ -268,37 +280,30 @@
             var el = document.createElement('p');
             el.innerHTML = "To access our GitHub releases page and directly flash firmware binaries<br>from there including older versions<br>you have to turn off CORS in your browser.<br>(i.e. with browser extension: CORS unblock)";
             sel.replaceWith(el);
-            fetch('https://raw.githubusercontent.com/tasmota/install/firmware/manifests.json')
+            corsProxyFetch('https://raw.githubusercontent.com/tasmota/install/firmware/manifests.json')
             .then(response => response.json())
             .then(data => makeVariantSelector(data));
         }
 
         function getLatestTag(){
-            fetch('https://raw.githubusercontent.com/tasmota/install/firmware/tag_latest.txt')
+             corsProxyFetch('https://raw.githubusercontent.com/tasmota/install/firmware/tag_latest.txt')
             .then(x => x.text())
-            .then(t =>testCORS(t));
+            .then(t => testCORS(t.trim()));
         }
 
         async function testCORS(t){
-          try{
-            const resp = await fetch('https://github.com/tasmota/install/releases/download/'+ t + '/manifests_release.json', {mode:"cors"
-            });
-            console.log(resp);
-          }
-          catch(error){
-            console.log("CORS is blocking");
-            useFallback();
-            return;
-          }
-          console.log("CORS is not blocking");
+          // With CORS proxy, we don't need to test - just use it directly
+          console.log("Using CORS proxy for all requests");
           initVariantSelector(t);
-          fetch('https://raw.githubusercontent.com/tasmota/install/firmware/tag.txt')
+          corsProxyFetch('https://raw.githubusercontent.com/tasmota/install/firmware/tag.txt')
           .then(x => x.text())
           .then(t => {makeReleaseSelector(t,"all"); makeDateSelector(t);})
         }
 
         function initVariantSelector(tag){
-            fetch('https://github.com/tasmota/install/releases/download/'+ tag + '/manifests_release.json')
+            // Clean the tag - remove whitespace and newlines
+            tag = tag.trim();
+            corsProxyFetch('https://github.com/tasmota/install/releases/download/'+ tag + '/manifests_release.json')
             .then(response => response.json())
             .then(data => makeVariantSelector(data));
             getFirmwareVersion(tag);
@@ -347,7 +352,7 @@
         function getFirmwareVersion(tag){
             let commit = tag.split(".")[2];
             console.log("Commit:____________",commit);
-            fetch("https://raw.githubusercontent.com/arendst/Tasmota/"+commit+"/tasmota/include/tasmota_version.h").then(x=>x.text()).then(t=>printFirmwareVersion(t))
+            corsProxyFetch("https://raw.githubusercontent.com/arendst/Tasmota/"+commit+"/tasmota/include/tasmota_version.h").then(x=>x.text()).then(t=>printFirmwareVersion(t))
         }
 
         function printFirmwareVersion(text_data){
@@ -418,7 +423,18 @@
         window.addEventListener("load", function(event) {
             window.dropArea = document.getElementById("drop-area");
             prepareDropZone();
-            getLatestTag();
+            
+            // Wait for ESP Web Tools module to load before making any fetch calls
+            function initializeApp() {
+              if (window.espWebToolsCorsProxyFetch) {
+                console.log("ESP Web Tools loaded successfully");
+                getLatestTag();
+              } else {
+                console.log("Waiting for ESP Web Tools to load...");
+                setTimeout(initializeApp, 50);
+              }
+            }
+            initializeApp();
             
             // Baud rate selection
             const baudRateSelect = document.getElementById('baudRate');
