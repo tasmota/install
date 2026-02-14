@@ -295,9 +295,28 @@
           // With CORS proxy, we don't need to test - just use it directly
           console.log("Using CORS proxy for all requests");
           initVariantSelector(t);
-          corsProxyFetch('https://raw.githubusercontent.com/tasmota/install/firmware/tag.txt')
-          .then(x => x.text())
-          .then(t => {makeReleaseSelector(t,"all"); makeDateSelector(t);})
+          
+          // Load both development and release tags
+          const devTagsPromise = corsProxyFetch('https://raw.githubusercontent.com/tasmota/install/firmware/tag.txt')
+            .then(x => x.text());
+          const releaseTagsPromise = corsProxyFetch('https://raw.githubusercontent.com/tasmota/install/firmware/tag_r.txt')
+            .then(x => x.text());
+          
+          // Wait for both to load
+          Promise.all([devTagsPromise, releaseTagsPromise])
+            .then(([devTags, releaseTags]) => {
+              // Combine both tag lists
+              const combinedTags = devTags + '\n' + releaseTags;
+              makeReleaseSelector(combinedTags, "all");
+              makeDateSelector(combinedTags);
+            })
+            .catch(error => {
+              console.error("Error loading tags:", error);
+              // Fallback to just dev tags if release tags fail
+              corsProxyFetch('https://raw.githubusercontent.com/tasmota/install/firmware/tag.txt')
+                .then(x => x.text())
+                .then(t => {makeReleaseSelector(t,"all"); makeDateSelector(t);});
+            });
         }
 
         function initVariantSelector(tag){
