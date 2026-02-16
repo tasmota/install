@@ -110,15 +110,34 @@
             let lines = data.split("\n").filter(line => line.length >= 10);
             console.log(data);
             
-            // Remove duplicates and sort by date (descending)
-            var uniqueLines = [...new Set(lines)];
+            // Remove duplicates while preserving original order information
+            var uniqueLines = [];
+            var seenLines = new Set();
+            lines.forEach((line, index) => {
+              if (!seenLines.has(line)) {
+                uniqueLines.push({ line: line, originalIndex: index });
+                seenLines.add(line);
+              }
+            });
+            
+            // Sort by date (descending), then by original order (descending - later entries are newer)
             uniqueLines.sort((a, b) => {
               // Extract date from format: YYYY-MM-DD.{d|r}.commit
-              const dateA = a.split(".")[0];
-              const dateB = b.split(".")[0];
-              // Sort descending (newest first)
-              return dateB.localeCompare(dateA);
+              const dateA = a.line.split(".")[0];
+              const dateB = b.line.split(".")[0];
+              
+              // Primary sort: by date descending (newest first)
+              const dateCompare = dateB.localeCompare(dateA);
+              if (dateCompare !== 0) {
+                return dateCompare;
+              }
+              
+              // Secondary sort: if same date, by original index descending (later entries are newer)
+              return b.originalIndex - a.originalIndex;
             });
+            
+            // Extract just the line strings for further processing
+            uniqueLines = uniqueLines.map(item => item.line);
             
             for (opt_group of uniqueLines){
                 var og=document.createElement('option');
