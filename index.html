@@ -178,10 +178,9 @@
                 sel.removeChild(sel.childNodes[0]);
             }
             sel.appendChild(first);
-            for(const [year,v] of Object.entries(date_filter)){
-                if(year == ""){
-                        continue;
-                    }
+            const years = Object.keys(date_filter).filter(year => year !== "").sort((a, b) => b - a);
+            
+            for(const year of years){
                 var o=document.createElement('option');
                 o.label = year;
                 o.value = year;
@@ -207,7 +206,9 @@
             if(year == null || year == "all" ){
                 return;
             }
-            for(const [month,v] of Object.entries(date_filter[year])){
+            const months = Object.keys(date_filter[year]).sort((a, b) => a - b);
+            
+            for(const month of months){
                 var o=document.createElement('option');
                 o.label = month;
                 o.value = month;
@@ -232,7 +233,9 @@
             if(year == null || month == null || year == "all" || month == "all"){
                 return;
             }
-            for(day of date_filter[year][month]){
+            const days = date_filter[year][month].sort((a, b) => a - b);
+            
+            for(day of days){
                 var o=document.createElement('option');
                 o.label = day;
                 o.value = day;
