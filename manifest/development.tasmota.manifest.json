@@ -41,9 +41,18 @@
     },
     {
       "chipFamily": "ESP32-P4",
+      "chipVariant": "rev0",
       "improv": true,
       "parts": [
         { "path": "../firmware/development/tasmota32p4.factory.bin", "offset": 0 }
+      ]
+    },
+    {
+      "chipFamily": "ESP32-P4",
+      "chipVariant": "rev300",
+      "improv": true,
+      "parts": [
+        { "path": "../firmware/development/tasmota32p4r3.factory.bin", "offset": 0 }
       ]
     },
     {
