@@ -724,13 +724,14 @@
         <option value="1500000">1500000 Baud</option>
         <option value="2000000" selected>2000000 Baud</option>
       </select>
-      <esp-web-install-button id="inst" style='text-align:center' baud-rate="2000000">
-        <i slot="unsupported">
-          Your browser does not support Web Serial.</br>Open this page in Google Chrome or</br>Microsoft Edge instead
-          <span class="not-supported-i hidden">(but not on your iOS device)</span>.
-        </i>
-      </esp-web-install-button>
-     </p>
+      <div style="text-align:center;margin-top:1em;">
+        <esp-web-install-button id="inst" baud-rate="2000000">
+          <i slot="unsupported">
+            Your browser does not support Web Serial.</br>Open this page in Google Chrome or</br>Microsoft Edge instead
+            <span class="not-supported-i hidden">(but not on your iOS device)</span>.
+          </i>
+        </esp-web-install-button>
+      </div>
     </div>
     <div id="drop-area">
       <form class="my-form">
