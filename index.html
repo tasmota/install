@@ -165,9 +165,11 @@
                 sel.appendChild(og);
                 // console.log(opt_group,opt_group.length,data[opt_group]);
             }
-            sel.addEventListener("change", () => {
+            // Use onchange (not addEventListener) so repeated calls to this
+            // function do not accumulate duplicate listeners on the same select.
+            sel.onchange = () => {
                initVariantSelector(sel.value);
-            });
+            };
         }
 
         function makeDateFilter(data){
@@ -208,12 +210,12 @@
                 o.value = year;
                 sel.appendChild(o);
             }
-            sel.addEventListener("change", () => {
+            sel.onchange = () => {
                 makeMonthSelector(sel.value);
                 let month = document.querySelector("#pick-month-selector");
                 makeDaySelector(sel.value,month.value);
                 makeReleaseSelector(releases);
-            });
+            };
         }
 
         function makeMonthSelector(year){
@@ -236,11 +238,11 @@
                 o.value = month;
                 sel.appendChild(o);
             }
-            sel.addEventListener("change", () => {
+            sel.onchange = () => {
                 let year = document.querySelector("#pick-year-selector");
                 makeDaySelector(year.value,sel.value);
                 makeReleaseSelector(releases);
-            });
+            };
         }
 
         function makeDaySelector(year,month){
@@ -263,9 +265,9 @@
                 o.value = day;
                 sel.appendChild(o);
             }
-            sel.addEventListener("change", () => {
+            sel.onchange = () => {
                 makeReleaseSelector(releases);
-            });
+            };
         }
 
         function makeDateSelector(data){
@@ -282,7 +284,9 @@
           console.log(radio);
           for(el of radio){
             console.log(el);
-            el.addEventListener("click", () => {
+            // Use onclick (not addEventListener) so repeated calls to
+            // makeDateSelector cannot accumulate duplicate listeners.
+            el.onclick = () => {
               let btn = document.querySelector('input[name="build_type"]:checked')
               build_filter = [btn.value];
               if(btn.value == "a"){
@@ -314,14 +318,15 @@
                 }
                 const installButton = document.querySelector("esp-web-install-button");
                 if(installButton && !using_local_file){
-                  installButton.manifest = "";
+                  installButton.removeAttribute("manifest");
+                  installButton.manifest = null;
                 }
                 const firmwareLabel = document.querySelector("#firmware-version");
                 if(firmwareLabel){
                   firmwareLabel.innerHTML = "&nbsp;";
                 }
               }
-            });
+            };
           }
 
           makeReleaseSelector(data);
@@ -342,9 +347,17 @@
             var el = document.createElement('p');
             el.innerHTML = "To access our GitHub releases page and directly flash firmware binaries<br>from there including older versions<br>you have to turn off CORS in your browser.<br>(i.e. with browser extension: CORS unblock)";
             sel.replaceWith(el);
+            // Bump and capture the token so a later request (e.g. from a
+            // local-file upload) can invalidate this in-flight fetch.
+            const requestToken = ++variant_request_token;
             corsProxyFetch('https://raw.githubusercontent.com/tasmota/install/firmware/manifests.json')
             .then(response => response.json())
-            .then(data => makeVariantSelector(data));
+            .then(data => {
+              if(requestToken !== variant_request_token){
+                return; // stale response, a newer request has been issued
+              }
+              makeVariantSelector(data);
+            });
         }
 
         function getLatestTag(){
@@ -400,20 +413,26 @@
 
         function VariantGroupNotSelected(opt_group){
             const group = opt_group.toLowerCase();
-            // When a specific build-type radio filter is active, only show
-            // variants from the matching optgroup. Uncategorized groups such
-            // as "unofficial" should only remain visible when showing all.
+            // The build-type radio filter only categorises release vs
+            // development builds. Other groups (e.g. "unofficial") are not
+            // tied to a build type, so they remain visible at all times.
             if(group === "release"){
               return !build_filter.includes("r");
             }
             if(group === "development"){
               return !build_filter.includes("d");
             }
-            return !(build_filter.includes("r") && build_filter.includes("d"));
+            return false;
         }
 
         function makeVariantSelector(data){
-            if(data.length == 0){
+            // Treat both empty arrays and empty objects as "no data"; an
+            // object without keys would otherwise pass the length check below
+            // and end up clearing the install button manifest.
+            const isEmpty = data == null
+              || (Array.isArray(data) && data.length === 0)
+              || (typeof data === "object" && Object.keys(data).length === 0);
+            if(isEmpty){
               console.log(data);
               return false;
             }
@@ -462,7 +481,11 @@
               if(sel.value){
                 installButton.manifest = sel.value;
               } else {
-                installButton.manifest = "";
+                // Avoid setting an invalid empty manifest string on
+                // esp-web-install-button; remove the attribute/property
+                // entirely so the install button shows its inactive state.
+                installButton.removeAttribute("manifest");
+                installButton.manifest = null;
               }
             }
             return true;
@@ -530,10 +553,41 @@
           document.getElementById("URL_based_input").style.display = "none";
           document.getElementById("file_upload_infotext").innerHTML = "You can flash your provided factory firmware at offset 0 by clicking the CONNECT button above.";
           document.getElementById("dropped_firmware").innerText = files[0].name;
+          const resetLink = document.getElementById("reset_local_file");
+          if(resetLink){
+            resetLink.style.display = "";
+          }
           const button = document.querySelector("esp-web-install-button");
           virtual_manifest.name = files[0].name;
           button.manifest = JSON.stringify(virtual_manifest);
           button.firmwareFile = files[0];
+        }
+
+        function resetToOnlineFirmware(){
+          // Revert UI and install button state from local-file flashing back
+          // to URL/manifest-based flashing using the currently selected variant.
+          using_local_file = false;
+          const urlInput = document.getElementById("URL_based_input");
+          if(urlInput){
+            urlInput.style.display = "";
+          }
+          document.getElementById("file_upload_infotext").innerHTML = "Upload factory firmware with the file dialog or by dragging and dropping onto the dashed region";
+          document.getElementById("dropped_firmware").innerText = "";
+          const resetLink = document.getElementById("reset_local_file");
+          if(resetLink){
+            resetLink.style.display = "none";
+          }
+          const button = document.querySelector("esp-web-install-button");
+          if(button){
+            button.firmwareFile = null;
+            const variantSel = document.querySelector("#pick-variant-selector");
+            if(variantSel && variantSel.value){
+              button.manifest = variantSel.value;
+            } else {
+              button.removeAttribute("manifest");
+              button.manifest = null;
+            }
+          }
         }
 
         function prepareDropZone(){
@@ -662,6 +716,7 @@
       <p id="file_upload_infotext">Upload factory firmware with the file dialog or by dragging and dropping onto the dashed region</p>
       <!-- <input type="file" id="fileElem" accept=".bin" onchange="handleFiles(this.files)" class="button"> -->
       <p id="dropped_firmware"></p>
+      <p id="reset_local_file" style="display:none;font-size:0.85em;"><a href="#" onclick="resetToOnlineFirmware();return false;" style="color:#1fa3ec;">← Use online firmware instead</a></p>
       </form>
     </div>
     <h1>&#8593;</h1>
