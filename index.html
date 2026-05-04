@@ -287,7 +287,13 @@
                 build_filter = ["r","d"];
               }
               makeReleaseSelector(releases);
-              if(variant_data != null){
+              // After rebuilding the release list the selected tag may have
+              // changed, so reload variants for the now-current tag instead
+              // of reusing the cached variant_data for the previous tag.
+              let releaseSel = document.querySelector("#pick-release-selector");
+              if(releaseSel.value){
+                initVariantSelector(releaseSel.value);
+              } else if(variant_data != null){
                 makeVariantSelector(variant_data);
               }
             });
@@ -361,15 +367,21 @@
 
         function VariantGroupNotSelected(opt_group){
             const group = opt_group.toLowerCase();
+            // "All" is selected when both build types are present; show every group.
+            const allSelected = build_filter.includes("r") && build_filter.includes("d");
+            if(allSelected){
+              return false;
+            }
             // Map radio filter values to variant group names
             // "r" => "release", "d" => "development"
-            if(group === "release" && !build_filter.includes("r")){
-              return true;
+            if(group === "release"){
+              return !build_filter.includes("r");
             }
-            if(group === "development" && !build_filter.includes("d")){
-              return true;
+            if(group === "development"){
+              return !build_filter.includes("d");
             }
-            return false;
+            // Any other group (e.g. "unofficial") only shows when "All" is active.
+            return true;
         }
 
         function makeVariantSelector(data){
