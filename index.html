@@ -60,6 +60,7 @@
         var releases = null;
         var date_filter = null;
         var build_filter = ["d","r"];
+        var variant_data = null;
         var local_file = null
         var virtual_manifest = {"name": "","version": "","new_install_prompt_erase": true,"builds": [
           { "chipFamily": "ESP32","parts": [{ "path": "", "offset": 0 }]},
@@ -286,6 +287,9 @@
                 build_filter = ["r","d"];
               }
               makeReleaseSelector(releases);
+              if(variant_data != null){
+                makeVariantSelector(variant_data);
+              }
             });
           }
 
@@ -355,11 +359,25 @@
             getFirmwareVersion(tag);
         }
 
+        function VariantGroupNotSelected(opt_group){
+            const group = opt_group.toLowerCase();
+            // Map radio filter values to variant group names
+            // "r" => "release", "d" => "development"
+            if(group === "release" && !build_filter.includes("r")){
+              return true;
+            }
+            if(group === "development" && !build_filter.includes("d")){
+              return true;
+            }
+            return false;
+        }
+
         function makeVariantSelector(data){
             if(data.length == 0){
               console.log(data);
               return false;
             }
+            variant_data = data;
             const sel=document.querySelector("#pick-variant-selector");
             while (sel.firstChild) {
               sel.removeChild(sel.firstChild);
@@ -367,6 +385,9 @@
 
             console.log(data);
             for (opt_group in data){
+                if(VariantGroupNotSelected(opt_group)){
+                  continue;
+                }
                 var og=document.createElement('optgroup');
                 og.label = opt_group;
                 sel.appendChild(og);
