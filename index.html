@@ -409,7 +409,7 @@
             if(group === "development"){
               return !build_filter.includes("d");
             }
-            return build_filter !== "all";
+            return !(build_filter.includes("r") && build_filter.includes("d"));
         }
 
         function makeVariantSelector(data){
