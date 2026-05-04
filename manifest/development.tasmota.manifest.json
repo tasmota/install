@@ -58,8 +58,17 @@
     {
       "chipFamily": "ESP32-S2",
       "improv": true,
+      "usbInterface": "UART",
       "parts": [
         { "path": "../firmware/development/tasmota32s2.factory.bin", "offset": 0 }
+      ]
+    },
+    {
+      "chipFamily": "ESP32-S2",
+      "improv": true,
+      "usbInterface": "CDC",
+      "parts": [
+        { "path": "../firmware/development/tasmota32s2cdc.factory.bin", "offset": 0 }
       ]
     },
     {
