@@ -395,16 +395,16 @@
 
         function VariantGroupNotSelected(opt_group){
             const group = opt_group.toLowerCase();
-            // Only the release/development groups are tied to the build-type
-            // radio filter. Other groups (e.g. "unofficial") are always shown
-            // because they are not categorised by build type.
+            // When a specific build-type radio filter is active, only show
+            // variants from the matching optgroup. Uncategorized groups such
+            // as "unofficial" should only remain visible when showing all.
             if(group === "release"){
               return !build_filter.includes("r");
             }
             if(group === "development"){
               return !build_filter.includes("d");
             }
-            return false;
+            return build_filter !== "all";
         }
 
         function makeVariantSelector(data){
