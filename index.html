@@ -60,7 +60,10 @@
         var releases = null;
         var date_filter = null;
         var build_filter = ["d","r"];
-        var local_file = null
+        var variant_data = null;
+        var variant_request_token = 0;
+        var local_file = null;
+        var using_local_file = false;
         var virtual_manifest = {"name": "","version": "","new_install_prompt_erase": true,"builds": [
           { "chipFamily": "ESP32","parts": [{ "path": "", "offset": 0 }]},
           { "chipFamily": "ESP32-C2","parts": [{ "path": "", "offset": 0 }]},
@@ -162,9 +165,51 @@
                 sel.appendChild(og);
                 // console.log(opt_group,opt_group.length,data[opt_group]);
             }
-            sel.addEventListener("change", () => {
+            // Use onchange (not addEventListener) so repeated calls to this
+            // function do not accumulate duplicate listeners on the same select.
+            sel.onchange = () => {
                initVariantSelector(sel.value);
-            });
+            };
+        }
+
+        // Re-render the release list and keep the variant dropdown / install
+        // button in sync with whichever tag ends up selected. Used by every
+        // filter (build type, year, month, day) so changing a filter never
+        // leaves the variant view stuck on the previous tag's data.
+        function refreshReleaseAndVariants(){
+            const previousReleaseSel = document.querySelector("#pick-release-selector");
+            const previousReleaseTag = previousReleaseSel ? previousReleaseSel.value : "";
+            makeReleaseSelector(releases);
+            const releaseSel = document.querySelector("#pick-release-selector");
+            if(releaseSel && releaseSel.value){
+                if(releaseSel.value !== previousReleaseTag || !variant_data){
+                    initVariantSelector(releaseSel.value);
+                } else {
+                    // Same tag still selected; just re-render to apply any
+                    // build-type filter change to the cached variant data.
+                    makeVariantSelector(variant_data);
+                }
+            } else {
+                // No tag matches the active filter; clear stale variants and
+                // the install button so a stale manifest cannot be flashed.
+                variant_data = null;
+                variant_request_token++;
+                const sel = document.querySelector("#pick-variant-selector");
+                if(sel){
+                    while (sel.firstChild) {
+                        sel.removeChild(sel.firstChild);
+                    }
+                }
+                const installButton = document.querySelector("esp-web-install-button");
+                if(installButton && !using_local_file){
+                    installButton.removeAttribute("manifest");
+                    installButton.manifest = null;
+                }
+                const firmwareLabel = document.querySelector("#firmware-version");
+                if(firmwareLabel){
+                    firmwareLabel.innerHTML = "&nbsp;";
+                }
+            }
         }
 
         function makeDateFilter(data){
@@ -205,12 +250,12 @@
                 o.value = year;
                 sel.appendChild(o);
             }
-            sel.addEventListener("change", () => {
+            sel.onchange = () => {
                 makeMonthSelector(sel.value);
                 let month = document.querySelector("#pick-month-selector");
                 makeDaySelector(sel.value,month.value);
-                makeReleaseSelector(releases);
-            });
+                refreshReleaseAndVariants();
+            };
         }
 
         function makeMonthSelector(year){
@@ -233,11 +278,11 @@
                 o.value = month;
                 sel.appendChild(o);
             }
-            sel.addEventListener("change", () => {
+            sel.onchange = () => {
                 let year = document.querySelector("#pick-year-selector");
                 makeDaySelector(year.value,sel.value);
-                makeReleaseSelector(releases);
-            });
+                refreshReleaseAndVariants();
+            };
         }
 
         function makeDaySelector(year,month){
@@ -260,9 +305,9 @@
                 o.value = day;
                 sel.appendChild(o);
             }
-            sel.addEventListener("change", () => {
-                makeReleaseSelector(releases);
-            });
+            sel.onchange = () => {
+                refreshReleaseAndVariants();
+            };
         }
 
         function makeDateSelector(data){
@@ -279,14 +324,16 @@
           console.log(radio);
           for(el of radio){
             console.log(el);
-            el.addEventListener("click", () => {
+            // Use onclick (not addEventListener) so repeated calls to
+            // makeDateSelector cannot accumulate duplicate listeners.
+            el.onclick = () => {
               let btn = document.querySelector('input[name="build_type"]:checked')
               build_filter = [btn.value];
               if(btn.value == "a"){
                 build_filter = ["r","d"];
               }
-              makeReleaseSelector(releases);
-            });
+              refreshReleaseAndVariants();
+            };
           }
 
           makeReleaseSelector(data);
@@ -307,9 +354,17 @@
             var el = document.createElement('p');
             el.innerHTML = "To access our GitHub releases page and directly flash firmware binaries<br>from there including older versions<br>you have to turn off CORS in your browser.<br>(i.e. with browser extension: CORS unblock)";
             sel.replaceWith(el);
+            // Bump and capture the token so a later request (e.g. from a
+            // local-file upload) can invalidate this in-flight fetch.
+            const requestToken = ++variant_request_token;
             corsProxyFetch('https://raw.githubusercontent.com/tasmota/install/firmware/manifests.json')
             .then(response => response.json())
-            .then(data => makeVariantSelector(data));
+            .then(data => {
+              if(requestToken !== variant_request_token){
+                return; // stale response, a newer request has been issued
+              }
+              makeVariantSelector(data);
+            });
         }
 
         function getLatestTag(){
@@ -349,17 +404,53 @@
         function initVariantSelector(tag){
             // Clean the tag - remove whitespace and newlines
             tag = tag.trim();
+            // Bump the token so any in-flight request becomes stale and its
+            // response is discarded by makeVariantSelector / getFirmwareVersion.
+            const requestToken = ++variant_request_token;
             corsProxyFetch('https://github.com/tasmota/install/releases/download/'+ tag + '/manifests_release.json')
             .then(response => response.json())
-            .then(data => makeVariantSelector(data));
-            getFirmwareVersion(tag);
+            .then(data => {
+              if(requestToken !== variant_request_token){
+                return; // stale response, a newer request has been issued
+              }
+              makeVariantSelector(data);
+            });
+            getFirmwareVersion(tag, requestToken);
+        }
+
+        function VariantGroupNotSelected(opt_group){
+            const group = opt_group.toLowerCase();
+            // "All" is the only state that selects both build types; in that
+            // case every group (including uncategorised ones like "unofficial")
+            // remains visible. When the user picks a specific build type we
+            // restrict the variant list to only that group so the dropdown
+            // shows nothing but variants matching the radio selection.
+            const allSelected = build_filter.includes("r") && build_filter.includes("d");
+            if(allSelected){
+              return false;
+            }
+            if(group === "release"){
+              return !build_filter.includes("r");
+            }
+            if(group === "development"){
+              return !build_filter.includes("d");
+            }
+            // Any other group is hidden when a single build type is active.
+            return true;
         }
 
         function makeVariantSelector(data){
-            if(data.length == 0){
+            // Treat both empty arrays and empty objects as "no data"; an
+            // object without keys would otherwise pass the length check below
+            // and end up clearing the install button manifest.
+            const isEmpty = data == null
+              || (Array.isArray(data) && data.length === 0)
+              || (typeof data === "object" && Object.keys(data).length === 0);
+            if(isEmpty){
               console.log(data);
               return false;
             }
+            variant_data = data;
             const sel=document.querySelector("#pick-variant-selector");
             while (sel.firstChild) {
               sel.removeChild(sel.firstChild);
@@ -367,6 +458,9 @@
 
             console.log(data);
             for (opt_group in data){
+                if(VariantGroupNotSelected(opt_group)){
+                  continue;
+                }
                 var og=document.createElement('optgroup');
                 og.label = opt_group;
                 sel.appendChild(og);
@@ -392,16 +486,39 @@
                     og.appendChild(opt);
                 }
             }
+            // Sync the install button manifest with whatever option ends up
+            // selected after rebuilding (browsers default to the first one).
+            // Skip when the user has switched to local-file flashing so a late
+            // response cannot replace the uploaded-file manifest state.
+            const installButton = document.querySelector("esp-web-install-button");
+            if(installButton && !using_local_file){
+              if(sel.value){
+                installButton.manifest = sel.value;
+              } else {
+                // Avoid setting an invalid empty manifest string on
+                // esp-web-install-button; remove the attribute/property
+                // entirely so the install button shows its inactive state.
+                installButton.removeAttribute("manifest");
+                installButton.manifest = null;
+              }
+            }
             return true;
         }
 
-        function getFirmwareVersion(tag){
+        function getFirmwareVersion(tag, requestToken){
             let commit = tag.split(".")[2];
             console.log("Commit:____________",commit);
-            corsProxyFetch("https://raw.githubusercontent.com/arendst/Tasmota/"+commit+"/tasmota/include/tasmota_version.h").then(x=>x.text()).then(t=>printFirmwareVersion(t))
+            corsProxyFetch("https://raw.githubusercontent.com/arendst/Tasmota/"+commit+"/tasmota/include/tasmota_version.h")
+              .then(x=>x.text())
+              .then(t=>printFirmwareVersion(t, requestToken))
         }
 
-        function printFirmwareVersion(text_data){
+        function printFirmwareVersion(text_data, requestToken){
+            // Discard the response if a newer variant request has been issued
+            // so the firmware label cannot be overwritten by a stale fetch.
+            if(requestToken !== undefined && requestToken !== variant_request_token){
+                return;
+            }
             for(line of text_data.split("\n")){
                 if(line.includes("const uint32_t VERSION =")){
                     console.log("Line:____________",line);
@@ -443,13 +560,55 @@
         function handleFiles(files) {
           files = [...files];
           console.log(files);
+          using_local_file = true;
+          // Invalidate any in-flight variant manifest fetches so a late
+          // response cannot overwrite the local-file install state.
+          variant_request_token++;
           document.getElementById("URL_based_input").style.display = "none";
           document.getElementById("file_upload_infotext").innerHTML = "You can flash your provided factory firmware at offset 0 by clicking the CONNECT button above.";
           document.getElementById("dropped_firmware").innerText = files[0].name;
+          const resetLink = document.getElementById("reset_local_file");
+          if(resetLink){
+            resetLink.style.display = "";
+          }
           const button = document.querySelector("esp-web-install-button");
           virtual_manifest.name = files[0].name;
           button.manifest = JSON.stringify(virtual_manifest);
           button.firmwareFile = files[0];
+        }
+
+        function resetToOnlineFirmware(){
+          // Revert UI and install button state from local-file flashing back
+          // to URL/manifest-based flashing using the currently selected variant.
+          using_local_file = false;
+          const urlInput = document.getElementById("URL_based_input");
+          if(urlInput){
+            urlInput.style.display = "";
+          }
+          document.getElementById("file_upload_infotext").innerHTML = "Upload factory firmware with the file dialog or by dragging and dropping onto the dashed region";
+          document.getElementById("dropped_firmware").innerText = "";
+          const resetLink = document.getElementById("reset_local_file");
+          if(resetLink){
+            resetLink.style.display = "none";
+          }
+          const button = document.querySelector("esp-web-install-button");
+          if(button){
+            button.firmwareFile = null;
+            const variantSel = document.querySelector("#pick-variant-selector");
+            if(variantSel && variantSel.value){
+              button.manifest = variantSel.value;
+            } else {
+              button.removeAttribute("manifest");
+              button.manifest = null;
+              // The variant dropdown is empty (e.g. handleFiles() invalidated
+              // the initial fetch). Kick off a manifest reload for the
+              // currently selected release so the install button can be used.
+              const releaseSel = document.querySelector("#pick-release-selector");
+              if(releaseSel && releaseSel.value){
+                initVariantSelector(releaseSel.value);
+              }
+            }
+          }
         }
 
         function prepareDropZone(){
@@ -578,6 +737,7 @@
       <p id="file_upload_infotext">Upload factory firmware with the file dialog or by dragging and dropping onto the dashed region</p>
       <!-- <input type="file" id="fileElem" accept=".bin" onchange="handleFiles(this.files)" class="button"> -->
       <p id="dropped_firmware"></p>
+      <p id="reset_local_file" style="display:none;font-size:0.85em;"><a href="#" onclick="resetToOnlineFirmware();return false;" style="color:#1fa3ec;">← Use online firmware instead</a></p>
       </form>
     </div>
     <h1>&#8593;</h1>
