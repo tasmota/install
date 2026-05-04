@@ -61,6 +61,7 @@
         var date_filter = null;
         var build_filter = ["d","r"];
         var variant_data = null;
+        var variant_request_token = 0;
         var local_file = null
         var virtual_manifest = {"name": "","version": "","new_install_prompt_erase": true,"builds": [
           { "chipFamily": "ESP32","parts": [{ "path": "", "offset": 0 }]},
@@ -293,8 +294,15 @@
               let releaseSel = document.querySelector("#pick-release-selector");
               if(releaseSel.value){
                 initVariantSelector(releaseSel.value);
-              } else if(variant_data != null){
-                makeVariantSelector(variant_data);
+              } else {
+                // No tag matches the current filter; clear stale variants
+                // rather than re-rendering the previous tag's data.
+                variant_data = null;
+                variant_request_token++;
+                const sel = document.querySelector("#pick-variant-selector");
+                while (sel.firstChild) {
+                  sel.removeChild(sel.firstChild);
+                }
               }
             });
           }
@@ -359,29 +367,32 @@
         function initVariantSelector(tag){
             // Clean the tag - remove whitespace and newlines
             tag = tag.trim();
+            // Bump the token so any in-flight request becomes stale and its
+            // response is discarded by makeVariantSelector.
+            const requestToken = ++variant_request_token;
             corsProxyFetch('https://github.com/tasmota/install/releases/download/'+ tag + '/manifests_release.json')
             .then(response => response.json())
-            .then(data => makeVariantSelector(data));
+            .then(data => {
+              if(requestToken !== variant_request_token){
+                return; // stale response, a newer request has been issued
+              }
+              makeVariantSelector(data);
+            });
             getFirmwareVersion(tag);
         }
 
         function VariantGroupNotSelected(opt_group){
             const group = opt_group.toLowerCase();
-            // "All" is selected when both build types are present; show every group.
-            const allSelected = build_filter.includes("r") && build_filter.includes("d");
-            if(allSelected){
-              return false;
-            }
-            // Map radio filter values to variant group names
-            // "r" => "release", "d" => "development"
+            // Only the release/development groups are tied to the build-type
+            // radio filter. Other groups (e.g. "unofficial") are always shown
+            // because they are not categorised by build type.
             if(group === "release"){
               return !build_filter.includes("r");
             }
             if(group === "development"){
               return !build_filter.includes("d");
             }
-            // Any other group (e.g. "unofficial") only shows when "All" is active.
-            return true;
+            return false;
         }
 
         function makeVariantSelector(data){
