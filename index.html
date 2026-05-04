@@ -287,13 +287,17 @@
               if(btn.value == "a"){
                 build_filter = ["r","d"];
               }
+              const previousReleaseSel = document.querySelector("#pick-release-selector");
+              const previousReleaseTag = previousReleaseSel ? previousReleaseSel.value : "";
               makeReleaseSelector(releases);
               // After rebuilding the release list the selected tag may have
-              // changed, so reload variants for the now-current tag instead
-              // of reusing the cached variant_data for the previous tag.
+              // changed. Only reload variants when the selected tag actually
+              // changes or when no cached variant_data is available.
               let releaseSel = document.querySelector("#pick-release-selector");
               if(releaseSel.value){
-                initVariantSelector(releaseSel.value);
+                if(releaseSel.value !== previousReleaseTag || !variant_data){
+                  initVariantSelector(releaseSel.value);
+                }
               } else {
                 // No tag matches the current filter; clear stale variants and
                 // the install button so a stale manifest cannot be flashed.
