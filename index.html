@@ -292,12 +292,16 @@
               const previousReleaseTag = previousReleaseSel ? previousReleaseSel.value : "";
               makeReleaseSelector(releases);
               // After rebuilding the release list the selected tag may have
-              // changed. Only reload variants when the selected tag actually
-              // changes or when no cached variant_data is available.
+              // changed. Reload variants when the selected tag changes or
+              // when no cached variant_data is available; otherwise rebuild
+              // the selector from the cached data so the visible variants
+              // match the current build filter.
               let releaseSel = document.querySelector("#pick-release-selector");
               if(releaseSel.value){
                 if(releaseSel.value !== previousReleaseTag || !variant_data){
                   initVariantSelector(releaseSel.value);
+                } else {
+                  makeVariantSelector(variant_data);
                 }
               } else {
                 // No tag matches the current filter; clear stale variants and
