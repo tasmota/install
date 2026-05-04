@@ -172,6 +172,46 @@
             };
         }
 
+        // Re-render the release list and keep the variant dropdown / install
+        // button in sync with whichever tag ends up selected. Used by every
+        // filter (build type, year, month, day) so changing a filter never
+        // leaves the variant view stuck on the previous tag's data.
+        function refreshReleaseAndVariants(){
+            const previousReleaseSel = document.querySelector("#pick-release-selector");
+            const previousReleaseTag = previousReleaseSel ? previousReleaseSel.value : "";
+            makeReleaseSelector(releases);
+            const releaseSel = document.querySelector("#pick-release-selector");
+            if(releaseSel && releaseSel.value){
+                if(releaseSel.value !== previousReleaseTag || !variant_data){
+                    initVariantSelector(releaseSel.value);
+                } else {
+                    // Same tag still selected; just re-render to apply any
+                    // build-type filter change to the cached variant data.
+                    makeVariantSelector(variant_data);
+                }
+            } else {
+                // No tag matches the active filter; clear stale variants and
+                // the install button so a stale manifest cannot be flashed.
+                variant_data = null;
+                variant_request_token++;
+                const sel = document.querySelector("#pick-variant-selector");
+                if(sel){
+                    while (sel.firstChild) {
+                        sel.removeChild(sel.firstChild);
+                    }
+                }
+                const installButton = document.querySelector("esp-web-install-button");
+                if(installButton && !using_local_file){
+                    installButton.removeAttribute("manifest");
+                    installButton.manifest = null;
+                }
+                const firmwareLabel = document.querySelector("#firmware-version");
+                if(firmwareLabel){
+                    firmwareLabel.innerHTML = "&nbsp;";
+                }
+            }
+        }
+
         function makeDateFilter(data){
             let lines = data.split("\n");
             date_filter = {};
@@ -214,7 +254,7 @@
                 makeMonthSelector(sel.value);
                 let month = document.querySelector("#pick-month-selector");
                 makeDaySelector(sel.value,month.value);
-                makeReleaseSelector(releases);
+                refreshReleaseAndVariants();
             };
         }
 
@@ -241,7 +281,7 @@
             sel.onchange = () => {
                 let year = document.querySelector("#pick-year-selector");
                 makeDaySelector(year.value,sel.value);
-                makeReleaseSelector(releases);
+                refreshReleaseAndVariants();
             };
         }
 
@@ -266,7 +306,7 @@
                 sel.appendChild(o);
             }
             sel.onchange = () => {
-                makeReleaseSelector(releases);
+                refreshReleaseAndVariants();
             };
         }
 
@@ -292,40 +332,7 @@
               if(btn.value == "a"){
                 build_filter = ["r","d"];
               }
-              const previousReleaseSel = document.querySelector("#pick-release-selector");
-              const previousReleaseTag = previousReleaseSel ? previousReleaseSel.value : "";
-              makeReleaseSelector(releases);
-              // After rebuilding the release list the selected tag may have
-              // changed. Reload variants when the selected tag changes or
-              // when no cached variant_data is available; otherwise rebuild
-              // the selector from the cached data so the visible variants
-              // match the current build filter.
-              let releaseSel = document.querySelector("#pick-release-selector");
-              if(releaseSel.value){
-                if(releaseSel.value !== previousReleaseTag || !variant_data){
-                  initVariantSelector(releaseSel.value);
-                } else {
-                  makeVariantSelector(variant_data);
-                }
-              } else {
-                // No tag matches the current filter; clear stale variants and
-                // the install button so a stale manifest cannot be flashed.
-                variant_data = null;
-                variant_request_token++;
-                const sel = document.querySelector("#pick-variant-selector");
-                while (sel.firstChild) {
-                  sel.removeChild(sel.firstChild);
-                }
-                const installButton = document.querySelector("esp-web-install-button");
-                if(installButton && !using_local_file){
-                  installButton.removeAttribute("manifest");
-                  installButton.manifest = null;
-                }
-                const firmwareLabel = document.querySelector("#firmware-version");
-                if(firmwareLabel){
-                  firmwareLabel.innerHTML = "&nbsp;";
-                }
-              }
+              refreshReleaseAndVariants();
             };
           }
 
@@ -413,16 +420,23 @@
 
         function VariantGroupNotSelected(opt_group){
             const group = opt_group.toLowerCase();
-            // The build-type radio filter only categorises release vs
-            // development builds. Other groups (e.g. "unofficial") are not
-            // tied to a build type, so they remain visible at all times.
+            // "All" is the only state that selects both build types; in that
+            // case every group (including uncategorised ones like "unofficial")
+            // remains visible. When the user picks a specific build type we
+            // restrict the variant list to only that group so the dropdown
+            // shows nothing but variants matching the radio selection.
+            const allSelected = build_filter.includes("r") && build_filter.includes("d");
+            if(allSelected){
+              return false;
+            }
             if(group === "release"){
               return !build_filter.includes("r");
             }
             if(group === "development"){
               return !build_filter.includes("d");
             }
-            return false;
+            // Any other group is hidden when a single build type is active.
+            return true;
         }
 
         function makeVariantSelector(data){
@@ -586,6 +600,13 @@
             } else {
               button.removeAttribute("manifest");
               button.manifest = null;
+              // The variant dropdown is empty (e.g. handleFiles() invalidated
+              // the initial fetch). Kick off a manifest reload for the
+              // currently selected release so the install button can be used.
+              const releaseSel = document.querySelector("#pick-release-selector");
+              if(releaseSel && releaseSel.value){
+                initVariantSelector(releaseSel.value);
+              }
             }
           }
         }
