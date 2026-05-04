@@ -62,7 +62,8 @@
         var build_filter = ["d","r"];
         var variant_data = null;
         var variant_request_token = 0;
-        var local_file = null
+        var local_file = null;
+        var using_local_file = false;
         var virtual_manifest = {"name": "","version": "","new_install_prompt_erase": true,"builds": [
           { "chipFamily": "ESP32","parts": [{ "path": "", "offset": 0 }]},
           { "chipFamily": "ESP32-C2","parts": [{ "path": "", "offset": 0 }]},
@@ -308,7 +309,7 @@
                   sel.removeChild(sel.firstChild);
                 }
                 const installButton = document.querySelector("esp-web-install-button");
-                if(installButton){
+                if(installButton && !using_local_file){
                   installButton.manifest = "";
                 }
                 const firmwareLabel = document.querySelector("#firmware-version");
@@ -450,8 +451,10 @@
             }
             // Sync the install button manifest with whatever option ends up
             // selected after rebuilding (browsers default to the first one).
+            // Skip when the user has switched to local-file flashing so a late
+            // response cannot replace the uploaded-file manifest state.
             const installButton = document.querySelector("esp-web-install-button");
-            if(installButton){
+            if(installButton && !using_local_file){
               if(sel.value){
                 installButton.manifest = sel.value;
               } else {
@@ -516,6 +519,10 @@
         function handleFiles(files) {
           files = [...files];
           console.log(files);
+          using_local_file = true;
+          // Invalidate any in-flight variant manifest fetches so a late
+          // response cannot overwrite the local-file install state.
+          variant_request_token++;
           document.getElementById("URL_based_input").style.display = "none";
           document.getElementById("file_upload_infotext").innerHTML = "You can flash your provided factory firmware at offset 0 by clicking the CONNECT button above.";
           document.getElementById("dropped_firmware").innerText = files[0].name;
