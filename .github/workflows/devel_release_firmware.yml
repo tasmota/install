@@ -130,7 +130,19 @@ jobs:
         #python genManifestWithFeatureas.py
     - name: Build Tag and commit message
       run: |
-        COMMIT_SHA=$(gh api repos/arendst/tasmota/commits/development --jq '.sha')
+        # Use the head_sha of the workflow run that actually produced the
+        # downloaded firmware artifacts, NOT the current HEAD of
+        # arendst/tasmota:development. Otherwise the tag/commit shown in the
+        # installer dropdown can advertise a commit that is newer than the
+        # firmware binaries actually packaged in the release, which causes
+        # users to flash an older commit than the one they selected.
+        COMMIT_SHA=$(gh api \
+          "repos/arendst/tasmota/actions/workflows/Tasmota_build_devel.yml/runs?branch=development&status=success&per_page=1" \
+          --jq '.workflow_runs[0].head_sha')
+        if [ -z "$COMMIT_SHA" ] || [ "$COMMIT_SHA" = "null" ]; then
+          echo "Could not determine commit SHA from latest successful Tasmota_build_devel.yml run, aborting." >&2
+          exit 1
+        fi
         COMMIT="Firmware built from commit https://github.com/arendst/Tasmota/commit/${COMMIT_SHA}"
         tag_name_tmp="$(date -I).d.$COMMIT_SHA"
         rm release-info.txt 2> /dev/null || echo > /dev/null
