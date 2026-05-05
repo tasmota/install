@@ -407,6 +407,32 @@
             // Bump the token so any in-flight request becomes stale and its
             // response is discarded by makeVariantSelector / getFirmwareVersion.
             const requestToken = ++variant_request_token;
+            // Immediately invalidate the previous tag's variants and install
+            // button manifest so the user cannot accidentally flash the
+            // previously selected (older) commit while the new manifest is
+            // still being fetched.
+            variant_data = null;
+            const variantSel = document.querySelector("#pick-variant-selector");
+            if(variantSel){
+                while (variantSel.firstChild) {
+                    variantSel.removeChild(variantSel.firstChild);
+                }
+                const placeholder = document.createElement('option');
+                placeholder.label = "Loading...";
+                placeholder.text = "Loading...";
+                placeholder.disabled = true;
+                placeholder.selected = true;
+                variantSel.appendChild(placeholder);
+            }
+            const installButton = document.querySelector("esp-web-install-button");
+            if(installButton && !using_local_file){
+                installButton.removeAttribute("manifest");
+                installButton.manifest = null;
+            }
+            const firmwareLabel = document.querySelector("#firmware-version");
+            if(firmwareLabel){
+                firmwareLabel.innerHTML = "&nbsp;";
+            }
             corsProxyFetch('https://github.com/tasmota/install/releases/download/'+ tag + '/manifests_release.json')
             .then(response => response.json())
             .then(data => {
