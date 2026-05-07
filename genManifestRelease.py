@@ -95,6 +95,8 @@ def main(args):
             output[line[0]] = [[],[],[],[],[],[]]
         entry = getManifestEntry(path.join(path_manifests_release,file),tag_latest)
         if entry is None:
+            # The manifest has no supported builds left for this tag, so do
+            # not publish a dropdown entry for an asset that was never uploaded.
             continue
         if line[1] == "tasmota":
             print(path.join(path_manifests_release,file),tag_latest)
