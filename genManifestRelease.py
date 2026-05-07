@@ -52,6 +52,8 @@ def getManifestEntry(manifest, tag):
         entry['chipFamilies'] = []
         for build in data['builds']:
             entry['chipFamilies'].append(build['chipFamily'])
+        if len(entry['chipFamilies']) == 0:
+            return None
         return entry
 
 def getTag():
@@ -91,15 +93,20 @@ def main(args):
         # print(line[1])
         if line[0] not in output:
             output[line[0]] = [[],[],[],[],[],[]]
+        entry = getManifestEntry(path.join(path_manifests_release,file),tag_latest)
+        if entry is None:
+            # The manifest has no supported builds left for this tag, so do
+            # not publish a dropdown entry for an asset that was never uploaded.
+            continue
         if line[1] == "tasmota":
             print(path.join(path_manifests_release,file),tag_latest)
-            output[line[0]][0].insert(0,getManifestEntry(path.join(path_manifests_release,file),tag_latest)) # vanilla first
+            output[line[0]][0].insert(0,entry) # vanilla first
             continue
         elif line[1] == "tasmota32":
-            output[line[0]][1].insert(0,getManifestEntry(path.join(path_manifests_release,file),tag_latest))
+            output[line[0]][1].insert(0,entry)
             continue
         else: #solo1,4M,...
-            output[line[0]][2].append(getManifestEntry(path.join(path_manifests_release,file),tag_latest))
+            output[line[0]][2].append(entry)
             continue
         name_components = line[1].split('-')
         if name_components[0] == "tasmota":
