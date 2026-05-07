@@ -487,16 +487,10 @@
                 if(VariantGroupNotSelected(opt_group)){
                   continue;
                 }
-                // Skip variants whose firmware files do not exist for the
-                // currently selected release tag. genManifestRelease.py emits
-                // an entry for every manifest in the manifest/ folder but
-                // sets chipFamilies to [] when no matching firmware bin is
-                // present in the release. For a development (.d.) tag this
-                // means the "release" group is fully populated with
-                // release.*.manifest.json paths that 404 on download (see
-                // https://github.com/tasmota/install/issues/28). Filtering
-                // these out keeps the dropdown in sync with what was
-                // actually uploaded for the selected tag.
+                // Ignore manifest entries that advertise no supported chip
+                // families. Older published tags already contain such entries
+                // for manifests that were never uploaded, which would
+                // otherwise leave the dropdown pointing at 404ing assets.
                 let valid_fws = (data[opt_group] || []).filter(
                   fw => Array.isArray(fw['chipFamilies']) && fw['chipFamilies'].length > 0
                 );
