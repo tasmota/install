@@ -63,7 +63,6 @@ jobs:
         github_token: ${{secrets.GITHUB_TOKEN}}
         workflow: Tasmota_build_devel.yml
         workflow_conclusion: success
-        allow_forks: true
         repo: arendst/tasmota
         name: ^((?!berry).)*$
         name_is_regexp: true
@@ -112,7 +111,6 @@ jobs:
         github_token: ${{secrets.GITHUB_TOKEN}}
         workflow: Build_special_firmware.yml
         workflow_conclusion: success
-        allow_forks: true
         repo: Jason2866/Tasmota-build
         name: tasmota*
         name_is_regexp: true
@@ -126,12 +124,6 @@ jobs:
         mkdir -p ./firmware/unofficial/
         mv ./special_firmware/tasmota* ./firmware/unofficial/
         rm -rf ./special_firmware
-    - name: Build devel release Manifest files
-      run: |
-        mkdir manifest_release
-        #python genManifest.py
-        python genManifestRelease.py
-        #python genManifestWithFeatureas.py
     - name: Build Tag and commit message
       run: |
         # Use the head_sha of the workflow run that actually produced the
@@ -160,6 +152,12 @@ jobs:
           echo "$tag_name_tmp" >> tag.txt
         fi
         echo "tag_name=$tag_name_tmp" >> $GITHUB_ENV
+        # Build devel release manifest files AFTER tag_latest.txt is written
+        # so genManifestRelease.py uses the correct new tag for download URLs
+        mkdir manifest_release
+        #python genManifest.py
+        python genManifestRelease.py
+        #python genManifestWithFeatureas.py
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Release devel and special firmwares with retry
