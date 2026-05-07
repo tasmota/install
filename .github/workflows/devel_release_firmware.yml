@@ -288,12 +288,10 @@ jobs:
     - name: When a Tasmota release is done -> release firmware
       if: env.no_new_release == 'false'
       run: |
-        mkdir manifest_release
-        #python genManifest.py
-        python genManifestRelease.py
         COMMIT_SHA=$(gh api repos/arendst/tasmota/commits/master --jq '.sha')
+        RELEASE_DATE=$(gh api repos/arendst/tasmota/releases/latest --jq '.published_at | .[0:10]')
         COMMIT="Firmware built from commit https://github.com/arendst/Tasmota/commit/${COMMIT_SHA}"
-        tag_r_name_tmp="$(date -I).r.$COMMIT_SHA"
+        tag_r_name_tmp="${RELEASE_DATE}.r.$COMMIT_SHA"
         rm release-info.txt 2> /dev/null || echo > /dev/null
         rm tag_r_latest.txt 2> /dev/null || echo > /dev/null
         echo "$COMMIT" >> release-info.txt
@@ -303,6 +301,13 @@ jobs:
           echo "$tag_r_name_tmp" >> tag_r.txt
         fi
         echo "tag_r_name=$tag_r_name_tmp" >> $GITHUB_ENV
+        # Build release manifests using the release tag with the correct commit SHA
+        mkdir manifest_release
+        cp tag_latest.txt tag_latest.txt.bak
+        echo "$tag_r_name_tmp" > tag_latest.txt
+        #python genManifest.py
+        python genManifestRelease.py
+        mv tag_latest.txt.bak tag_latest.txt
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Release firmwares with retry
