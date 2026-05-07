@@ -58,10 +58,11 @@ jobs:
       with:
         ref: firmware
     - name: Download development firmware artifacts
-      uses: dawidd6/action-download-artifact@v3
+      uses: dawidd6/action-download-artifact@v21
       with:
         github_token: ${{secrets.GITHUB_TOKEN}}
         workflow: Tasmota_build_devel.yml
+        workflow_conclusion: success
         repo: arendst/tasmota
         name: ^((?!berry).)*$
         name_is_regexp: true
@@ -105,10 +106,11 @@ jobs:
         [ ! -f ./mv_firmware/firmware/* ] || mv ./mv_firmware/firmware/* ./firmware/development/languages/
         rm -rf ./mv_firmware
     - name: Download firmware artifact "special_firmwares"
-      uses: dawidd6/action-download-artifact@v3
+      uses: dawidd6/action-download-artifact@v21
       with:
         github_token: ${{secrets.GITHUB_TOKEN}}
         workflow: Build_special_firmware.yml
+        workflow_conclusion: success
         repo: Jason2866/Tasmota-build
         name: tasmota*
         name_is_regexp: true
