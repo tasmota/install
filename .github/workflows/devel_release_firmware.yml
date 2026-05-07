@@ -62,6 +62,7 @@ jobs:
       with:
         github_token: ${{secrets.GITHUB_TOKEN}}
         workflow: Tasmota_build_devel.yml
+        allow_forks: true
         repo: arendst/tasmota
         name: ^((?!berry).)*$
         name_is_regexp: true
@@ -109,6 +110,7 @@ jobs:
       with:
         github_token: ${{secrets.GITHUB_TOKEN}}
         workflow: Build_special_firmware.yml
+        allow_forks: true
         repo: Jason2866/Tasmota-build
         name: tasmota*
         name_is_regexp: true
