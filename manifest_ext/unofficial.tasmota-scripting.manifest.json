@@ -1,0 +1,78 @@
+{
+    "name": "Tasmota Scripting (english)",
+    "new_install_prompt_erase": true,
+    "funding_url": "https://paypal.me/tasmota",
+    "new_install_improv_wait_time": 10,
+    "builds": [
+        {
+            "chipFamily": "ESP32",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial//tasmota32-scripting.factory.bin",
+                    "offset": 0,
+                    "size": 1600976
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP8266",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota-scripting.bin",
+                    "offset": 0,
+                    "size": 727776
+                }
+            ]
+        }
+    ],
+    "features": {
+        "Xdrv": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            12,
+            24,
+            27,
+            29,
+            38,
+            50,
+            52,
+            62,
+            82
+        ],
+        "Xlgt": [
+            1,
+            8,
+            9,
+            10
+        ],
+        "Xnrg": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            19,
+            28,
+            30,
+            33
+        ],
+        "Xsns": [
+            1,
+            2,
+            3,
+            5,
+            9,
+            12,
+            53
+        ]
+    }
+}

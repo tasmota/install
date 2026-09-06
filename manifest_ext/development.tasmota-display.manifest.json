@@ -1,0 +1,69 @@
+{
+    "name": "Tasmota Display",
+    "new_install_prompt_erase": true,
+    "funding_url": "https://paypal.me/tasmota",
+    "new_install_improv_wait_time": 10,
+    "builds": [
+        {
+            "chipFamily": "ESP32",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/development/tasmota32-display.factory.bin",
+                    "offset": 0,
+                    "size": 1472208
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP8266",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/development/tasmota-display.bin",
+                    "offset": 0,
+                    "size": 627760
+                }
+            ]
+        }
+    ],
+    "features": {
+        "Xdrv": [
+            1,
+            2,
+            4,
+            5,
+            8,
+            9,
+            10,
+            12,
+            13,
+            16,
+            38,
+            50,
+            52,
+            55,
+            62,
+            66,
+            68
+        ],
+        "Xlgt": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            8,
+            9,
+            10
+        ],
+        "Xnrg": [],
+        "Xsns": [
+            1,
+            2,
+            5,
+            6,
+            12
+        ]
+    }
+}

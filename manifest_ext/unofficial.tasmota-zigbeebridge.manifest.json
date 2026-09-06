@@ -1,0 +1,57 @@
+{
+    "name": "Tasmota Zbbridge (english)",
+    "new_install_prompt_erase": true,
+    "funding_url": "https://paypal.me/tasmota",
+    "new_install_improv_wait_time": 10,
+    "builds": [
+        {
+            "chipFamily": "ESP32",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota32-zigbeebridge.factory.bin",
+                    "offset": 0,
+                    "size": 1487376
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP8266",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/development/tasmota-zbbridge.bin",
+                    "offset": 0,
+                    "size": 791104
+                }
+            ]
+        }
+    ],
+    "features": {
+        "Xdrv": [
+            1,
+            2,
+            4,
+            9,
+            10,
+            12,
+            23,
+            38,
+            41,
+            50,
+            52,
+            62,
+            82
+        ],
+        "Xlgt": [
+            8,
+            9,
+            10
+        ],
+        "Xnrg": [],
+        "Xsns": [
+            2,
+            12
+        ]
+    }
+}

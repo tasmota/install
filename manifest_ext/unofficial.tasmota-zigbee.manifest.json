@@ -1,0 +1,58 @@
+{
+    "name": "Tasmota Zigbee (english)",
+    "new_install_prompt_erase": true,
+    "funding_url": "https://paypal.me/tasmota",
+    "new_install_improv_wait_time": 10,
+    "builds": [
+        {
+            "chipFamily": "ESP32",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial//tasmota32-zigbee.factory.bin",
+                    "offset": 0,
+                    "size": 1458096
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP8266",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/development/tasmota-zigbee.bin",
+                    "offset": 0,
+                    "size": 862464
+                }
+            ]
+        }
+    ],
+    "features": {
+        "Xdrv": [
+            1,
+            2,
+            4,
+            9,
+            10,
+            12,
+            23,
+            38,
+            41,
+            46,
+            50,
+            52,
+            62,
+            82
+        ],
+        "Xlgt": [
+            8,
+            9,
+            10
+        ],
+        "Xnrg": [],
+        "Xsns": [
+            2,
+            12
+        ]
+    }
+}

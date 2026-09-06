@@ -1,0 +1,165 @@
+{
+    "name": "Tasmota32 LVGL (english)",
+    "new_install_prompt_erase": true,
+    "funding_url": "https://paypal.me/tasmota",
+    "new_install_improv_wait_time": 10,
+    "builds": [
+        {
+            "chipFamily": "ESP32",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/development/tasmota32-lvgl.factory.bin",
+                    "offset": 0,
+                    "size": 2695664
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-C3",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota32c3-lvgl.factory.bin",
+                    "offset": 0,
+                    "size": 2683408
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-C5",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota32c5-lvgl.factory.bin",
+                    "offset": 0,
+                    "size": 2752576
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-C6",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota32c6-lvgl.factory.bin",
+                    "offset": 0,
+                    "size": 2759680
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-S2",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota32s2-lvgl.factory.bin",
+                    "offset": 0,
+                    "size": 2796336
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-S3",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota32s3-lvgl.factory.bin",
+                    "offset": 0,
+                    "size": 2839856
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-P4",
+            "chipVariant": "rev0",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota32p4-lvgl.factory.bin",
+                    "offset": 0,
+                    "size": 3105408
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-P4",
+            "chipVariant": "rev300",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/unofficial/tasmota32p4r3-lvgl.factory.bin",
+                    "offset": 0,
+                    "size": 3108304
+                }
+            ]
+        }
+    ],
+    "features": {
+        "Xdrv": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            10,
+            12,
+            13,
+            16,
+            20,
+            24,
+            26,
+            27,
+            29,
+            38,
+            50,
+            52,
+            54,
+            55,
+            56,
+            62,
+            67,
+            68,
+            82,
+            88
+        ],
+        "Xlgt": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            8,
+            9,
+            10
+        ],
+        "Xnrg": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            14,
+            19,
+            28,
+            30,
+            32,
+            33
+        ],
+        "Xsns": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            8,
+            9,
+            12,
+            85
+        ]
+    }
+}
