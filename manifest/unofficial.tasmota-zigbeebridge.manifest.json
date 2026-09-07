@@ -1,0 +1,21 @@
+
+{
+  "name": "Tasmota Zbbridge (english)",
+  "new_install_prompt_erase": true,
+  "funding_url": "https://paypal.me/tasmota",
+  "new_install_improv_wait_time": 10,
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "improv": true,
+      "parts": [
+        { "path": "../firmware/unofficial/tasmota32-zigbeebridge.factory.bin", "offset": 0 }
+      ]
+    },
+    {
+      "chipFamily": "ESP8266",
+      "improv": true,
+      "parts": [{ "path": "../firmware/development/tasmota-zbbridge.bin", "offset": 0 }]
+    }
+  ]
+}
