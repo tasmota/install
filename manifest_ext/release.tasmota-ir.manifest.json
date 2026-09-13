@@ -1,0 +1,56 @@
+{
+    "name": "Tasmota IR",
+    "new_install_prompt_erase": true,
+    "funding_url": "https://paypal.me/tasmota",
+    "new_install_improv_wait_time": 10,
+    "builds": [
+        {
+            "chipFamily": "ESP32",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/release/tasmota32-ir.factory.bin",
+                    "offset": 0,
+                    "size": 1441472
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP8266",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/release/tasmota-ir.bin",
+                    "offset": 0,
+                    "size": 682240
+                }
+            ]
+        }
+    ],
+    "features": {
+        "Xdrv": [
+            1,
+            2,
+            4,
+            5,
+            7,
+            9,
+            10,
+            12,
+            38,
+            50,
+            52,
+            62,
+            68
+        ],
+        "Xlgt": [
+            10
+        ],
+        "Xnrg": [],
+        "Xsns": [
+            1,
+            2,
+            12
+        ]
+    }
+}
