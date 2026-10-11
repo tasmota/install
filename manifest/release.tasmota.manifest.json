@@ -40,6 +40,13 @@
       ]
     },
     {
+      "chipFamily": "ESP32-C61",
+      "improv": true,
+      "parts": [
+        { "path": "../firmware/release/tasmota32c61.factory.bin", "offset": 0 }
+      ]
+    },
+    {
       "chipFamily": "ESP32-P4",
       "chipVariant": "rev0",
       "improv": true,
