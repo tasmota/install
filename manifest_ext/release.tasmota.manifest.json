@@ -1,0 +1,256 @@
+{
+    "name": "Tasmota (english)",
+    "new_install_prompt_erase": true,
+    "funding_url": "https://paypal.me/tasmota",
+    "new_install_improv_wait_time": 10,
+    "builds": [
+        {
+            "chipFamily": "ESP32",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/release/tasmota32.factory.bin",
+                    "offset": 0,
+                    "size": 2182160
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-C2",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/release/tasmota32c2.factory.bin",
+                    "offset": 0,
+                    "size": 2071296
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-C3",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/release/tasmota32c3.factory.bin",
+                    "offset": 0,
+                    "size": 2180992
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-C5",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/release/tasmota32c5.factory.bin",
+                    "offset": 0,
+                    "size": 2243072
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-C6",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/release/tasmota32c6.factory.bin",
+                    "offset": 0,
+                    "size": 2256912
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-P4",
+            "chipVariant": "rev0",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/release/tasmota32p4.factory.bin",
+                    "offset": 0,
+                    "size": 2164368
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-P4",
+            "chipVariant": "rev300",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/release/tasmota32p4r3.factory.bin",
+                    "offset": 0,
+                    "size": 2167152
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-S2",
+            "improv": true,
+            "usbInterface": "UART",
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/release/tasmota32s2.factory.bin",
+                    "offset": 0,
+                    "size": 2060592
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-S2",
+            "improv": true,
+            "usbInterface": "CDC",
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/release/tasmota32s2cdc.factory.bin",
+                    "offset": 0,
+                    "size": 2115504
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP32-S3",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/release/tasmota32s3.factory.bin",
+                    "offset": 0,
+                    "size": 2102624
+                }
+            ]
+        },
+        {
+            "chipFamily": "ESP8266",
+            "improv": true,
+            "parts": [
+                {
+                    "path": "https://tasmota.github.io/install/firmware/release/tasmota.bin",
+                    "offset": 0,
+                    "size": 666720
+                }
+            ]
+        }
+    ],
+    "features": {
+        "Xdrv": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            14,
+            16,
+            17,
+            20,
+            21,
+            24,
+            26,
+            27,
+            29,
+            34,
+            35,
+            38,
+            50,
+            52,
+            59,
+            60,
+            62,
+            63,
+            66,
+            67,
+            68,
+            73,
+            75,
+            82,
+            86,
+            87,
+            88,
+            91
+        ],
+        "Xlgt": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            8,
+            9,
+            10
+        ],
+        "Xnrg": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            14,
+            17,
+            18,
+            19,
+            21,
+            23,
+            24,
+            28,
+            29,
+            30,
+            32,
+            33
+        ],
+        "Xsns": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            26,
+            31,
+            34,
+            37,
+            39,
+            40,
+            42,
+            43,
+            45,
+            51,
+            52,
+            55,
+            56,
+            58,
+            59,
+            64,
+            66,
+            67,
+            74,
+            85,
+            92,
+            95,
+            98
+        ]
+    }
+}
