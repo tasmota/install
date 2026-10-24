@@ -1,0 +1,6 @@
+{
+    "name": "Tasmota32-C2 2M OTA (english)",
+    "new_install_prompt_erase": true,
+    "funding_url": "https://paypal.me/tasmota",
+    "builds": []
+}
