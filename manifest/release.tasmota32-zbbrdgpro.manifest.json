@@ -1,0 +1,14 @@
+{
+  "name": "Tasmota32 Sonoff-ZigbeeBridgePro",
+  "new_install_prompt_erase": true,
+  "funding_url": "https://paypal.me/tasmota",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "improv": true,
+      "parts": [
+        { "path": "../firmware/release/tasmota32-zbbrdgpro.factory.bin", "offset": 0}
+      ]
+    }
+  ]
+}
