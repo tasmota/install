@@ -47,6 +47,13 @@
       ]
     },
     {
+      "chipFamily": "ESP32-S31",
+      "improv": true,
+      "parts": [
+        { "path": "../firmware/unofficial/tasmota32s31-lvgl.factory.bin", "offset": 0 }
+      ]
+    },
+    {
       "chipFamily": "ESP32-P4",
       "chipVariant": "rev0",
       "improv": true,
