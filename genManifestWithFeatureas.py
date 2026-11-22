@@ -71,6 +71,8 @@ def add_features_from_map(infile):
 def convertJSON(infile, outfile):
     with open(infile) as json_file:
         data = json.load(json_file)
+        features = {"Xdrv":[],"Xlgt":[],"Xnrg":[],"Xsns":[]}
+        features_found = False
         for build in data['builds']:
             for part in build['parts']:
                 part['path'] = part['path'].replace("..", "https://tasmota.github.io/install")
@@ -79,14 +81,15 @@ def convertJSON(infile, outfile):
                 map_path = firmware_path.replace(".bin", ".map.gz")
                 if os.path.exists(firmware_path):
                     part['size'] = os.path.getsize(firmware_path)
+                    part_features = add_features_from_map(map_path)
+                    for key in features:
+                        features[key] = sorted(set(features[key]) | set(part_features[key]))
+                    features_found = True
                 else:
                     part['size'] = None  # If the file doesn't exist, set size to None
 
-            if os.path.exists(firmware_path):
-                features = add_features_from_map(map_path)
-                # print(features)
-                if 'features' not in data:
-                    data['features'] = features
+        if features_found:
+            data['features'] = features
 
         filter_builds(data)
         # Write updated data to JSON
