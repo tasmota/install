@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-from platform import release
 import sys
 import os
 from os import listdir
@@ -8,9 +7,6 @@ from os import mkdir
 from os import remove
 from os import path
 import json
-import requests
-import gzip
-import re
 
 
 def filter_builds(data):
@@ -29,9 +25,9 @@ def convertJSON(infile, outfile):
         data = json.load(json_file)
         for build in data['builds']:
             for part in build['parts']:
-                part['path'] = part['path'].replace("..", "https://tasmota.github.io/install")
                 # Add firmware size
-                firmware_path = part['path'].replace("https://tasmota.github.io/install", ".").replace(".factory", "")
+                firmware_path = part['path'].replace("..", ".").replace(".factory", "")
+                part['path'] = part['path'].replace("..", "https://tasmota.github.io/install")
                 if os.path.exists(firmware_path):
                     part['size'] = os.path.getsize(firmware_path)
                 else:
@@ -52,6 +48,8 @@ def getManifestEntry(manifest):
         entry['chipFamilies'] = []
         for build in data['builds']:
             entry['chipFamilies'].append(build['chipFamily'])
+        if len(entry['chipFamilies']) == 0:
+            return None
         return entry
 
 
@@ -86,42 +84,45 @@ def main(args):
         # print(line[1])
         if line[0] not in output:
             output[line[0]] = [[],[],[],[],[],[]]
+        entry = getManifestEntry(path.join(path_manifests_ext,file))
+        if entry is None:
+            # The manifest has no supported builds left, so do
+            # not publish a dropdown entry for an asset that was never uploaded.
+            continue
         if line[1] == "tasmota":
-            output[line[0]][0].insert(0,getManifestEntry(path.join(path_manifests_ext,file))) # vanilla first
+            output[line[0]][0].insert(0,entry) # vanilla first
             continue
         elif line[1] == "tasmota32":
-            output[line[0]][1].insert(0,getManifestEntry(path.join(path_manifests_ext,file)))
+            output[line[0]][1].insert(0,entry)
             continue
         elif len(line[1].split('-')) == 1: #solo1,4M,...
-            output[line[0]][2].append(getManifestEntry(path.join(path_manifests_ext,file)))
+            output[line[0]][2].append(entry)
             continue
         name_components = line[1].split('-')
         if name_components[0] == "tasmota":
             if len(name_components[1]) == 2 and name_components[1].isupper():
-                output[line[0]][1].append(getManifestEntry(path.join(path_manifests_ext,file))) # language versions last
-                continue
-            output[line[0]][0].append(getManifestEntry(path.join(path_manifests_ext,file)))
-            continue
+                output[line[0]][1].append(entry) # language versions last
+            else:
+                output[line[0]][0].append(entry)
         elif name_components[0] == "tasmota32":
             if len(name_components[1]) == 2 and name_components[1].isupper():
-                output[line[0]][3].append(getManifestEntry(path.join(path_manifests_ext,file))) # language versions last
-                continue
-            output[line[0]][2].append(getManifestEntry(path.join(path_manifests_ext,file)))
-            continue
+                output[line[0]][3].append(entry) # language versions last
+            else:
+                output[line[0]][2].append(entry)
         else: #solo1,4M,...
             if len(name_components[1]) == 2 and name_components[1].isupper():
-                output[line[0]][5].append(getManifestEntry(path.join(path_manifests_ext,file))) # language versions last
-                continue
-            output[line[0]][4].append(getManifestEntry(path.join(path_manifests_ext,file)))
+                output[line[0]][5].append(entry) # language versions last
+            else:
+                output[line[0]][4].append(entry)
     # print(output)
 
     for section in output:
         merged = sorted(output[section][0],key=lambda d: d['name']) + sorted(output[section][1],key=lambda d: d['name']) + sorted(output[section][2],key=lambda d: d['name']) + sorted(output[section][3],key=lambda d: d['name']) + sorted(output[section][4],key=lambda d: d['name']) + sorted(output[section][5],key=lambda d: d['name'])
         output[section] = merged
 
-    release = output.pop("release")
-    development  = output.pop("development")
-    unofficial = output.pop("unofficial")
+    release = output.pop("release", [])
+    development  = output.pop("development", [])
+    unofficial = output.pop("unofficial", [])
 
 
     final_json = {}

@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-from curses.ascii import isupper
-from platform import release
 import sys
 import os
 from os import listdir
@@ -27,10 +25,9 @@ def convertJSON(infile, outfile, tag):
         for build in data['builds']:
             for part in build['parts']:
                 components = part['path'].split("/")
-                firmware_path = part['path']
+                # Add firmware size
+                firmware_path = part['path'].replace("..", ".").replace(".factory", "")
                 part['path'] = "https://github.com/tasmota/install/releases/download/" + tag + "/" + components[-1]
-                # Add firmware size with ugly path fix for firmware path
-                firmware_path = firmware_path.replace(".factory", "").replace("../", "./").replace("//", "/")
                 if os.path.exists(firmware_path):
                     part['size'] = os.path.getsize(firmware_path)
                 else:
@@ -99,7 +96,6 @@ def main(args):
             # not publish a dropdown entry for an asset that was never uploaded.
             continue
         if line[1] == "tasmota":
-            print(path.join(path_manifests_release,file),tag_latest)
             output[line[0]][0].insert(0,entry) # vanilla first
             continue
         elif line[1] == "tasmota32":
@@ -108,33 +104,15 @@ def main(args):
         else: #solo1,4M,...
             output[line[0]][2].append(entry)
             continue
-        name_components = line[1].split('-')
-        if name_components[0] == "tasmota":
-            if len(name_components[1]) and name_components[1].isupper():
-                output[line[0]][1].append(getManifestEntry(path.join(path_manifests_release,file),tag_latest)) # language versions last
-                continue
-            output[line[0]][0].append(getManifestEntry(path.join(path_manifests_release,file),tag_latest))
-            continue
-        elif name_components[0] == "tasmota32":
-            if len(name_components[1]) and name_components[1].isupper():
-                output[line[0]][3].append(getManifestEntry(path.join(path_manifests_release,file),tag_latest)) # language versions last
-                continue
-            output[line[0]][2].append(getManifestEntry(path.join(path_manifests_release,file),tag_latest))
-            continue
-        else: #solo1,4M,...
-            if len(name_components[1]) and name_components[1].isupper():
-                output[line[0]][5].append(getManifestEntry(path.join(path_manifests_release,file),tag_latest)) # language versions last
-                continue
-            output[line[0]][4].append(getManifestEntry(path.join(path_manifests_release,file),tag_latest))
     # print(output)
 
     for section in output:
         merged = sorted(output[section][0],key=lambda d: d['name']) + sorted(output[section][1],key=lambda d: d['name']) + sorted(output[section][2],key=lambda d: d['name']) + sorted(output[section][3],key=lambda d: d['name']) + sorted(output[section][4],key=lambda d: d['name']) + sorted(output[section][5],key=lambda d: d['name'])
         output[section] = merged
 
-    release = output.pop("release")
-    development  = output.pop("development")
-    unofficial = output.pop("unofficial")
+    release = output.pop("release", [])
+    development  = output.pop("development", [])
+    unofficial = output.pop("unofficial", [])
 
 
     final_json = {}
