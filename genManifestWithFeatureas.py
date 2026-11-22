@@ -103,8 +103,17 @@ def getManifestEntry(manifest):
         entry['path'] = "https://tasmota.github.io/install/" + manifest
         entry['name'] = data['name']
         entry['chipFamilies'] = []
+        seen = set()
         for build in data['builds']:
-            entry['chipFamilies'].append(build['chipFamily'])
+            # Keep variant qualifiers (e.g. "ESP32-P4 rev300", "ESP32-S2 CDC")
+            # so users can tell builds of the same chip family apart.
+            label = build['chipFamily']
+            extras = [x for x in (build.get('chipVariant'), build.get('usbInterface')) if x]
+            if extras:
+                label += ' ' + ' '.join(extras)
+            if label not in seen:
+                seen.add(label)
+                entry['chipFamilies'].append(label)
         if len(entry['chipFamilies']) == 0:
             return None
         return entry
